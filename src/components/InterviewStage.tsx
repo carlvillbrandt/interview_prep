@@ -547,7 +547,7 @@ export function InterviewStage({
           >
             <span className="h-10 w-10 animate-spin rounded-full border-2 border-line-strong border-t-[color:var(--accent)] motion-reduce:animate-none" />
             <p className="font-display mt-6 text-3xl text-fg">Interview complete</p>
-            <p className="mt-2 text-fg-muted">Taking you to your feedback…</p>
+            <p className="mt-2 text-fg-muted">Wrapping up…</p>
           </motion.div>
         )}
       </AnimatePresence>

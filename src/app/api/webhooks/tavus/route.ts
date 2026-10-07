@@ -2,7 +2,7 @@ import { timingSafeEqual } from "node:crypto";
 import { after } from "next/server";
 import { z } from "zod";
 import { jsonError } from "@/lib/api";
-import { webhookSecret } from "@/lib/env";
+import { scoringEnabled, webhookSecret } from "@/lib/env";
 import { finalizeInterview } from "@/lib/finalize";
 import { ConversationIdSchema } from "@/lib/schemas";
 import { resultStore } from "@/lib/storage";
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
         r.status === "active"
           ? {
               ...r,
-              status: "processing",
+              status: scoringEnabled() ? "processing" : "ended",
               endedAt: new Date().toISOString(),
               endReason: typeof event.properties?.reason === "string" ? event.properties.reason : "shutdown",
             }

@@ -1,5 +1,5 @@
 import { getCompany, type Company } from "@/data/catalog";
-import { anthropicConfigured, tavusApiKey } from "@/lib/env";
+import { scoringEnabled, tavusApiKey } from "@/lib/env";
 import { loadInterview } from "@/lib/interviewLoader";
 import type { InterviewRecord, TranscriptTurn } from "@/lib/schemas";
 import { scoreInterview, ScoringError } from "@/lib/scoring";
@@ -83,12 +83,43 @@ function companyFor(record: InterviewRecord): Company {
   );
 }
 
+/**
+ * Scoring disabled: the interview is already "ended" for the candidate. Fetch the transcript
+ * so it can be shown (and scored later if a key is added), but never mark the record failed.
+ */
+async function attachTranscriptOnly(conversationId: string, opts: FinalizeOptions): Promise<void> {
+  const store = resultStore();
+  const record = await store.get(conversationId);
+  if (!record || record.transcript || record.completedAt) return;
+  await store.update(conversationId, (r) => ({ ...r, status: "ended", endedAt: r.endedAt ?? new Date().toISOString() }));
+  let transcript = opts.transcript ?? null;
+  let perception = opts.perception;
+  if (!transcript) {
+    try {
+      const polled = await pollTranscript(conversationId);
+      transcript = polled.transcript;
+      perception ??= polled.perception;
+    } catch (err) {
+      console.warn(`[finalize] ${conversationId}: transcript unavailable: ${(err as Error).message}`);
+    }
+  }
+  await store.update(conversationId, (r) => ({
+    ...r,
+    status: "ended",
+    transcript: transcript ?? r.transcript,
+    perception: perception ?? r.perception,
+    perceptionAvailable: Boolean(perception ?? r.perception),
+    completedAt: new Date().toISOString(),
+  }));
+}
+
 async function doFinalize(conversationId: string, opts: FinalizeOptions): Promise<void> {
   const store = resultStore();
   const record = await store.get(conversationId);
   if (!record) return;
   if (record.status === "complete" || record.status === "insufficient_data") return;
   if (record.status === "failed" && !opts.retryFailed) return;
+  if (!scoringEnabled()) return attachTranscriptOnly(conversationId, opts);
 
   const fail = (message: string) =>
     store.update(conversationId, (r) => ({ ...r, status: "failed", message, completedAt: new Date().toISOString() }));
@@ -128,10 +159,6 @@ async function doFinalize(conversationId: string, opts: FinalizeOptions): Promis
   }));
 
   // 2. Score.
-  if (!anthropicConfigured()) {
-    await fail("Scoring is not configured on this server (ANTHROPIC_API_KEY is missing).");
-    return;
-  }
   try {
     const company = companyFor(record);
     let objectivesText = "(objectives file unavailable)";

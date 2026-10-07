@@ -19,7 +19,7 @@ npm run dev                    # http://localhost:3000
 | Variable | Required | Purpose |
 |---|---|---|
 | `TAVUS_API_KEY` | yes | Tavus API key (server-side only). |
-| `ANTHROPIC_API_KEY` | yes | Post-interview scoring (server-side only). |
+| `ANTHROPIC_API_KEY` | no | Enables the written post-interview scorecard. Without it, interviews end on a completion screen and the interviewer's spoken debrief is the feedback. |
 | `TAVUS_DEFAULT_REPLICA_ID` | no | A Tavus **face id** (formerly replica). If unset, the best stock face is auto-selected and cached. |
 | `APP_BASE_URL` | no | Public URL of the app. When it's a public `https://` URL, Tavus webhooks and knowledge-base documents are enabled. On localhost the app falls back to polling. |
 | `TAVUS_WEBHOOK_SECRET` | no | Shared secret appended to the callback URL and verified by `/api/webhooks/tavus`. |

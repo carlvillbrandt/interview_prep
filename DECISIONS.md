@@ -173,3 +173,14 @@ Decisions:
 * **Placement and settings for IB and VC/PE.** Verdane and General Atlantic sit under "Venture Capital & Private Equity".
   IB focus presets map to "technicals only" / "fit only"; PE/VC to "case only" / "fit only". HV Capital uses its supplied
   30-minute interview with a 40-minute hard stop; all others 35 / 45.
+
+## 12. Written scorecard is optional (no Anthropic key yet)
+
+* The written scorecard runs only when `ANTHROPIC_API_KEY` is set (`scoringEnabled()` in `src/lib/env.ts`).
+* Without it, ending a call sets the interview to **`ended`** immediately. The results page shows "Interview complete"
+  (the interviewer's spoken debrief is the feedback), with retry links and the transcript once Tavus delivers it
+  (fetched in the background; no score, no "failed" state).
+* The interviewer's session context and the setup screens stop promising a written scorecard, and the persona is told its
+  spoken debrief is the only feedback. Welcome-page copy was made true in both modes.
+* Adding the key later re-enables the scorecard for new interviews with no code change. Interviews that ended without
+  scoring keep their transcript and stay `ended`.

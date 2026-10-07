@@ -16,7 +16,7 @@ const display = Instrument_Serif({
 export const metadata: Metadata = {
   title: { default: "PrepRoom: Live AI video interview practice", template: "%s · PrepRoom" },
   description:
-    "Practice investment banking, venture capital and consulting interviews face-to-face with a live AI interviewer, then get a scored, evidence-based debrief.",
+    "Practice investment banking, venture capital and consulting interviews face-to-face with a live AI interviewer, then get a candid, evidence-based debrief.",
 };
 
 export const viewport: Viewport = {

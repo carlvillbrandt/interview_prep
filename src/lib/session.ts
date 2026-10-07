@@ -54,11 +54,14 @@ export function buildConversationalContext(opts: {
   candidateName?: string;
   settings?: InterviewSettings;
   cvText?: string;
+  /** Whether a written scorecard follows the call (false when scoring is disabled). */
+  writtenScorecard?: boolean;
 }): string {
   const { company, level, focus, candidateName } = opts;
   const settings = opts.settings ?? DEFAULT_SETTINGS;
   const focusCommand = settings.focusCommands?.[focus];
   const closeBy = Math.max(1, settings.interviewMinutes - 2);
+  const scorecard = opts.writtenScorecard ?? true;
 
   const lines = [
     "Session details",
@@ -80,8 +83,14 @@ export function buildConversationalContext(opts: {
     }`,
     "",
     settings.inCallDebrief
-      ? "This is a practice interview on PrepRoom. Follow your own instructions for feedback: none during the interview, except on a practice-control request, and a spoken debrief at the end. The candidate also receives a written scorecard on a results screen after the call."
-      : "This is a practice interview on PrepRoom. Feedback and a score are delivered to the candidate on a separate results screen after the call, so never give feedback, scores or hiring signals during the interview.",
+      ? `This is a practice interview on PrepRoom. Follow your own instructions for feedback: none during the interview, except on a practice-control request, and a spoken debrief at the end.${
+          scorecard
+            ? " The candidate also receives a written scorecard on a results screen after the call."
+            : " Your spoken debrief is the only feedback the candidate receives, so make it complete."
+        }`
+      : scorecard
+        ? "This is a practice interview on PrepRoom. Feedback and a score are delivered to the candidate on a separate results screen after the call, so never give feedback, scores or hiring signals during the interview."
+        : "This is a practice interview on PrepRoom. Never give feedback, scores or hiring signals during the interview.",
   ];
 
   const cv = opts.cvText?.trim();

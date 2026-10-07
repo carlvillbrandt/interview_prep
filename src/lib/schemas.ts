@@ -193,6 +193,8 @@ export type ScoringResult = z.infer<typeof ScoringResultSchema>;
 
 export const INTERVIEW_STATUSES = [
   "active",
+  /** Call finished and no written scorecard is produced (scoring disabled). Terminal. */
+  "ended",
   "processing",
   "complete",
   "insufficient_data",

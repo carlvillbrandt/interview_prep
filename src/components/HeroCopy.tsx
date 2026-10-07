@@ -28,8 +28,8 @@ export function HeroCopy() {
         transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         className="mt-6 max-w-2xl text-lg leading-relaxed text-fg-muted"
       >
-        Run a live, face-to-face mock interview with an AI interviewer modelled on your target firm, then get an
-        honest score and a debrief built from what you actually said.
+        Run a live, face-to-face mock interview with an AI interviewer modelled on your target firm, then get a
+        candid debrief built from what you actually said.
       </motion.p>
     </header>
   );

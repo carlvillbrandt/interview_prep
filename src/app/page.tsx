@@ -19,8 +19,8 @@ export default function WelcomePage() {
       <ol className="mt-14 grid gap-6 text-sm text-fg-muted sm:grid-cols-3" aria-label="How it works">
         {[
           ["01", "Pick a firm", "Each firm has its own interviewer, culture and interview structure."],
-          ["02", "Interview live on video", "A 15–20 minute face-to-face conversation that adapts to your answers."],
-          ["03", "Get scored feedback", "A calibrated rating, category scores and quoted moments to improve."],
+          ["02", "Interview live on video", "A 30–35 minute face-to-face conversation that adapts to your answers."],
+          ["03", "Get a candid debrief", "Your interviewer steps out of role with scores, corrections and better answers."],
         ].map(([n, title, body]) => (
           <li key={n} className="flex gap-4 border-t border-line pt-5">
             <span className="font-display text-xl text-fg-subtle">{n}</span>

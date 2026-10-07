@@ -25,6 +25,15 @@ export function anthropicConfigured(): boolean {
   return Boolean(read("ANTHROPIC_API_KEY"));
 }
 
+/**
+ * The written scorecard (Claude scoring) runs only when an Anthropic key is configured.
+ * Without it, interviews end on a completion screen and the interviewer's spoken debrief
+ * is the feedback. Adding the key re-enables the scorecard; no code change needed.
+ */
+export function scoringEnabled(): boolean {
+  return anthropicConfigured();
+}
+
 export function defaultFaceIdFromEnv(): string | undefined {
   return read("TAVUS_DEFAULT_REPLICA_ID");
 }

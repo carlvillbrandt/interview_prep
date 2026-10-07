@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { InterviewExperience } from "@/components/InterviewExperience";
 import { InterviewPageSkeleton } from "@/components/Skeletons";
 import { companyAccent, getCompany, getIndustry } from "@/data/catalog";
+import { scoringEnabled } from "@/lib/env";
 import { companyDir, DEFAULT_SETTINGS, loadSettings } from "@/lib/interviewLoader";
 import { LEVELS_BY_INDUSTRY } from "@/lib/schemas";
 
@@ -41,6 +42,7 @@ async function InterviewContent({ params }: { params: Promise<Params> }) {
         interviewMinutes: settings.interviewMinutes,
         inCallDebrief: settings.inCallDebrief,
         cvUpload: settings.cvUpload,
+        writtenScorecard: scoringEnabled(),
       }}
     />
   );

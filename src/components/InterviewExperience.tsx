@@ -48,12 +48,17 @@ export function InterviewExperience({
               `About ${setup.interviewMinutes} minutes`,
               "Intro, core questions, one deep-dive and your questions, run like the real thing.",
             ],
-            [
-              "Scored debrief",
-              setup.inCallDebrief
-                ? "A spoken debrief from your interviewer, then a written scorecard with quoted moments and better answers."
-                : "An honest rating, category scores and quoted moments with better answers.",
-            ],
+            setup.writtenScorecard
+              ? [
+                  "Scored debrief",
+                  setup.inCallDebrief
+                    ? "A spoken debrief from your interviewer, then a written scorecard with quoted moments and better answers."
+                    : "An honest rating, category scores and quoted moments with better answers.",
+                ]
+              : [
+                  "Candid debrief",
+                  "Your interviewer steps out of role at the end with scores, corrections and a stronger answer to practice.",
+                ],
           ].map(([title, body]) => (
             <div key={title} className="rounded-2xl border border-line bg-ink-900/70 p-5">
               <p className="font-medium text-fg">{title}</p>

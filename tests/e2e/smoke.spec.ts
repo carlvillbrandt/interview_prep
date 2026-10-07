@@ -118,5 +118,7 @@ test("consulting lists the three firms with their own setup", async ({ page }) =
   // Privacy is remembered per browser only after acknowledging, so it appears in a fresh context.
   await dialog.getByRole("button", { name: /I understand/ }).click();
   await expect(dialog.getByLabel("Role / level")).toHaveValue("Intern");
-  await expect(dialog).toContainText("debriefs you at the end");
+  // The e2e server has no ANTHROPIC_API_KEY, so no written scorecard is promised.
+  await expect(dialog).toContainText("debriefs you out loud at the end");
+  await expect(dialog).not.toContainText("scorecard");
 });

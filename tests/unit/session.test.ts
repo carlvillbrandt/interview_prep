@@ -34,6 +34,14 @@ describe("conversational context", () => {
     expect(ctx).not.toContain("never give feedback, scores or hiring signals during the interview");
   });
 
+  it("drops the written-scorecard promise when scoring is disabled", () => {
+    const ctx = buildConversationalContext({ company, level: "Intern", focus: "Mixed", settings: debriefSettings, writtenScorecard: false });
+    expect(ctx).not.toContain("written scorecard");
+    expect(ctx).toContain("Your spoken debrief is the only feedback");
+    const plain = buildConversationalContext({ company, level: "Analyst", focus: "Mixed", writtenScorecard: false });
+    expect(plain).not.toContain("results screen");
+  });
+
   it("keeps the no-feedback rule for firms without an in-call debrief", () => {
     const ctx = buildConversationalContext({ company, level: "Analyst", focus: "Mixed" });
     expect(ctx).toContain("never give feedback, scores or hiring signals during the interview");

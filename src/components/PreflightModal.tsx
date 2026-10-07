@@ -20,6 +20,8 @@ export interface SetupOptions {
   interviewMinutes: number;
   inCallDebrief: boolean;
   cvUpload: boolean;
+  /** A written scorecard follows the call (false while scoring is disabled). */
+  writtenScorecard: boolean;
 }
 
 const FOCUS_LABELS: Record<Focus, string> = {
@@ -290,8 +292,9 @@ export function PreflightModal({
                   </li>
                   <li className="flex gap-3">
                     <CheckIcon size={18} className="mt-0.5 shrink-0 text-success" />
-                    The transcript is scored by an AI model and stored on this PrepRoom server so you can review your
-                    feedback.
+                    {setup.writtenScorecard
+                      ? "The transcript is scored by an AI model and stored on this PrepRoom server so you can review your feedback."
+                      : "The transcript is stored on this PrepRoom server so you can review it after the call."}
                   </li>
                   {setup.cvUpload && (
                     <li className="flex gap-3">
@@ -383,8 +386,12 @@ export function PreflightModal({
                     <li>
                       · About {setup.interviewMinutes} minutes.{" "}
                       {setup.inCallDebrief
-                        ? "Your interviewer debriefs you at the end, and a written scorecard follows."
-                        : "Feedback arrives right after."}
+                        ? setup.writtenScorecard
+                          ? "Your interviewer debriefs you at the end, and a written scorecard follows."
+                          : "Your interviewer debriefs you out loud at the end."
+                        : setup.writtenScorecard
+                          ? "Feedback arrives right after."
+                          : "The transcript is available right after."}
                     </li>
                     {setup.inCallDebrief && <li>· Say &ldquo;timeout&rdquo; for quick feedback or &ldquo;auf Deutsch&rdquo; to switch language.</li>}
                   </ul>

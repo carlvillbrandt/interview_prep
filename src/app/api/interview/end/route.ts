@@ -1,6 +1,6 @@
 import { after } from "next/server";
 import { errorResponse, jsonError } from "@/lib/api";
-import { tavusApiKey } from "@/lib/env";
+import { scoringEnabled, tavusApiKey } from "@/lib/env";
 import { finalizeInterview } from "@/lib/finalize";
 import { EndInterviewRequestSchema } from "@/lib/schemas";
 import { resultStore } from "@/lib/storage";
@@ -39,7 +39,13 @@ export async function POST(req: Request) {
       }
       await store.update(conversationId, (r) =>
         r.status === "active"
-          ? { ...r, status: "processing", endedAt: new Date().toISOString(), endReason: reason ?? "user" }
+          ? {
+              ...r,
+              // Without scoring the interview is finished now; the transcript is attached in the background.
+              status: scoringEnabled() ? "processing" : "ended",
+              endedAt: new Date().toISOString(),
+              endReason: reason ?? "user",
+            }
           : r,
       );
     }

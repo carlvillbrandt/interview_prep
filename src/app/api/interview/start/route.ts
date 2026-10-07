@@ -1,6 +1,6 @@
 import { getCompany } from "@/data/catalog";
 import { clientIp, errorResponse, jsonError, RateLimiter } from "@/lib/api";
-import { appBaseUrl, isDev, isPubliclyReachable, tavusApiKey, webhookSecret } from "@/lib/env";
+import { appBaseUrl, isDev, isPubliclyReachable, scoringEnabled, tavusApiKey, webhookSecret } from "@/lib/env";
 import { provisionCompany } from "@/lib/provision";
 import { StartInterviewRequestSchema, type StartInterviewResponse } from "@/lib/schemas";
 import { buildConversationalContext, buildGreeting, maxCallSeconds } from "@/lib/session";
@@ -49,6 +49,7 @@ export async function POST(req: Request) {
         candidateName: body.candidateName,
         settings,
         cvText: body.cvText,
+        writtenScorecard: scoringEnabled(),
       }),
       custom_greeting: buildGreeting({
         company,

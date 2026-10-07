@@ -25,9 +25,10 @@ export async function GET(req: Request, ctx: { params: Promise<{ id: string }> }
       after(() => finalizeInterview(record.conversationId, { retryFailed: true }));
       return Response.json(toPublic({ ...record, status: "processing", message: undefined }), { status: 202 });
     }
-    if (record.status === "processing" && !isFinalizing(record.conversationId)) {
-      after(() => finalizeInterview(record.conversationId));
-    }
+    const orphaned =
+      (record.status === "processing" || (record.status === "ended" && !record.transcript && !record.completedAt)) &&
+      !isFinalizing(record.conversationId);
+    if (orphaned) after(() => finalizeInterview(record.conversationId));
 
     const pending = record.status === "active" || record.status === "processing";
     return Response.json(toPublic(record), {

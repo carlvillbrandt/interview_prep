@@ -12,7 +12,7 @@ import {
   SpokenOnlyNotice,
   TranscriptPanel,
 } from "@/components/FeedbackPanel";
-import { AlertIcon, CopyIcon, RefreshIcon } from "@/components/icons";
+import { AlertIcon, CheckIcon, CopyIcon, RefreshIcon } from "@/components/icons";
 import { ScoreDial, signalColor } from "@/components/ScoreDial";
 import { ResultsSkeleton } from "@/components/Skeletons";
 import { useToast } from "@/components/Toast";
@@ -49,7 +49,11 @@ export function ResultsView({ conversationId }: { conversationId: string }) {
         const json = await res.json().catch(() => null);
         if (cancelled) return;
         if (res.status === 200) {
-          setState({ kind: "ready", record: json as PublicInterviewResult });
+          const record = json as PublicInterviewResult;
+          setState({ kind: "ready", record });
+          const awaitingTranscript = record.status === "ended" && !record.transcript && !record.completedAt;
+          if (!awaitingTranscript || Date.now() - startedRef.current > GIVE_UP_AFTER_MS) return;
+          timer = setTimeout(() => void poll(), 4000);
           return;
         }
         if (res.status === 202) {
@@ -126,6 +130,41 @@ export function ResultsView({ conversationId }: { conversationId: string }) {
   const accent = industry?.accent ?? "#7AA7FF";
   const retryHref = `/interview/${record.industry}/${record.company}`;
   const anotherHref = `/industry/${record.industry}`;
+
+  if (record.status === "ended") {
+    return (
+      <Shell record={record}>
+        <div className="rounded-3xl border border-line bg-ink-900/70 p-8 sm:p-10">
+          <CheckIcon size={28} className="text-success" />
+          <h2 className="font-display mt-4 text-3xl text-fg">Interview complete</h2>
+          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">
+            Your interviewer&apos;s spoken debrief was your feedback for this session. Note down the scores and the
+            improvements they named, then run the interview again and practice your weakest answer.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href={retryHref} className="rounded-full px-6 py-3 text-sm font-semibold text-ink-950 transition-transform hover:scale-[1.02]" style={{ background: accent }}>
+              Retry this interview
+            </Link>
+            <Link href={anotherHref} className="rounded-full border border-line-strong px-6 py-3 text-sm text-fg hover:bg-ink-800">
+              Try another firm
+            </Link>
+          </div>
+        </div>
+        <div className="mt-8">
+          {record.transcript && record.transcript.length > 0 ? (
+            <TranscriptPanel transcript={record.transcript} interviewerLabel="Interviewer" />
+          ) : record.completedAt ? (
+            <p className="text-sm text-fg-subtle">A transcript isn&apos;t available for this call.</p>
+          ) : (
+            <p role="status" className="flex items-center gap-2 text-sm text-fg-subtle">
+              <span className="h-3 w-3 animate-spin rounded-full border-2 border-line-strong border-t-azure motion-reduce:animate-none" aria-hidden />
+              Preparing your transcript…
+            </p>
+          )}
+        </div>
+      </Shell>
+    );
+  }
 
   if (record.status !== "complete" || !record.scoring) {
     const failed = record.status === "failed";
