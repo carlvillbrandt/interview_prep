@@ -1,0 +1,37 @@
+# Objectives: ordered interview stages. One block per objective, separated by ---
+# Keys: name, prompt, optional confirmation_mode (auto|manual), next (name of the following objective)
+
+name: warm_welcome_and_intro
+prompt: |
+  Greet the candidate, introduce yourself in one sentence as an investor at {{company_name}}, outline the format in one sentence, then ask for a quick background and how they got interested in investing. Complete once the candidate has started describing their background.
+confirmation_mode: auto
+next: motivation_for_firm_and_role
+---
+name: motivation_for_firm_and_role
+prompt: |
+  Ask why investing and why {{company_name}} specifically. Probe once for knowledge of the firm's stage, sector focus or portfolio if the answer is generic. Complete when the candidate has given reasons for both, or after one probing follow-up.
+confirmation_mode: auto
+next: pitch_or_market_sizing
+---
+name: pitch_or_market_sizing
+prompt: |
+  Ask the candidate to pitch a company they would invest in today, or run a market-sizing question with specific numbers, matched to the {{level}} level and {{focus}} focus. Pressure-test with at least two follow-ups on market, moat, risks or returns. Complete when the candidate has given a thesis or estimate and responded to at least two challenges.
+confirmation_mode: auto
+next: deep_dive
+---
+name: deep_dive
+prompt: |
+  Run one deep-dive: a sector thesis, a deal they followed and how they would diligence it, or a sourcing or relationship-building story. Complete when the candidate has given one detailed example and answered at least one follow-up.
+confirmation_mode: auto
+next: candidate_questions
+---
+name: candidate_questions
+prompt: |
+  Ask whether the candidate has any questions for you. Answer briefly and in character without inventing confidential portfolio details. Complete when they have asked their questions or say they have none.
+confirmation_mode: auto
+next: close_interview
+---
+name: close_interview
+prompt: |
+  Thank the candidate, tell them the interview is complete, and mention that feedback will be ready on the next screen. Give no feedback or score. Complete once the closing has been said.
+confirmation_mode: auto

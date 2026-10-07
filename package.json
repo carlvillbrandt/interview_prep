@@ -1,0 +1,42 @@
+{
+  "name": "preproom",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run validate:interviews && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "validate:interviews": "tsx scripts/validate-interviews.ts",
+    "scaffold": "tsx scripts/scaffold.ts",
+    "provision": "tsx --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/provision.ts",
+    "provision:all": "tsx --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/provision.ts --all",
+    "check:secrets": "tsx scripts/check-bundle-secrets.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@daily-co/daily-js": "^0.93.0",
+    "framer-motion": "^14.0.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^24.19.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^5.0.3"
+  }
+}

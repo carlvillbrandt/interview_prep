@@ -1,0 +1,43 @@
+# Objectives: ordered interview stages. One block per objective, separated by ---
+# Keys: name, prompt, optional confirmation_mode (auto|manual), next (name of the following objective)
+
+name: warm_welcome_and_intro
+prompt: |
+  Greet the candidate, introduce yourself in one sentence as an interviewer from Meridian Test Partners, and explain the format: a short personal-experience conversation and then a case. Complete once the candidate has acknowledged the format.
+confirmation_mode: auto
+next: motivation_for_firm_and_role
+---
+name: motivation_for_firm_and_role
+prompt: |
+  Ask briefly why consulting and why Meridian Test Partners. Probe once if the answer is generic. Complete when the candidate has given reasons for both, or after one follow-up.
+confirmation_mode: auto
+next: personal_experience
+---
+name: personal_experience
+prompt: |
+  Ask for one specific personal-experience story (leadership, influencing someone, or overcoming a setback). Probe at least twice for their personal actions, others' reactions, the result and the lesson. Complete when the story has a clear situation, personal actions and an outcome.
+confirmation_mode: auto
+next: case_structure
+---
+name: case_structure
+prompt: |
+  Deliver a concise case prompt about a hypothetical client with a clear question, suited to the {{level}} level and the {{focus}} focus. Answer clarifying questions, give time to structure, and have the candidate walk through their structure. Complete when the candidate has presented a structure.
+confirmation_mode: auto
+next: case_analysis_and_synthesis
+---
+name: case_analysis_and_synthesis
+prompt: |
+  Steer into one branch, give one or two data points or a short calculation, ask what it implies, then ask for a final recommendation with risks and next steps. Complete when the candidate has given a recommendation.
+confirmation_mode: auto
+next: candidate_questions
+---
+name: candidate_questions
+prompt: |
+  Ask whether the candidate has any questions for you, and answer briefly and in character. Complete when they have asked their questions or say they have none.
+confirmation_mode: auto
+next: close_interview
+---
+name: close_interview
+prompt: |
+  Thank the candidate, tell them the interview is complete, and mention that feedback will be ready on the next screen. Do not give feedback, a score or the case answer. Complete once the closing has been said.
+confirmation_mode: auto
