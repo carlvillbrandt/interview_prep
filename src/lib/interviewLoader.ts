@@ -1,4 +1,4 @@
-import { promises as fs } from "node:fs";
+import { existsSync, promises as fs } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 
@@ -27,7 +27,13 @@ export function templatesRoot(): string {
 }
 
 export function companyDir(industry: string, slug: string, root = interviewsRoot()): string {
-  return path.join(/*turbopackIgnore: true*/ root, industry, slug);
+  const primary = path.join(/*turbopackIgnore: true*/ root, industry, slug);
+  // Test-only: firms missing from /interviews can come from a fixtures folder (see playwright.config.ts).
+  const fallback = process.env.INTERVIEWS_FALLBACK_DIR;
+  if (fallback && !existsSync(primary)) {
+    return path.join(/*turbopackIgnore: true*/ path.resolve(/*turbopackIgnore: true*/ process.cwd(), fallback), industry, slug);
+  }
+  return primary;
 }
 
 /* ------------------------------------------------------------------ */
@@ -216,8 +222,31 @@ export const ObjectiveDefSchema = z
               .filter(Boolean)
           : undefined,
       ),
+    /**
+     * Conditional next objectives (Tavus `next_conditional_objectives`), one per line:
+     *   objective_name: condition that activates it
+     */
+    branches: z
+      .string()
+      .optional()
+      .transform((v, ctx) => {
+        if (!v) return undefined;
+        const out: Record<string, string> = {};
+        for (const raw of v.split("\n")) {
+          const line = raw.trim();
+          if (!line) continue;
+          const m = /^([A-Za-z0-9_]+)\s*:\s*(.+)$/.exec(line);
+          if (!m) {
+            ctx.addIssue({ code: "custom", message: `each line must be "objective_name: condition", got "${line.slice(0, 50)}"` });
+            return z.NEVER;
+          }
+          out[m[1]] = m[2].trim();
+        }
+        return out;
+      }),
   })
-  .strict();
+  .strict()
+  .refine((o) => !(o.next && o.branches), { message: 'use either "next" or "branches", not both', path: ["branches"] });
 export type ObjectiveDef = z.infer<typeof ObjectiveDefSchema>;
 
 function parseTyped<T>(
@@ -256,6 +285,65 @@ export function parseObjectives(text: string, file = "objectives.txt"): Objectiv
 }
 
 /* ------------------------------------------------------------------ */
+/* Optional settings.json                                              */
+/* ------------------------------------------------------------------ */
+
+export const InterviewSettingsSchema = z
+  .object({
+    /** Spoken verbatim when no candidate name was given in setup. */
+    greeting: z.string().min(1).max(600).optional(),
+    /** Used when the candidate entered a name; may contain {{candidate_name}}. */
+    greetingWithName: z.string().min(1).max(600).optional(),
+    /** Planned interview length, used in the session context and setup copy. */
+    interviewMinutes: z.number().int().min(5).max(90).default(18),
+    /** Hard stop (Tavus max_call_duration). */
+    maxCallMinutes: z.number().int().min(5).max(120).default(20),
+    /** The interviewer gives a spoken debrief at the end (in addition to the written scorecard). */
+    inCallDebrief: z.boolean().default(false),
+    /** Spoken languages (Tavus language codes); the first is the opening language. */
+    languages: z.array(z.string().min(2).max(16)).min(1).max(10).default(["en"]),
+    /** Practice-control phrase to apply when the candidate picks a focus in setup. */
+    focusCommands: z.object({ Technical: z.string().optional(), Behavioral: z.string().optional(), Mixed: z.string().optional() }).strict().optional(),
+    /** Raven visual awareness queries. */
+    perceptionQueries: z.array(z.string().min(5).max(300)).max(10).optional(),
+    /** Allow candidates to attach a CV in setup (default true). */
+    cvUpload: z.boolean().default(true),
+  })
+  .strict()
+  .refine((s) => s.maxCallMinutes >= s.interviewMinutes, { message: "maxCallMinutes must be >= interviewMinutes", path: ["maxCallMinutes"] });
+export type InterviewSettings = z.infer<typeof InterviewSettingsSchema>;
+
+export const DEFAULT_SETTINGS: InterviewSettings = InterviewSettingsSchema.parse({});
+
+export async function loadSettings(dir: string, displayDir = dir): Promise<{ settings: InterviewSettings; raw: string }> {
+  const file = path.join(displayDir, "settings.json");
+  let raw: string;
+  try {
+    raw = await fs.readFile(path.join(dir, "settings.json"), "utf8");
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === "ENOENT") return { settings: DEFAULT_SETTINGS, raw: "" };
+    throw err;
+  }
+  let json: unknown;
+  try {
+    json = JSON.parse(raw);
+  } catch (err) {
+    throw new InterviewParseError(file, null, `invalid JSON: ${(err as Error).message}`);
+  }
+  const parsed = InterviewSettingsSchema.safeParse(json);
+  if (!parsed.success) {
+    const issue = parsed.error.issues[0];
+    const where = issue.path.join(".");
+    throw new InterviewParseError(
+      file,
+      null,
+      issue.code === "unrecognized_keys" ? `unknown setting "${issue.keys[0]}"` : `${where ? `"${where}": ` : ""}${issue.message}`,
+    );
+  }
+  return { settings: parsed.data, raw };
+}
+
+/* ------------------------------------------------------------------ */
 /* Loading a company folder                                            */
 /* ------------------------------------------------------------------ */
 
@@ -275,6 +363,9 @@ export interface InterviewContent {
   guardrails: GuardrailDef[];
   objectives: ObjectiveDef[];
   knowledge: KnowledgeFile[];
+  settings: InterviewSettings;
+  /** Raw settings.json text ("" if absent); part of the content hash. */
+  settingsText: string;
 }
 
 async function readRequired(dir: string, file: InterviewFileName, displayDir: string): Promise<string> {
@@ -302,7 +393,10 @@ export async function loadKnowledge(dir: string): Promise<KnowledgeFile[]> {
   } catch {
     return [];
   }
-  const files = entries.filter((f) => /\.(md|txt)$/i.test(f) && /^[A-Za-z0-9._-]+$/.test(f)).sort();
+  // README files are notes for editors, not interviewer material.
+  const files = entries
+    .filter((f) => /\.(md|txt)$/i.test(f) && /^[A-Za-z0-9._-]+$/.test(f) && !/^readme\./i.test(f))
+    .sort();
   return Promise.all(
     files.map(async (name) => ({ name, content: await fs.readFile(path.join(kdir, name), "utf8") })),
   );
@@ -324,6 +418,7 @@ export async function loadInterviewFromDir(
   const guardrails = parseGuardrails(guardrailsText, path.join(displayDir, "guardrails.txt"));
   const objectives = parseObjectives(objectivesText, path.join(displayDir, "objectives.txt"));
   const knowledge = await loadKnowledge(dir);
+  const { settings, raw: settingsText } = await loadSettings(dir, displayDir);
   return {
     ...meta,
     dir,
@@ -334,6 +429,8 @@ export async function loadInterviewFromDir(
     guardrails,
     objectives,
     knowledge,
+    settings,
+    settingsText,
   };
 }
 
@@ -366,18 +463,21 @@ export function validateInterviewContent(
   const where = path.relative(process.cwd(), content.dir) || content.dir;
   const allowed = new Set(opts.allowedPlaceholders ?? RUNTIME_PLACEHOLDERS);
 
-  // Objectives: 5–7, unique names, resolvable `next`, no cycles back to the start.
+  // Objectives: 2–10 stages, unique names, every `next` / branch target defined.
   const objNames = content.objectives.map((o) => o.name);
-  if (content.objectives.length < 5 || content.objectives.length > 7) {
-    errors.push(`${where}/objectives.txt: expected 5–7 objectives, found ${content.objectives.length}`);
+  if (content.objectives.length < 2 || content.objectives.length > 10) {
+    errors.push(`${where}/objectives.txt: expected 2–10 objectives, found ${content.objectives.length}`);
   }
   const dupObj = objNames.filter((n, i) => objNames.indexOf(n) !== i);
   if (dupObj.length) errors.push(`${where}/objectives.txt: duplicate objective names: ${[...new Set(dupObj)].join(", ")}`);
   for (const o of content.objectives) {
-    if (o.next && !objNames.includes(o.next)) {
-      errors.push(`${where}/objectives.txt: objective "${o.name}" has next "${o.next}", which is not defined`);
+    const targets = [...(o.next ? [o.next] : []), ...Object.keys(o.branches ?? {})];
+    for (const t of targets) {
+      if (!objNames.includes(t)) {
+        errors.push(`${where}/objectives.txt: objective "${o.name}" leads to "${t}", which is not defined`);
+      }
+      if (t === o.name) errors.push(`${where}/objectives.txt: objective "${o.name}" points to itself`);
     }
-    if (o.next === o.name) errors.push(`${where}/objectives.txt: objective "${o.name}" points to itself`);
   }
 
   // Guardrails
@@ -387,13 +487,10 @@ export function validateInterviewContent(
   const dupGr = grNames.filter((n, i) => grNames.indexOf(n) !== i);
   if (dupGr.length) errors.push(`${where}/guardrails.txt: duplicate guardrail names: ${[...new Set(dupGr)].join(", ")}`);
 
-  // System prompt length
+  // System prompt length: firm content decides; only a near-empty prompt is an error.
   const words = wordCount(content.systemPrompt);
-  const lengthMsg = `${where}/systemprompt.txt: ${words} words (target 400–900)`;
-  if (words < 400 || words > 900) {
-    if (opts.featured) errors.push(lengthMsg);
-    else warnings.push(lengthMsg);
-  }
+  if (words < 150) errors.push(`${where}/systemprompt.txt: only ${words} words; the interviewer needs a real persona and structure`);
+  else if (opts.featured && words < 400) warnings.push(`${where}/systemprompt.txt: ${words} words; featured firms usually need 400+`);
   if (wordCount(content.capabilities) < 30) {
     warnings.push(`${where}/capabilities.txt: very short (${wordCount(content.capabilities)} words)`);
   }
@@ -413,10 +510,12 @@ export function validateInterviewContent(
     }
   }
 
-  // Combined prompt budget (Tavus recommends ≤ ~5k tokens ≈ 20k chars for best latency).
-  const combined = content.systemPrompt.length + content.capabilities.length;
-  if (combined > 20_000) {
-    warnings.push(`${where}: system prompt + capabilities is ${combined} characters; Tavus latency degrades above ~20k`);
+  // Combined prompt budget. Tavus: best ≤ ~5k tokens, degradation from ~15–20k tokens (≈ 60–80k chars).
+  const combined = content.systemPrompt.length + content.capabilities.length + knowledgeChars(content);
+  if (combined > INLINE_KNOWLEDGE_MAX_CHARS) {
+    warnings.push(
+      `${where}: prompt + capabilities + knowledge is ${combined} characters; above ${INLINE_KNOWLEDGE_MAX_CHARS} the knowledge base is uploaded as Tavus documents (public APP_BASE_URL required) instead of inlined`,
+    );
   }
 
   return { errors, warnings };
@@ -444,13 +543,50 @@ export function renderForPal(text: string, companyName: string): string {
 
 const RUNTIME_PREAMBLE = `Runtime variables: this prompt refers to LEVEL, FOCUS and CANDIDATE_NAME. Their real values for the current session are given in the "Session details" section of your conversational context. Always use those real values, and never say the words LEVEL, FOCUS or CANDIDATE_NAME aloud. If no candidate name is given, do not invent one.`;
 
-/** The PAL system prompt: systemprompt.txt + a Capabilities section, per DECISIONS.md §2. */
-export function buildPalSystemPrompt(content: InterviewContent, companyName: string): string {
-  return [
-    RUNTIME_PREAMBLE,
-    renderForPal(content.systemPrompt, companyName),
-    `## Capabilities\n\n${renderForPal(content.capabilities, companyName)}`,
-  ].join("\n\n");
+/**
+ * Knowledge up to this size is inlined into the system prompt (reliable: cases and answer
+ * keys are always in context). Larger knowledge goes to Tavus documents (RAG). ≈ 12k tokens.
+ */
+export const INLINE_KNOWLEDGE_MAX_CHARS = 48_000;
+
+export function knowledgeChars(content: Pick<InterviewContent, "knowledge">): number {
+  return content.knowledge.reduce((n, k) => n + k.content.length, 0);
+}
+
+export type KnowledgeMode = "none" | "inline" | "documents";
+
+/** How to deliver knowledge/ to the interviewer. See DECISIONS.md §11. */
+export function knowledgeMode(content: InterviewContent, publiclyReachable: boolean): KnowledgeMode {
+  if (content.knowledge.length === 0) return "none";
+  const total = content.systemPrompt.length + content.capabilities.length + knowledgeChars(content);
+  if (total <= INLINE_KNOWLEDGE_MAX_CHARS) return "inline";
+  // Too big to inline comfortably; documents need a public URL, otherwise inline anyway.
+  return publiclyReachable ? "documents" : "inline";
+}
+
+/**
+ * The PAL system prompt: systemprompt.txt + a Capabilities section (DECISIONS.md §2),
+ * plus the knowledge base when it is inlined (§11).
+ */
+export function buildPalSystemPrompt(
+  content: InterviewContent,
+  companyName: string,
+  opts: { inlineKnowledge?: boolean } = {},
+): string {
+  const prompt = renderForPal(content.systemPrompt, companyName);
+  const capabilities = renderForPal(content.capabilities, companyName);
+  const usesTokens = /\b(LEVEL|FOCUS|CANDIDATE_NAME)\b/.test(prompt + capabilities);
+  const parts = [...(usesTokens ? [RUNTIME_PREAMBLE] : []), prompt, `## Capabilities\n\n${capabilities}`];
+  if (opts.inlineKnowledge && content.knowledge.length > 0) {
+    parts.push(
+      [
+        "## Knowledge base",
+        "The following reference material is your knowledge base. It is for you only: never read it aloud, and follow its own instructions about what may be revealed and when.",
+        ...content.knowledge.map((k) => `### ${k.name}\n\n${renderForPal(k.content.trim(), companyName)}`),
+      ].join("\n\n"),
+    );
+  }
+  return parts.join("\n\n");
 }
 
 /** Extracts "Daniel Whitfield" from a prompt that opens "You are Daniel Whitfield, a Vice President…". */

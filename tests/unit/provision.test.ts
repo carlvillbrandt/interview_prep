@@ -150,3 +150,47 @@ describe("provisionCompany (content-hash cache)", () => {
     expect(spies.createPal).toHaveBeenCalledTimes(1);
   });
 });
+
+describe("provisioning a real firm folder (AlixPartners)", () => {
+  it("sends branches, languages, perception queries and the inlined knowledge base", async () => {
+    const cache = new FileProvisionCacheStore(path.join(tmp, "cache.json"));
+    const { client, spies } = fakeClient();
+    const alix: Company = {
+      industry: "consulting",
+      slug: "alixpartners-restructuring",
+      name: "AlixPartners",
+      tagline: "",
+      featured: true,
+      interviewStyle: "Turnaround case + Fit",
+    };
+    const dir = path.join(process.cwd(), "interviews/consulting/alixpartners-restructuring");
+    const r = await provisionCompany(alix, {
+      client,
+      cache,
+      load: () => loadInterviewFromDir(dir, { industry: "consulting", slug: alix.slug }),
+      log: () => {},
+    });
+
+    expect(r.interviewerName).toBe("Markus Lehner");
+    const objectives = spies.createObjectives.mock.calls[0][0];
+    expect(objectives[0].next_conditional_objectives).toEqual({
+      end_early: "Only when the candidate explicitly asks to stop, end, or leave.",
+      deliver_debrief:
+        "Only when the interview portion including the candidate's questions is complete, or the candidate asks for the debrief.",
+    });
+    expect(objectives[1].next_required_objective).toBe("offer_redo_and_close");
+    expect(spies.createGuardrail).toHaveBeenCalledTimes(13); // 12 supplied + distress_handling
+
+    const pal = spies.createPal.mock.calls[0][0];
+    expect(pal.languages).toEqual(["en", "de"]);
+    expect(pal.document_ids).toEqual([]);
+    expect(pal.layers?.perception?.visual_awareness_queries).toContain(
+      "Is the candidate writing or calculating on paper during numerical questions?",
+    );
+    expect(pal.system_prompt).toContain("You are Markus Lehner");
+    expect(pal.system_prompt).toContain("## Knowledge base");
+    expect(pal.system_prompt).toContain("CASE 1 — RHEINGUSS AUTOMOTIVE");
+    expect(pal.system_prompt).not.toContain("Runtime variables");
+    expect(spies.createDocument).not.toHaveBeenCalled();
+  });
+});

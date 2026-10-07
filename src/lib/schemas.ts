@@ -13,15 +13,27 @@ export const IndustrySlugSchema = z.enum(INDUSTRY_SLUGS);
 export type IndustrySlug = z.infer<typeof IndustrySlugSchema>;
 
 export const LEVELS = [
+  "Intern",
+  "Working Student",
   "Summer Analyst",
   "Analyst",
+  "Entry-level Consultant",
+  "Experienced Consultant",
   "Associate",
   "MBA Associate",
   "Senior Associate",
+  "Principal",
   "Vice President",
 ] as const;
 export const LevelSchema = z.enum(LEVELS);
 export type Level = z.infer<typeof LevelSchema>;
+
+/** Levels offered in setup per industry; the first is the default. */
+export const LEVELS_BY_INDUSTRY: Record<IndustrySlug, readonly Level[]> = {
+  "investment-banking": ["Summer Analyst", "Analyst", "Associate", "MBA Associate", "Vice President"],
+  "venture-capital": ["Intern", "Analyst", "Associate", "Senior Associate", "Principal"],
+  consulting: ["Intern", "Working Student", "Entry-level Consultant", "Experienced Consultant", "MBA Associate"],
+};
 
 export const FOCUSES = ["Mixed", "Behavioral", "Technical"] as const;
 export const FocusSchema = z.enum(FOCUSES);
@@ -37,20 +49,36 @@ export const SlugSchema = z
 /* API request payloads                                                */
 /* ------------------------------------------------------------------ */
 
-export const StartInterviewRequestSchema = z.object({
-  industry: IndustrySlugSchema,
-  company: SlugSchema,
-  level: LevelSchema.default("Analyst"),
-  focus: FocusSchema.default("Mixed"),
-  candidateName: z
-    .string()
-    .trim()
-    .max(60)
-    .regex(/^[\p{L}\p{M}' .-]*$/u, "letters, spaces, apostrophes and hyphens only")
-    .optional()
-    .transform((v) => (v ? v : undefined)),
-});
+export const StartInterviewRequestSchema = z
+  .object({
+    industry: IndustrySlugSchema,
+    company: SlugSchema,
+    level: LevelSchema.optional(),
+    focus: FocusSchema.default("Mixed"),
+    candidateName: z
+      .string()
+      .trim()
+      .max(60)
+      .regex(/^[\p{L}\p{M}' .-]*$/u, "letters, spaces, apostrophes and hyphens only")
+      .optional()
+      .transform((v) => (v ? v : undefined)),
+    /** Plain text extracted from the candidate's CV by POST /api/cv (optional). */
+    cvText: z.string().max(12_000).optional(),
+  })
+  .transform((r) => ({ ...r, level: r.level ?? LEVELS_BY_INDUSTRY[r.industry][0] }))
+  .refine((r) => LEVELS_BY_INDUSTRY[r.industry].includes(r.level), {
+    message: "is not a level offered for this industry",
+    path: ["level"],
+  });
 export type StartInterviewRequest = z.infer<typeof StartInterviewRequestSchema>;
+
+export const CvExtractResponseSchema = z.object({
+  text: z.string(),
+  pages: z.number().int().nonnegative(),
+  truncated: z.boolean(),
+  fileName: z.string(),
+});
+export type CvExtractResponse = z.infer<typeof CvExtractResponseSchema>;
 
 export const StartInterviewResponseSchema = z.object({
   conversationId: z.string(),

@@ -134,11 +134,14 @@ async function doFinalize(conversationId: string, opts: FinalizeOptions): Promis
   }
   try {
     const company = companyFor(record);
-    let objectivesText = "";
+    let objectivesText = "(objectives file unavailable)";
+    let firmReference: string | undefined;
     try {
-      objectivesText = (await loadInterview(company.industry, company.slug)).objectivesText;
+      const content = await loadInterview(company.industry, company.slug);
+      objectivesText = content.objectivesText;
+      if (content.knowledge.length) firmReference = content.knowledge.map((k) => k.content).join("\n\n").slice(0, 60_000);
     } catch {
-      objectivesText = "(objectives file unavailable)";
+      // Score without firm reference material rather than failing.
     }
     const outcome = await scoreInterview({
       company,
@@ -147,6 +150,7 @@ async function doFinalize(conversationId: string, opts: FinalizeOptions): Promis
       transcript,
       objectivesText,
       perception,
+      firmReference,
     });
     const completedAt = new Date().toISOString();
     if (outcome.kind === "insufficient_data") {

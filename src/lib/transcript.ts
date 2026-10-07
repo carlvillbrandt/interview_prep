@@ -1,4 +1,5 @@
 import type { TranscriptTurn } from "@/lib/schemas";
+import { stripEmotionTags } from "@/lib/speech";
 import type { Conversation, ConversationEvent } from "@/lib/tavus";
 
 /**
@@ -27,12 +28,12 @@ export function normalizeTranscript(raw: unknown): TranscriptTurn[] | null {
   const turns: TranscriptTurn[] = [];
   for (const entry of raw as RawTurn[]) {
     if (!entry || typeof entry.content !== "string") continue;
-    const content = entry.content.trim();
-    if (!content) continue;
     let role: TranscriptTurn["role"] | null = null;
     if (entry.role === "user") role = "candidate";
     else if (entry.role === "assistant" || entry.role === "pal" || entry.role === "replica") role = "interviewer";
     if (!role) continue;
+    const content = role === "interviewer" ? stripEmotionTags(entry.content) : entry.content.trim();
+    if (!content) continue;
     const secondsFromStart = typeof entry.seconds_from_start === "number" ? entry.seconds_from_start : undefined;
     // Merge consecutive fragments from the same speaker into one turn.
     const prev = turns[turns.length - 1];

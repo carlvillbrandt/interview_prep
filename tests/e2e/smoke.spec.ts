@@ -30,7 +30,7 @@ test("welcome → industry → company → pre-flight → start (mocked)", async
   await expect(page.getByRole("link", { name: /^Investment Banking:/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /^Venture Capital & Private Equity:/ })).toBeVisible();
   await expect(page.getByText("not affiliated with or endorsed by any listed firm")).toBeVisible();
-  await page.getByRole("link", { name: /^Consulting: 1 firm/ }).click();
+  await page.getByRole("link", { name: /^Consulting: \d+ firms?/ }).click();
 
   // Screen 2: Company selection (with search)
   await expect(page).toHaveURL(/\/industry\/consulting$/);
@@ -53,6 +53,15 @@ test("welcome → industry → company → pre-flight → start (mocked)", async
   await dialog.getByLabel("Role / level").selectOption("MBA Associate");
   await dialog.getByLabel("Interview focus").selectOption("Behavioral");
   await dialog.getByLabel(/first name/).fill("Sam");
+  // CV upload goes through the real /api/cv extraction route.
+  await dialog.locator('input[type="file"]').setInputFiles({
+    name: "CV_Sam_Example.txt",
+    mimeType: "text/plain",
+    buffer: Buffer.from(
+      "Sam Example\nEducation: BSc Economics, University of Example.\nExperience: Intern, regional bank treasury team; built a 13-week cash forecast.",
+    ),
+  });
+  await expect(dialog.getByText("CV_Sam_Example.txt")).toBeVisible();
   const start = dialog.getByRole("button", { name: "Start interview" });
   await expect(start).toBeEnabled();
   await start.click();
@@ -61,13 +70,14 @@ test("welcome → industry → company → pre-flight → start (mocked)", async
   await expect(page.getByRole("alertdialog")).toBeVisible();
   await expect(page.getByRole("alertdialog")).toContainText("Too many interviews are running");
   await expect(page.getByRole("button", { name: "Retry" })).toBeVisible();
-  expect(startBody).toEqual({
+  expect(startBody).toMatchObject({
     industry: "consulting",
     company: "e2e-test-firm",
     level: "MBA Associate",
     focus: "Behavioral",
     candidateName: "Sam",
   });
+  expect(String((startBody as Record<string, unknown> | null)?.cvText)).toContain("13-week cash forecast");
 
   // Back to setup restores the pre-flight modal.
   await page.getByRole("button", { name: "Back to setup" }).click();
@@ -84,7 +94,9 @@ test("welcome page is keyboard navigable", async ({ page }) => {
   await expect(target).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/industry\/investment-banking$/);
-  await expect(page.getByText("Firms are on their way")).toBeVisible();
+  for (const name of ["Goldman Sachs", "Citi", "Houlihan Lokey"]) {
+    await expect(page.getByRole("link", { name: new RegExp(name) })).toBeVisible();
+  }
 });
 
 test("unknown firm shows the not-found page", async ({ page }) => {
@@ -92,4 +104,19 @@ test("unknown firm shows the not-found page", async ({ page }) => {
   await page.goto("/interview/consulting/not-a-firm");
   await expect(page.getByRole("heading", { name: "This room is empty" })).toBeVisible();
   await expect(page.getByRole("dialog")).toHaveCount(0);
+});
+
+test("consulting lists the three firms with their own setup", async ({ page }) => {
+  await page.goto("/industry/consulting");
+  for (const name of ["AlixPartners", "Simon-Kucher", "Bain & Company"]) {
+    await expect(page.getByRole("link", { name: new RegExp(name) })).toBeVisible();
+  }
+  await page.getByRole("link", { name: /AlixPartners/ }).click();
+  await expect(page).toHaveURL(/\/interview\/consulting\/alixpartners-restructuring$/);
+  await expect(page.getByText("About 35 minutes").first()).toBeVisible();
+  const dialog = page.getByRole("dialog");
+  // Privacy is remembered per browser only after acknowledging, so it appears in a fresh context.
+  await dialog.getByRole("button", { name: /I understand/ }).click();
+  await expect(dialog.getByLabel("Role / level")).toHaveValue("Intern");
+  await expect(dialog).toContainText("debriefs you at the end");
 });

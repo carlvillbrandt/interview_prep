@@ -28,6 +28,8 @@ export interface Company {
   interviewStyle: string;
   /** Hex accent for the monogram tile. Defaults to the industry accent. */
   accent?: string;
+  /** Override for the 1–3 letter monogram tile (default: derived from the name). */
+  monogram?: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -73,6 +75,83 @@ export const INDUSTRIES: readonly Industry[] = [
 /* ------------------------------------------------------------------ */
 
 const COMPANIES: Company[] = [
+  {
+    industry: "consulting",
+    slug: "alixpartners-restructuring",
+    name: "AlixPartners",
+    tagline: "Turnaround & Restructuring: crisis cases where cash comes first.",
+    featured: true,
+    interviewStyle: "Turnaround case + Fit",
+    monogram: "AP",
+  },
+  {
+    industry: "consulting",
+    slug: "simon-kucher-pricing",
+    name: "Simon-Kucher",
+    tagline: "Pricing & Monetization: customer value, willingness to pay and profit.",
+    featured: true,
+    interviewStyle: "Pricing case + Fit",
+  },
+  {
+    industry: "consulting",
+    slug: "bain-cdd",
+    name: "Bain & Company",
+    tagline: "Private Equity & Commercial Due Diligence: would you bid?",
+    featured: true,
+    interviewStyle: "Due-diligence case + Fit",
+    monogram: "B",
+  },
+  {
+    industry: "investment-banking",
+    slug: "goldman-sachs-tmt",
+    name: "Goldman Sachs",
+    tagline: "Technology, Media & Telecom: software, internet and digital infrastructure deals.",
+    featured: true,
+    interviewStyle: "Technicals + Deal case",
+  },
+  {
+    industry: "investment-banking",
+    slug: "citi-power-infrastructure",
+    name: "Citi",
+    tagline: "Power, Utilities & Infrastructure: valuing and financing the energy transition.",
+    featured: true,
+    interviewStyle: "Technicals + Financing case",
+    monogram: "C",
+  },
+  {
+    industry: "investment-banking",
+    slug: "houlihan-lokey-industrials",
+    name: "Houlihan Lokey",
+    tagline: "Corporate Finance – Industrials: Mittelstand sell-sides and valuation.",
+    featured: true,
+    interviewStyle: "Technicals + Deal case",
+  },
+  {
+    industry: "venture-capital",
+    slug: "general-atlantic-growth",
+    name: "General Atlantic",
+    tagline: "Growth equity: a great company vs a great investment at this price.",
+    featured: true,
+    interviewStyle: "Returns + Investment case",
+  },
+  {
+    industry: "venture-capital",
+    slug: "verdane-pe",
+    name: "Verdane",
+    tagline: "Growth investing in digitalization and decarbonization.",
+    featured: true,
+    interviewStyle: "Returns + Investment case",
+    monogram: "V",
+  },
+  {
+    industry: "venture-capital",
+    slug: "hv-capital-vc",
+    name: "HV Capital",
+    tagline: "Multistage VC: founders, theses and live startup pitches.",
+    featured: true,
+    interviewStyle: "Thesis + Live case",
+    monogram: "HV",
+  },
   // @scaffold-insert (keep this marker; the scaffold script inserts above it)
 ];
 
@@ -117,6 +196,10 @@ export function companyAccent(company: Company): string {
 }
 
 /** Up to two letters for the brand-neutral monogram tile, e.g. "Goldman Sachs" → "GS". */
+export function companyMonogram(company: Pick<Company, "name" | "monogram">): string {
+  return company.monogram ?? monogram(company.name);
+}
+
 export function monogram(name: string): string {
   const words = name
     .replace(/[^\p{L}\p{N}\s&-]/gu, "")

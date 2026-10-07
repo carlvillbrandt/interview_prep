@@ -193,6 +193,7 @@ export interface ObjectiveInput {
   objective_prompt: string;
   confirmation_mode?: "auto" | "manual";
   next_required_objective?: string;
+  next_conditional_objectives?: Record<string, string>;
   modality?: "verbal" | "visual";
   output_variables?: string[];
 }

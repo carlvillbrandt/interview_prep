@@ -16,6 +16,7 @@ import { AlertIcon, CameraOffIcon, RefreshIcon } from "@/components/icons";
 import type { InterviewSettings } from "@/components/PreflightModal";
 import { useToast } from "@/components/Toast";
 import { ApiErrorSchema, StartInterviewResponseSchema } from "@/lib/schemas";
+import { stripEmotionTags } from "@/lib/speech";
 
 type Phase = "starting" | "joining" | "waiting" | "live" | "ending" | "error";
 type EndReason = "user" | "timeout" | "interviewer_left" | "tab_closed" | "error";
@@ -35,6 +36,7 @@ export interface StageCompany {
   slug: string;
   industry: string;
   accent: string;
+  monogram?: string;
 }
 
 function sendEndBeacon(conversationId: string, reason: EndReason) {
@@ -175,6 +177,7 @@ export function InterviewStage({
           level: settings.level,
           focus: settings.focus,
           candidateName: settings.candidateName,
+          cvText: settings.cvText,
         }),
       });
       const json = await res.json().catch(() => null);
@@ -249,7 +252,8 @@ export function InterviewStage({
     call.on("app-message", (e?: DailyEventObjectAppMessage) => {
       const d = e?.data as { event_type?: string; properties?: { role?: string; speech?: string } } | undefined;
       if (d?.event_type === "conversation.utterance" && d.properties?.role === "pal" && d.properties.speech) {
-        setCaption({ text: d.properties.speech, key: Date.now() });
+        const text = stripEmotionTags(d.properties.speech);
+        if (text) setCaption({ text, key: Date.now() });
       }
     });
     call.on("camera-error", () => {
@@ -421,7 +425,7 @@ export function InterviewStage({
               className="relative"
             >
               <span aria-hidden className="absolute inset-0 -m-6 rounded-full opacity-30 blur-2xl" style={{ background: company.accent }} />
-              <Monogram name={company.name} accent={company.accent} size="lg" />
+              <Monogram name={company.name} label={company.monogram} accent={company.accent} size="lg" />
             </motion.div>
             <p className="font-display mt-8 text-3xl text-fg sm:text-4xl">
               {phase === "starting" ? "Preparing your interviewer" : phase === "joining" ? "Joining the room" : `${interviewerName ?? "Your interviewer"} is joining`}

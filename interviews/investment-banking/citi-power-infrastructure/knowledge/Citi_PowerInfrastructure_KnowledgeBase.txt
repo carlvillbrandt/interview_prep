@@ -1,0 +1,180 @@
+CITI — POWER, UTILITIES & INFRASTRUCTURE — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Sophie Lambert). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: Citi (Citigroup Inc., NYSE: C), global bank. Investment banking sits within Banking, Capital Markets and Advisory, alongside corporate banking and equity and debt capital markets, which matters for sector teams that need advice plus financing.
+Power, Utilities and Infrastructure coverage (from Citi job postings): advises clients on mergers, acquisitions, equity capital raises, and debt refinancings, and provides corporate advisory such as strategic reviews, capital structure advice, and defence mandates. Analysts execute transactions and pitches, build models for power, utility, and infrastructure assets, coordinate due diligence and data rooms, research industry trends, and partner with ECM, DCM, and corporate banking.
+
+Interview format: investment bank interviews typically combine fit, technicals, and sometimes a case or modeling test; the exact process varies. The candidate should confirm with the recruiter.
+
+What a strong "why Citi / why this sector" answer references (debrief only):
+- Combination of advice and financing (capital markets, corporate banking) matters in a capital-hungry sector.
+- The energy transition creates large, complex transactions: grid investment, renewables portfolios, stake sales to infrastructure funds, hybrid and green financing.
+- Personal link: engineering, energy, climate, or infrastructure interest.
+Weak: "energy is important", generic prestige.
+
+POWER, UTILITIES, INFRASTRUCTURE CONCEPTS (for judging answers)
+- Regulated networks: regulator sets an allowed return on the regulated asset base (RAB); value often expressed as a premium or discount to RAB; growth comes from investing in the RAB.
+- Revenue types: regulated, contracted (power purchase agreements, contracts for difference, availability payments), and merchant (exposed to power prices).
+- Renewables: capacity (MW), capacity factor, generation (MWh), price; cannibalization of prices at times of high solar or wind output.
+- Project finance: non-recourse debt sized on cash flow available for debt service (CFADS) and a minimum debt service coverage ratio (DSCR); debt often sculpted to the cash flow profile; high leverage for contracted assets.
+- Infrastructure investors: long-term funds accepting lower returns for stable, inflation-linked cash flows; often buy minority stakes in networks or renewables.
+- Utilities' financing: credit ratings and net debt / EBITDA or FFO / net debt targets; hybrid bonds receive partial equity credit from rating agencies (often 50 percent); rights issues; asset rotation (sell stakes, recycle capital).
+- Valuation: DCF over asset life, sum-of-the-parts for integrated utilities, EV/RAB for networks, EV/EBITDA, dividend yield.
+
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at investment banking?
+
+M&A, CORPORATE FINANCE, TRANSACTION SERVICES
+- Walk me through one deal you worked on: what was your role, what did the model show, how did it end?
+- What was the hardest number to get right, and why?
+- What would you have told the client differently?
+
+CONSULTING, AUDIT, CONTROLLING
+- What did you learn about how companies report and manage numbers?
+- Tell me about an error you found or made. What happened?
+
+PE, VC, ASSET MANAGEMENT, INVESTMENT CLUBS
+- Pitch me a company you analyzed. Would you buy it at today's valuation?
+- What valuation method did you use, and what's its weakness?
+
+STARTUP OR OPERATOR EXPERIENCE
+- What did the company's financials look like, and what drove them?
+- If you had to sell that company today, who would buy it and why?
+
+STUDENT CLUBS, FINANCE SOCIETIES
+- What did you build or change, not just join?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- How does that knowledge help you understand clients in this sector?
+
+ENERGY, ENGINEERING, INFRASTRUCTURE
+- Explain the technical side of your work to an investor in 30 seconds.
+- Where do you see the money being made or lost in the energy transition?
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+   Strong: crisp, chronological, each step explains the next, ends with why banking and this group now.
+2. Why investment banking?
+   Strong: understands the analyst job (modeling, materials, execution, long hours), wants transaction exposure and learning speed; concrete evidence of interest.
+3. Why this bank, and why this sector group?
+   Strong: specific to the bank's model and the sector; names a deal type or trend they find interesting and why.
+4. Tell me about a time you worked under extreme time pressure.
+5. Tell me about a mistake you made and how you handled it.
+   Strong: owns it, fixed it fast, changed a habit (checking, version control).
+6. Where do you see yourself in five years?
+   Strong: honest, shows commitment to learning the job; no need to pretend lifelong banking.
+
+======================================================================
+PART D — CORE TECHNICALS WITH ANSWER KEYS (all IB roles)
+Ask in increasing difficulty. Assume a 30 percent tax rate unless stated.
+======================================================================
+T1 Walk me through the three financial statements and how they link.
+Answer: income statement (revenue to net income); net income flows to retained earnings in equity on the balance sheet and starts the cash flow statement; cash flow statement adjusts for non-cash items (D&A), working capital, investing (capex), financing (debt, dividends); ending cash goes to the balance sheet.
+
+T2 Depreciation goes up by 10. Walk me through the statements.
+Answer: EBIT -10; tax -3; net income -7. Cash flow: net income -7 plus D&A +10 = cash +3. Balance sheet: PP&E -10, cash +3, so assets -7; retained earnings -7. Balances.
+
+T3 Enterprise value vs equity value. Equity value 800, debt 300, cash 100, minority interest 20, pension provisions 50. Enterprise value?
+Answer: 800 + 300 - 100 + 20 + 50 = 1,070. Pension provisions are debt-like and matter a lot for German companies.
+
+T4 Which multiples do you use with enterprise value vs equity value, and why?
+Answer: EV with metrics before interest (revenue, EBITDA, EBIT), available to all capital providers; equity value with metrics after interest (net income, so P/E). Consistency.
+
+T5 Walk me through a DCF.
+Answer: project unlevered free cash flow (EBIT x (1 - tax) + D&A - capex - change in working capital), typically 5 to 10 years; terminal value by perpetuity growth or exit multiple; discount at WACC; sum gives enterprise value; subtract net debt and debt-like items for equity value; divide by diluted shares.
+
+T6 Terminal value. Next year's free cash flow 50, WACC 9 percent, growth 2 percent. Value of that perpetuity today?
+Answer: 50 / (0.09 - 0.02) = about 714.
+Follow-up: year-5 EBITDA 120 at an 8x exit multiple, discounted five years at 9 percent: 960 / 1.539 = about 624.
+
+T7 WACC. How do you calculate it, and what happens to WACC if a company adds more debt?
+Answer: cost of equity (CAPM: risk-free rate + beta x equity risk premium) and after-tax cost of debt, weighted by market values. More debt initially lowers WACC (cheaper, tax-deductible) until rising distress risk raises the costs of debt and equity.
+
+T8 Accretion / dilution. Acquirer net income 100, 100 shares, share price 20 (P/E 20). It buys a target with net income 20 for an equity price of 300. (a) All stock. (b) All debt at 5 percent pre-tax.
+Answer: (a) new shares 300 / 20 = 15; EPS 120 / 115 = 1.043, about 4.3 percent accretive (acquirer P/E 20 above price paid P/E 15). (b) after-tax interest 300 x 5 percent x 0.7 = 10.5; EPS (120 - 10.5) / 100 = 1.095, about 9.5 percent accretive. Ignores synergies and fees.
+
+T9 Paper LBO. EBITDA 100, bought at 10x (EV 1,000), 60 percent debt (600), equity 400. EBITDA grows 5 percent a year for five years; exit at 10x; cumulative debt paydown 250. MOIC and IRR?
+Answer: exit EBITDA about 127.6; exit EV about 1,276; net debt 350; exit equity about 926; MOIC about 2.3x; IRR about 18 percent. Rules of thumb over five years: 2x is about 15 percent, 2.5x about 20 percent, 3x about 25 percent.
+
+T10 Why might two companies with the same EBITDA trade at different multiples?
+Answer: growth, margins and their stability, capex and working-capital needs (cash conversion), risk and cyclicality, market position, quality of management, size and liquidity of the stock.
+
+T11 Comparable companies vs precedent transactions: which gives a higher value and why?
+Answer: precedents usually higher because they include a control premium and sometimes synergies; they can also reflect different market conditions.
+
+T12 Locked box vs completion accounts (common in European M&A).
+Answer: locked box fixes the price on a historical balance sheet date with no post-closing adjustment, protecting against "leakage" (value going to the seller) after that date; completion accounts adjust the price after closing for actual net debt and working capital. Locked box gives certainty and is seller-friendly.
+
+======================================================================
+PART E — POWER AND INFRASTRUCTURE QUESTIONS WITH ANSWER KEYS
+======================================================================
+S1 Wind farm revenue. 100 MW onshore wind, capacity factor 30 percent, power purchase agreement at 70 euros per MWh. Annual revenue?
+Answer: 100 x 8,760 hours x 0.30 = 262,800 MWh; x 70 = about 18.4 million euros.
+
+S2 Debt sizing. Same wind farm: operating costs 5 million a year, so EBITDA about 13.4 million (ignore tax). Lenders require a 1.30x DSCR, 15-year debt at 5 percent with level annual payments. How much debt can it raise? Construction cost 1.5 million euros per MW.
+Answer: max annual debt service 13.4 / 1.3 = about 10.3 million. Annuity factor for 15 years at 5 percent is about 10.38. Debt about 107 million. Capex 150 million, so gearing about 71 percent.
+
+S3 A network utility trades at 1.2 times its RAB. What does that mean?
+Answer: investors expect returns above the allowed return (outperformance on costs or incentives) and/or value future RAB growth; a premium also reflects low risk and low interest rates.
+
+S4 Contracted vs merchant revenue: how does it change valuation and financing?
+Answer: contracted cash flows are more predictable: lower discount rate, higher debt capacity (lower DSCR requirements, longer tenor). Merchant exposure means price risk: higher discount rate and less debt.
+
+S5 Why do utilities issue hybrid bonds?
+Answer: rating agencies count part of a hybrid (often 50 percent) as equity, so the company raises money without diluting shareholders and with less rating pressure than senior debt; more expensive than senior debt.
+
+S6 Why do infrastructure funds buy minority stakes in grids?
+Answer: long-term, regulated, often inflation-linked returns with low volatility; the utility recycles capital to fund capex while keeping control.
+
+======================================================================
+PART F — FINANCING CASE (fictional company)
+Introduce the headline in a few sentences. Reveal facts only when asked.
+======================================================================
+CASE — MAINVOLT (municipal utility funding gap)
+Headline: Mainvolt is a German regional utility owned by several municipalities. It runs an electricity grid and owns onshore wind farms. It must invest 3 billion euros in the grid over five years and is worried about its credit rating. The CFO asks us: how big is the funding problem, and what are the options?
+Facts on request:
+- EBITDA today: grid 400 million, renewables 150 million, total 550 million.
+- Net debt today 2.6 billion: about 4.7x net debt / EBITDA.
+- Grid capex 3.0 billion over five years. Operating cash flow retained after dividends and tax over the five years: about 1.5 billion.
+- Grid EBITDA expected to rise to 520 million in five years as the RAB grows; renewables flat at 150 million.
+- To keep its target rating, Mainvolt wants net debt / EBITDA at or below 5.0x (case assumption).
+- Options under discussion: sell a 49 percent minority stake in the grid to an infrastructure fund (expected proceeds about 1.5 billion); issue a hybrid bond of 750 million (50 percent equity credit); sell the renewables portfolio (comparable deals around 10x EBITDA); capital increase from the municipalities (their budgets are tight).
+- The municipalities want to keep control of the grid.
+Answer key:
+- Net debt in five years without action: 2.6 + 3.0 - 1.5 = 4.1 billion. EBITDA 520 + 150 = 670 million. Leverage about 6.1x.
+- Allowed net debt at 5.0x: 3.35 billion. Gap about 0.75 billion of equity or equity-like funding.
+- Grid minority stake: about 1.5 billion fully closes the gap, keeps 51 percent control, but gives away future grid returns and needs governance rights for the fund.
+- Hybrid: 750 million counts as about 375 million of equity, so alone it closes only about half the gap; more expensive than senior debt.
+- Renewables sale: about 1.5 billion at 10x; closes the gap and removes merchant power-price risk, but gives up the growth story.
+- Municipal capital increase: limited by budgets.
+- Strong answer: combine options (for example a grid minority stake, or a smaller stake plus a hybrid), weigh control, cost of capital, and strategic story, and mention the process (auction among infrastructure funds, ratings advisory).
+
+======================================================================
+PART G — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic; 3 reasonable but not sector-specific; 5 specific to the sector and to advice plus financing, tied to their experience.
+Technical accuracy: 1 major gaps; 3 basics correct with help; 5 correct, fast, explains the intuition.
+Sector knowledge: 1 none; 3 some concepts; 5 uses RAB, contracted vs merchant, project finance, and rating logic naturally.
+Financing judgment: 1 mechanical; 3 sensible; 5 quantifies the gap, compares options on cost, control, and risk, recommends a combination.
+Precision: 1 frequent errors; 3 some slips; 5 accurate numbers and units, double-checks.
+Communication and composure: 1 rattled or rambling; 3 clear but long; 5 calm, structured, concise under pressure.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

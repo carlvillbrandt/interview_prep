@@ -1,7 +1,13 @@
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
 import {
   buildPalSystemPrompt,
+  DEFAULT_SETTINGS,
+  INLINE_KNOWLEDGE_MAX_CHARS,
+  knowledgeMode,
+  loadSettings,
   extractInterviewerName,
   InterviewParseError,
   loadInterviewFromDir,
@@ -97,11 +103,11 @@ describe("loading and validating a company folder", () => {
     const broken = {
       ...content,
       systemPrompt: `${content.systemPrompt} {{favourite_color}}`,
-      objectives: [{ name: "only", prompt: "x", next: "ghost", output_variables: undefined }],
+      objectives: [{ name: "only", prompt: "x", next: "ghost", output_variables: undefined, branches: undefined }],
     };
     const { errors } = validateInterviewContent(broken, { featured: true });
-    expect(errors.some((e) => e.includes("expected 5–7 objectives"))).toBe(true);
-    expect(errors.some((e) => e.includes('next "ghost"'))).toBe(true);
+    expect(errors.some((e) => e.includes("expected 2–10 objectives"))).toBe(true);
+    expect(errors.some((e) => e.includes('leads to "ghost"'))).toBe(true);
     expect(errors.some((e) => e.includes("{{favourite_color}}"))).toBe(true);
   });
 });
@@ -119,10 +125,110 @@ describe("rendering", () => {
     expect(prompt).toMatch(/^Runtime variables:/);
     expect(prompt).toContain("## Capabilities");
     expect(prompt).not.toMatch(/\{\{/);
+    expect(prompt).not.toContain("## Knowledge base");
+    const withKb = buildPalSystemPrompt(content, "Meridian Test Partners", { inlineKnowledge: true });
+    expect(withKb).toContain("## Knowledge base");
+    expect(withKb).toContain("### overview.md");
+  });
+
+  it("omits the runtime preamble when a prompt uses no session placeholders", async () => {
+    const content = await loadInterviewFromDir(FIXTURE, { industry: "consulting", slug: "e2e-test-firm" });
+    const plain = { ...content, systemPrompt: "You are Jo Smith, a Manager. ".repeat(40), capabilities: "Ask follow-ups." };
+    expect(buildPalSystemPrompt(plain, "X")).not.toContain("Runtime variables");
+  });
+
+  it("inlines knowledge that fits and only uses documents for large knowledge with a public URL", async () => {
+    const content = await loadInterviewFromDir(FIXTURE, { industry: "consulting", slug: "e2e-test-firm" });
+    expect(knowledgeMode(content, false)).toBe("inline");
+    expect(knowledgeMode({ ...content, knowledge: [] }, true)).toBe("none");
+    const huge = { ...content, knowledge: [{ name: "big.md", content: "x".repeat(INLINE_KNOWLEDGE_MAX_CHARS) }] };
+    expect(knowledgeMode(huge, true)).toBe("documents");
+    expect(knowledgeMode(huge, false)).toBe("inline");
   });
 
   it("extracts the interviewer name from the opening line", () => {
     expect(extractInterviewerName("You are Daniel Whitfield, a Vice President…")).toBe("Daniel Whitfield");
     expect(extractInterviewerName("You are an interviewer.")).toBeUndefined();
+  });
+});
+
+describe("objective branches", () => {
+  it("parses conditional next objectives", () => {
+    const [o] = parseObjectives(
+      "name: main\nprompt: run it\nbranches: |\n  end_early: Only when they ask to stop.\n  deliver_debrief: When done.\n",
+    );
+    expect(o.branches).toEqual({ end_early: "Only when they ask to stop.", deliver_debrief: "When done." });
+  });
+
+  it("rejects malformed branch lines and next + branches together", () => {
+    expect(() => parseObjectives("name: a\nprompt: b\nbranches: |\n  not a branch\n", "o.txt")).toThrow(/o\.txt:3: .*objective_name: condition/);
+    expect(() => parseObjectives("name: a\nprompt: b\nnext: c\nbranches: |\n  d: e\n", "o.txt")).toThrow(/either "next" or "branches"/);
+  });
+
+  it("validates that branch targets exist", async () => {
+    const content = await loadInterviewFromDir(FIXTURE, { industry: "consulting", slug: "e2e-test-firm" });
+    const objectives = parseObjectives("name: a\nprompt: b\nbranches: |\n  missing_one: x\n---\nname: c\nprompt: d\n");
+    const { errors } = validateInterviewContent({ ...content, objectives });
+    expect(errors.some((e) => e.includes('leads to "missing_one"'))).toBe(true);
+  });
+});
+
+describe("settings.json", () => {
+  it("defaults when absent and parses a full file", async () => {
+    const dir = await mkdtemp(path.join(os.tmpdir(), "preproom-settings-"));
+    try {
+      expect((await loadSettings(dir)).settings).toEqual(DEFAULT_SETTINGS);
+      await writeFile(
+        path.join(dir, "settings.json"),
+        JSON.stringify({ greeting: "Hi!", interviewMinutes: 35, maxCallMinutes: 45, inCallDebrief: true, languages: ["en", "de"] }),
+      );
+      const { settings, raw } = await loadSettings(dir);
+      expect(settings).toMatchObject({ greeting: "Hi!", maxCallMinutes: 45, inCallDebrief: true, languages: ["en", "de"], cvUpload: true });
+      expect(raw).toContain("Hi!");
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reports unknown keys, bad values and invalid JSON with the file name", async () => {
+    const dir = await mkdtemp(path.join(os.tmpdir(), "preproom-settings-"));
+    try {
+      await writeFile(path.join(dir, "settings.json"), JSON.stringify({ greting: "typo" }));
+      await expect(loadSettings(dir, "firm")).rejects.toThrow(/firm\/settings\.json: unknown setting "greting"/);
+      await writeFile(path.join(dir, "settings.json"), JSON.stringify({ interviewMinutes: 50, maxCallMinutes: 40 }));
+      await expect(loadSettings(dir, "firm")).rejects.toThrow(/maxCallMinutes must be >= interviewMinutes/);
+      await writeFile(path.join(dir, "settings.json"), "{ nope");
+      await expect(loadSettings(dir, "firm")).rejects.toThrow(/invalid JSON/);
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
+  });
+});
+
+describe("the real firm folders", () => {
+  it.each([
+    ["consulting", "alixpartners-restructuring", "Markus Lehner"],
+    ["consulting", "simon-kucher-pricing", "Katharina Brandt"],
+    ["consulting", "bain-cdd", "Jonas Weber"],
+    ["investment-banking", "houlihan-lokey-industrials", "Maximilian Roth"],
+    ["investment-banking", "citi-power-infrastructure", "Sophie Lambert"],
+    ["investment-banking", "goldman-sachs-tmt", "Alexander Kessler"],
+    ["venture-capital", "verdane-pe", "Hannah Krüger"],
+    ["venture-capital", "general-atlantic-growth", "Lukas Brenner"],
+    ["venture-capital", "hv-capital-vc", "Clara Neumann"],
+  ])("%s/%s loads, validates and inlines its knowledge", async (industry, slug, interviewer) => {
+    const dir = path.join(process.cwd(), "interviews", industry, slug);
+    const content = await loadInterviewFromDir(dir, { industry, slug });
+    expect(validateInterviewContent(content, { featured: true }).errors).toEqual([]);
+    expect(content.settings).toMatchObject({ inCallDebrief: true, languages: ["en", "de"] });
+    expect(content.settings.maxCallMinutes).toBeGreaterThanOrEqual(content.settings.interviewMinutes + 10);
+    expect(content.objectives.map((o) => o.name)).toEqual(expect.arrayContaining(["deliver_debrief", "end_early"]));
+    expect(content.objectives[0].branches).toHaveProperty("end_early");
+    expect(content.guardrails.some((g) => g.name.endsWith("_distress_handling"))).toBe(true);
+    expect(content.knowledge).toHaveLength(1);
+    expect(knowledgeMode(content, false)).toBe("inline");
+    expect(extractInterviewerName(content.systemPrompt)).toBe(interviewer);
+    // Emotion is expressed by the face automatically; prompts must not ask for literal tags.
+    expect(content.systemPrompt).not.toMatch(/emotion tag/i);
   });
 });

@@ -1,0 +1,167 @@
+BAIN & COMPANY — PRIVATE EQUITY / COMMERCIAL DUE DILIGENCE — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Jonas Weber). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: Bain & Company, founded 1973 in Boston. One of the three large global strategy consultancies.
+Private equity work (per Bain's website): more than 22,000 due-diligence cases since 2000; involvement in more than half of scale buyout transactions since 2000; annual Global Private Equity Report.
+Commercial due diligence scope (per Bain): validate the market and profit-pool outlook, competitive positioning, and customer advocacy, as well as organic growth and M&A opportunities. Integrated "full potential" view also covering operations, technology, AI disruption, and sustainability. Uses proprietary data tools and primary research (customer surveys and interviews).
+Net Promoter Score (NPS) was developed at Bain.
+
+What due-diligence work is like (general): short, intense projects (often two to four weeks), a clear investor question ("Is the management plan achievable? What is the upside and downside?"), heavy use of customer surveys and expert interviews, answer-first communication.
+
+Interview format: case interviews plus fit questions are standard at strategy consultancies; the exact format varies by office and level. The candidate should confirm with the recruiter.
+
+What a strong "why Bain / why PE work" answer references (debrief only):
+- Interest in investment questions: fast, high-stakes, clear decisions.
+- Concrete reasons tied to their background (finance, VC, startups, an industry).
+- Understanding of how diligence differs from classic strategy work.
+Weak: rankings, prestige, "great culture" without evidence.
+
+COMMERCIAL DUE DILIGENCE STRUCTURE (for judging candidate structures)
+1. Market: size, growth, drivers, segments, cyclicality, regulation.
+2. Competition: shares, positioning, entry barriers, new entrants and substitutes.
+3. Customers: key purchase criteria, satisfaction and NPS, switching behavior, concentration.
+4. Target: performance vs market (share gain or loss), business plan realism, pricing power.
+5. Risks and upside: disruption (including AI), regulation, adjacencies, M&A.
+6. So-what for the investor: base / upside / downside case, bid or not, top diligence risks.
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at commercial due diligence and consulting?
+
+CONSULTING, ADVISORY, STRATEGY
+- Which project taught you the most about how a business makes money?
+- How did you structure the problem on day one? What did the first hypothesis look like, and was it right?
+- What did the client actually change because of your work?
+
+SALES, PRICING, NEGOTIATION, BUSINESS DEVELOPMENT
+- Walk me through one negotiation. What was your walk-away point, and how did you know?
+- How was the product priced, and what would you have changed?
+
+BANKING, PE, VC, TRANSACTION WORK
+- Walk me through one deal or diligence you worked on. What was the key commercial question?
+- Where did your analysis change someone's mind?
+
+STARTUP OR OPERATOR EXPERIENCE (employee or founder)
+- What was the company's biggest problem, and what did you do about it?
+- Founders: who paid, how much, and why did they choose you over alternatives?
+
+STUDENT CLUBS, CONSULTING CLUBS, COMMUNITY BUILDING
+- What did you build or change, not just join?
+- Tell me about a time the team disagreed. What did you do?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- Explain your work to a client CEO in 30 seconds.
+- How would you apply that analytical approach to a business problem?
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+2. Why consulting, and why Bain specifically?
+3. Why are you interested in private-equity and due-diligence work?
+   Strong: likes fast decisions with real money behind them, understands investor questions, links to their own experience.
+4. Tell me about a time you had a big impact on a team's result.
+   Strong: specific, quantified, their personal role clear.
+5. Tell me about a time you had to work with someone difficult.
+6. Tell me about a time you were wrong with your first hypothesis. What did you do?
+
+======================================================================
+PART D — QUANT AND DATA-INTERPRETATION BANK WITH ANSWER KEYS
+======================================================================
+Q1 Growth. A market grows from 100 to 133 over three years. What's the CAGR?
+Answer: about 10 percent (1.1 cubed = 1.331).
+
+Q2 Plan realism. The target's revenue goes from 200 to 320 million in five years. The market grows 4 percent a year. What does the plan imply?
+Answer: plan CAGR about 9.9 percent (1.6 to the power of 0.2). Market goes up by 1.04 to the fifth = 1.217. So the target must gain a lot of share: revenue grows 60 percent vs market 22 percent; relative share must rise about 31 percent (1.6 / 1.217). Investors would want evidence: new products, pricing, wins.
+
+Q3 NPS. Survey: 45 percent promoters, 35 percent passives, 20 percent detractors. NPS?
+Answer: 45 - 20 = 25.
+
+Q4 Survey sample. A survey of 40 customers shows 50 percent would switch. How confident are you?
+Answer: margin of error at 95 percent confidence is about plus or minus 15 percentage points (1.96 x square root of 0.25 / 40). Directional, not precise; also check who was sampled.
+
+Q5 Valuation. A fund buys at 12x EBITDA of 25 million. What's the enterprise value? If EBITDA is 10 percent lower than the plan says, what is the fund overpaying at the same multiple?
+Answer: 300 million. 10 percent lower EBITDA means 22.5 x 12 = 270 million, so overpaying by about 30 million.
+
+Q6 Market sizing (approach only): size the German market for commercial dishwasher servicing.
+Strong approach: number of restaurants, canteens, hotels, hospitals; dishwashers per site; service spend per machine per year; triangulate with manufacturers' installed base. Reward structure and sanity checks.
+
+======================================================================
+PART E — COMMERCIAL DUE-DILIGENCE CASES (fictional companies)
+Introduce the headline in a few sentences. Reveal other facts only when asked. If asked something not listed, say it isn't available and ask what they'd assume.
+======================================================================
+
+CASE 1 — KÄLTEWERK SERVICE (industrial services)
+Headline: Our client is a private-equity fund looking at Kältewerk, which maintains refrigeration and cooling systems for supermarkets in Germany, Austria, and Switzerland. Revenue 160 million euros, EBITDA 20 million. The asking price is about 11 times EBITDA, so 220 million. Management's plan says 250 million revenue in five years. Is the plan achievable, and should the fund bid?
+Facts on request:
+- Market: 30,000 grocery stores in the region (case data). Average refrigeration maintenance spend 20,000 euros per store per year. Market about 600 million euros.
+- Market growth: about 3 percent a year historically. EU rules phasing down climate-damaging refrigerant gases trigger retrofits to natural refrigerants like CO2, adding about 2 points: about 5 percent a year for the next five years.
+- Shares: Kältewerk about 27 percent, refrigeration manufacturers' own service arms 30 percent, a second national player 8 percent, fragmented regional independents 35 percent.
+- Customer survey (60 grocery procurement decision-makers): top purchase criteria are response time, then technician competence with CO2 systems, then price. NPS: Kältewerk 32, manufacturers' service arms 10, independents 18.
+- 70 percent of revenue under multi-year contracts. The top three grocery chains are 55 percent of revenue; one of them retenders its contract next year.
+- Management plan of 250 million includes 30 million from a new adjacency (heat-pump servicing for stores) and 20 million from bolt-on acquisitions.
+- Technician shortage: hiring is the main growth constraint; technician headcount grew 4 percent last year.
+Answer key:
+- Market in five years: 600 x 1.05 to the fifth = about 766 million.
+- Core organic plan: 250 - 30 - 20 = 200 million, a share of about 26 percent: roughly holding share. Core growth 160 to 200 = about 4.6 percent a year vs market 5 percent: plausible, even slightly conservative.
+- Total plan CAGR: 160 to 250 = about 9.3 percent; the adjacency and M&A parts are less proven.
+- Strengths: highest NPS, CO2 competence matches the regulatory wave, contracted revenue.
+- Risks: customer concentration and next year's retender; technician capacity; adjacency execution; M&A pricing.
+- So-what: the core plan holds; haircut adjacency and M&A in the base case; bid, but price in the retender risk and diligence technician hiring and contract terms.
+
+CASE 2 — KLARAKTE (B2B software)
+Headline: Our client, a fund, is considering Klarakte, a cloud software company that handles e-invoicing and document management for German small and mid-sized businesses. Annual recurring revenue 30 million euros, growing 35 percent. Asking price about 8 times ARR, so 240 million. The key question: is the growth durable, or is it a one-off wave?
+Facts on request:
+- Germany is phasing in mandatory B2B e-invoicing in the mid-to-late 2020s (case data: receiving is already mandatory; issuing becomes mandatory step by step). This is driving demand now.
+- Addressable universe (case data): about 600,000 businesses with enough invoice volume. About 40 percent already use e-invoicing software; the case assumes about 90 percent by the end of the phase-in.
+- Klarakte: 25,000 customers, about 1,200 euros per customer per year.
+- Net revenue retention 108 percent; gross customer churn 9 percent a year.
+- Main distribution: tax advisors recommending the product to their clients.
+- Competitors: large accounting suites used by tax advisors, ERP vendors adding e-invoicing, low-cost startups.
+- AI: modern AI document extraction makes invoice reading a commodity feature.
+Answer key:
+- Serviceable market: 600,000 x 1,200 = 720 million euros; Klarakte share about 4 percent.
+- Adoption from 40 to 90 percent means a large one-time wave of new customers; after the phase-in, growth falls back toward share gains, upsell (NRR), and price.
+- Plausible pattern: 30 percent-plus growth during the mandate, then perhaps 10 to 15 percent.
+- Risks: commoditization by AI and bundling by accounting suites, dependence on the tax-advisor channel, churn of 9 percent.
+- So-what: attractive but cyclical-wave growth; 8x ARR prices in continued 30 percent growth. Bid only with a valuation reflecting the post-mandate slowdown, and diligence channel dependence and product differentiation.
+
+CASE 3 — PFOTENGLÜCK (consumer brand)
+Headline: Our client is a fund looking at Pfotenglück, a premium wet dog-food brand selling online direct-to-consumer and through pet specialists. Revenue 45 million euros, growing 25 percent; EBITDA 6 million. Asking price about 14 times EBITDA, so 84 million. Management plans 120 million revenue in five years, partly by entering supermarkets.
+Facts on request:
+- Case data: 10.5 million dogs in Germany; average food spend about 450 euros per dog per year; total dog-food market about 4.7 billion euros.
+- Premium segment: 20 percent of the market, about 945 million, growing about 8 percent a year.
+- Gross margin: 60 percent online direct, about 40 percent in grocery retail.
+- Online repeat purchase rate 55 percent; customer acquisition costs up 30 percent over two years.
+- Grocery listing talks with one national chain; listing fees and promotions required.
+Answer key:
+- Market check: 10.5 million x 450 = about 4.7 billion; premium about 945 million; Pfotenglück share about 4.8 percent.
+- Premium segment in five years: 945 x 1.08 to the fifth = about 1.39 billion. Plan 120 million = about 8.6 percent share. Plan CAGR about 21.7 percent.
+- Grocery entry drives volume but dilutes gross margin (60 to 40 percent) and risks the premium positioning; rising acquisition costs slow online growth.
+- So-what: attractive market, plan aggressive; base case should haircut share gains and margin; bid only at a price that works with slower growth and lower margins.
+
+======================================================================
+PART F — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic; 3 reasonable; 5 specific, credible, tied to their background and to investor work.
+Hypothesis-driven structure: 1 none or a memorized framework; 3 sensible but generic; 5 tailored to the investor question, hypothesis stated upfront.
+Market and competitive reasoning: 1 superficial; 3 covers basics; 5 links market, competition, and customers to the plan's realism.
+Quantitative accuracy and data interpretation: 1 wrong and lost; 3 right with help; 5 fast, correct, draws the insight from the data.
+Investor so-what synthesis: 1 never connects to the decision; 3 sometimes; 5 every finding ends with what it means for the bid.
+Communication and presence: 1 long, unstructured; 3 clear but long; 5 answer first, top-down, crisp.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

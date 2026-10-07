@@ -16,7 +16,7 @@ import { AlertIcon, CopyIcon, RefreshIcon } from "@/components/icons";
 import { ScoreDial, signalColor } from "@/components/ScoreDial";
 import { ResultsSkeleton } from "@/components/Skeletons";
 import { useToast } from "@/components/Toast";
-import { getIndustry } from "@/data/catalog";
+import { companyMonogram, getCompany, getIndustry } from "@/data/catalog";
 import { ApiErrorSchema, CATEGORY_KEYS, CATEGORY_LABELS, type PublicInterviewResult } from "@/lib/schemas";
 
 type LoadState =
@@ -256,7 +256,12 @@ function Shell({ record, children }: { record: PublicInterviewResult | null; chi
       <header className="mb-10 flex min-h-[64px] items-center gap-5">
         {record ? (
           <>
-            <Monogram name={record.companyName} accent={accent} size="lg" />
+            <Monogram
+              name={record.companyName}
+              label={companyMonogram(getCompany(record.industry, record.company) ?? { name: record.companyName })}
+              accent={accent}
+              size="lg"
+            />
             <div>
               <p className="text-xs font-medium tracking-[0.22em] text-fg-subtle uppercase">Interview debrief</p>
               <h1 className="font-display mt-1 text-4xl leading-tight text-fg sm:text-5xl">{record.companyName}</h1>

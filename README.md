@@ -24,7 +24,21 @@ npm run dev                    # http://localhost:3000
 | `APP_BASE_URL` | no | Public URL of the app. When it's a public `https://` URL, Tavus webhooks and knowledge-base documents are enabled. On localhost the app falls back to polling. |
 | `TAVUS_WEBHOOK_SECRET` | no | Shared secret appended to the callback URL and verified by `/api/webhooks/tavus`. |
 
-**The catalog ships empty.** Add firms (below) before an interview can be started.
+**Firms available (9):**
+
+| Industry | Firm · team | Interviewer |
+|---|---|---|
+| Consulting | AlixPartners · Turnaround & Restructuring | Markus Lehner |
+| Consulting | Simon-Kucher · Pricing | Katharina Brandt |
+| Consulting | Bain & Company · PE / Commercial Due Diligence | Jonas Weber |
+| Investment Banking | Goldman Sachs · TMT | Alexander Kessler |
+| Investment Banking | Citi · Power, Utilities & Infrastructure | Sophie Lambert |
+| Investment Banking | Houlihan Lokey · Industrials | Maximilian Roth |
+| VC / PE | General Atlantic · Growth Equity | Lukas Brenner |
+| VC / PE | Verdane · Growth Investing | Hannah Krüger |
+| VC / PE | HV Capital · Venture Capital | Clara Neumann |
+
+All interviewers are fictional, give a spoken debrief at the end, understand "timeout", "hard mode", "auf Deutsch" etc., and are followed by a written 1–10 scorecard.
 
 ## Adding a company
 
@@ -57,7 +71,8 @@ Each firm folder contains:
 | `capabilities.txt` | Concrete behaviors: follow-ups, challenges, technicals/cases with numbers, time management, perception cues, recovery. | Appended to the system prompt as `## Capabilities` |
 | `guardrails.txt` | Hard boundaries, as blocks (below). | One Tavus guardrail per block, attached via `guardrail_ids` |
 | `objectives.txt` | 5–7 ordered interview stages with completion criteria, as blocks. | One Tavus objectives set (`objectives_id`) |
-| `knowledge/*.md` | Optional reference material. | Tavus documents (only when `APP_BASE_URL` is public) |
+| `knowledge/*.md` / `*.txt` | Optional reference material (cases, answer keys, rubric). `README.*` files are ignored. | Inlined into the system prompt (up to ~48k chars total); larger knowledge becomes Tavus documents when `APP_BASE_URL` is public |
+| `settings.json` | Optional per-firm settings (below). | Greeting, call length, languages, perception queries |
 
 **Block format** (`guardrails.txt`, `objectives.txt`): `---` separates blocks, `#` starts a comment, and `key: |` starts an indented multi-line value.
 
@@ -74,9 +89,33 @@ next: motivation_for_firm_and_role
 ```
 
 * Guardrail keys: `name` (letters/digits/underscores, ≤100), `prompt` (≤1000 chars), optional `modality` (`verbal` | `visual`).
-* Objective keys: `name`, `prompt`, optional `confirmation_mode`, `next`, `modality`, `output_variables` (comma-separated).
+* Objective keys: `name`, `prompt`, optional `confirmation_mode`, `next`, `modality`, `output_variables` (comma-separated), or `branches` for conditional next steps:
+
+  ```text
+  branches: |
+    end_early: Only when the candidate explicitly asks to stop, end, or leave.
+    deliver_debrief: Only when the interview portion is complete.
+  ```
 * Placeholders in any file: `{{company_name}}`, `{{level}}`, `{{focus}}`, `{{candidate_name}}`, filled per session (see DECISIONS.md §2).
 * Parse errors name the file and line, e.g. `interviews/consulting/bain/objectives.txt:14: unknown key "colour" in objective #3`.
+
+**`settings.json`** (optional; all keys optional):
+
+```json
+{
+  "greeting": "Hi, I'm Markus Lehner from … what should I call you?",
+  "greetingWithName": "Hi {{candidate_name}}, I'm Markus Lehner from …",
+  "interviewMinutes": 35,
+  "maxCallMinutes": 45,
+  "inCallDebrief": true,
+  "languages": ["en", "de"],
+  "focusCommands": { "Technical": "case only", "Behavioral": "fit only" },
+  "perceptionQueries": ["Is the candidate looking at the camera or reading from notes?"],
+  "cvUpload": true
+}
+```
+
+Preview exactly what would be sent to Tavus, without calling it: `npm run provision -- --company bain-cdd --dry-run`.
 
 Edits take effect automatically. The next interview start detects the content-hash change and re-provisions (patching the same PAL).
 
@@ -84,7 +123,7 @@ Edits take effect automatically. The next interview start detects the content-ha
 
 ```
 Welcome → /industry/[industry] → /interview/[industry]/[company]
-   pre-flight modal (privacy notice, camera/mic check, level + focus)
+   pre-flight modal (privacy notice, camera/mic check, level + focus, optional CV → POST /api/cv)
    → POST /api/interview/start   provision-or-reuse PAL, create Tavus conversation
    → full-screen Daily call (call-object mode) with PrepRoom's own controls and captions
    → POST /api/interview/end     (button, countdown, interviewer leaving, or tab close via sendBeacon)

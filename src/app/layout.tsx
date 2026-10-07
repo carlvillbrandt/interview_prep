@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${display.variable} h-full antialiased`}>
       <body className="grain flex min-h-full flex-col">
         <Providers>
-          <div className="relative z-10 flex flex-1 flex-col">{children}</div>
+          <div className="flex flex-1 flex-col">{children}</div>
           <SiteFooter />
         </Providers>
       </body>

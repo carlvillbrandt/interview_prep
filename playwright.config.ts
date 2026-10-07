@@ -28,7 +28,8 @@ export default defineConfig({
     timeout: 180_000,
     env: {
       NEXT_PUBLIC_E2E_FIXTURES: "1",
-      INTERVIEWS_DIR: "tests/fixtures/interviews",
+      // Real firms load from /interviews; the fixture firm falls back to tests/fixtures.
+      INTERVIEWS_FALLBACK_DIR: "tests/fixtures/interviews",
       // Tavus is mocked at the network layer in the smoke test; no real key needed.
       TAVUS_API_KEY: "",
       ANTHROPIC_API_KEY: "",

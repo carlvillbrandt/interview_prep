@@ -1,0 +1,175 @@
+GOLDMAN SACHS — TECHNOLOGY, MEDIA & TELECOM — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Alexander Kessler). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: Goldman Sachs (NYSE: GS), global investment bank. Investment banking sits within Global Banking and Markets.
+TMT group: technology, media, and telecommunications coverage. Reuters reported in December 2025 that Goldman reorganized TMT investment banking to focus on digital infrastructure and AI dealmaking, creating a Global Infrastructure Technology group (combining the former telecom and "CoreTech" teams, including semiconductor coverage) and a Global Internet and Media group.
+European TMT analyst roles are advertised in London; German clients are often covered from Frankfurt and London.
+
+Interview format: large banks commonly use an online or video first round followed by several back-to-back technical and fit interviews; the exact process varies. The candidate should confirm with the recruiter.
+
+What a strong "why Goldman / why TMT" answer references (debrief only):
+- Scale and breadth of deals; exposure to large, complex, cross-border transactions.
+- Genuine TMT interest: AI infrastructure (data centers, semiconductors, fiber, towers), software business models, internet platforms.
+- A specific company or deal they followed and what they learned from it.
+Weak: prestige, "the best bank", generic tech enthusiasm without substance.
+
+TMT CONCEPTS (for judging answers)
+- Software: ARR, net revenue retention, gross retention, CAC payback, gross margin (often 70 to 85 percent), Rule of 40 (growth plus margin), valuation on EV/NTM revenue for high growth.
+- Stock-based compensation: real economic cost; adding it back flatters EBITDA.
+- Internet and marketplaces: GMV, take rate, net revenue, active users, ARPU, contribution margin.
+- Media: subscribers, churn, content amortization, advertising cyclicality.
+- Telecom: ARPU, churn, EBITDA minus capex, spectrum, fiber build-out; infrastructure carve-outs (towers, fiber, data centers) valued as infrastructure with higher multiples.
+- Semiconductors: cyclical, capital intensive (foundries), design vs manufacturing, inventory cycles.
+- German public M&A: takeover law (WpÜG) with offer documents and acceptance thresholds; integration steps need high ownership (75 percent for a domination agreement, roughly 90 to 95 percent for squeeze-outs); foreign-investment screening for sensitive technologies.
+
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at investment banking?
+
+M&A, CORPORATE FINANCE, TRANSACTION SERVICES
+- Walk me through one deal you worked on: what was your role, what did the model show, how did it end?
+- What was the hardest number to get right, and why?
+- What would you have told the client differently?
+
+CONSULTING, AUDIT, CONTROLLING
+- What did you learn about how companies report and manage numbers?
+- Tell me about an error you found or made. What happened?
+
+PE, VC, ASSET MANAGEMENT, INVESTMENT CLUBS
+- Pitch me a company you analyzed. Would you buy it at today's valuation?
+- What valuation method did you use, and what's its weakness?
+
+STARTUP OR OPERATOR EXPERIENCE
+- What did the company's financials look like, and what drove them?
+- If you had to sell that company today, who would buy it and why?
+
+STUDENT CLUBS, FINANCE SOCIETIES
+- What did you build or change, not just join?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- How does that knowledge help you understand clients in this sector?
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+   Strong: crisp, chronological, each step explains the next, ends with why banking and this group now.
+2. Why investment banking?
+   Strong: understands the analyst job (modeling, materials, execution, long hours), wants transaction exposure and learning speed; concrete evidence of interest.
+3. Why this bank, and why this sector group?
+   Strong: specific to the bank's model and the sector; names a deal type or trend they find interesting and why.
+4. Tell me about a time you worked under extreme time pressure.
+5. Tell me about a mistake you made and how you handled it.
+   Strong: owns it, fixed it fast, changed a habit (checking, version control).
+6. Where do you see yourself in five years?
+   Strong: honest, shows commitment to learning the job; no need to pretend lifelong banking.
+
+======================================================================
+PART D — CORE TECHNICALS WITH ANSWER KEYS (all IB roles)
+Ask in increasing difficulty. Assume a 30 percent tax rate unless stated.
+======================================================================
+T1 Walk me through the three financial statements and how they link.
+Answer: income statement (revenue to net income); net income flows to retained earnings in equity on the balance sheet and starts the cash flow statement; cash flow statement adjusts for non-cash items (D&A), working capital, investing (capex), financing (debt, dividends); ending cash goes to the balance sheet.
+
+T2 Depreciation goes up by 10. Walk me through the statements.
+Answer: EBIT -10; tax -3; net income -7. Cash flow: net income -7 plus D&A +10 = cash +3. Balance sheet: PP&E -10, cash +3, so assets -7; retained earnings -7. Balances.
+
+T3 Enterprise value vs equity value. Equity value 800, debt 300, cash 100, minority interest 20, pension provisions 50. Enterprise value?
+Answer: 800 + 300 - 100 + 20 + 50 = 1,070. Pension provisions are debt-like and matter a lot for German companies.
+
+T4 Which multiples do you use with enterprise value vs equity value, and why?
+Answer: EV with metrics before interest (revenue, EBITDA, EBIT), available to all capital providers; equity value with metrics after interest (net income, so P/E). Consistency.
+
+T5 Walk me through a DCF.
+Answer: project unlevered free cash flow (EBIT x (1 - tax) + D&A - capex - change in working capital), typically 5 to 10 years; terminal value by perpetuity growth or exit multiple; discount at WACC; sum gives enterprise value; subtract net debt and debt-like items for equity value; divide by diluted shares.
+
+T6 Terminal value. Next year's free cash flow 50, WACC 9 percent, growth 2 percent. Value of that perpetuity today?
+Answer: 50 / (0.09 - 0.02) = about 714.
+Follow-up: year-5 EBITDA 120 at an 8x exit multiple, discounted five years at 9 percent: 960 / 1.539 = about 624.
+
+T7 WACC. How do you calculate it, and what happens to WACC if a company adds more debt?
+Answer: cost of equity (CAPM: risk-free rate + beta x equity risk premium) and after-tax cost of debt, weighted by market values. More debt initially lowers WACC (cheaper, tax-deductible) until rising distress risk raises the costs of debt and equity.
+
+T8 Accretion / dilution. Acquirer net income 100, 100 shares, share price 20 (P/E 20). It buys a target with net income 20 for an equity price of 300. (a) All stock. (b) All debt at 5 percent pre-tax.
+Answer: (a) new shares 300 / 20 = 15; EPS 120 / 115 = 1.043, about 4.3 percent accretive (acquirer P/E 20 above price paid P/E 15). (b) after-tax interest 300 x 5 percent x 0.7 = 10.5; EPS (120 - 10.5) / 100 = 1.095, about 9.5 percent accretive. Ignores synergies and fees.
+
+T9 Paper LBO. EBITDA 100, bought at 10x (EV 1,000), 60 percent debt (600), equity 400. EBITDA grows 5 percent a year for five years; exit at 10x; cumulative debt paydown 250. MOIC and IRR?
+Answer: exit EBITDA about 127.6; exit EV about 1,276; net debt 350; exit equity about 926; MOIC about 2.3x; IRR about 18 percent. Rules of thumb over five years: 2x is about 15 percent, 2.5x about 20 percent, 3x about 25 percent.
+
+T10 Why might two companies with the same EBITDA trade at different multiples?
+Answer: growth, margins and their stability, capex and working-capital needs (cash conversion), risk and cyclicality, market position, quality of management, size and liquidity of the stock.
+
+T11 Comparable companies vs precedent transactions: which gives a higher value and why?
+Answer: precedents usually higher because they include a control premium and sometimes synergies; they can also reflect different market conditions.
+
+T12 Locked box vs completion accounts (common in European M&A).
+Answer: locked box fixes the price on a historical balance sheet date with no post-closing adjustment, protecting against "leakage" (value going to the seller) after that date; completion accounts adjust the price after closing for actual net debt and working capital. Locked box gives certainty and is seller-friendly.
+
+======================================================================
+PART E — TMT QUESTIONS WITH ANSWER KEYS
+======================================================================
+S1 What is the Rule of 40? A company grows 60 percent with a minus 30 percent EBITDA margin.
+Answer: growth plus profit margin should be at least 40 percent; here 30, below 40.
+
+S2 Net revenue retention is 115 percent. What does it mean?
+Answer: the same customer cohort pays 15 percent more after a year, net of churn and downgrades; strong expansion through upsell and pricing.
+
+S3 Should you add back stock-based compensation to EBITDA?
+Answer: many companies do, but it's a real cost (dilution); sophisticated investors look at EBITDA after SBC or count the dilution. Adding it back flatters margins and multiples.
+
+S4 A marketplace has GMV of 5 billion euros and a take rate of 12 percent. Net revenue?
+Answer: 600 million. Discuss what drives the take rate (value-added services, payments, ads) and competitive pressure on it.
+
+S5 A tower company has 20,000 towers, 1.4 tenants per tower, 20,000 euros rent per tenant per year. Revenue? Why do investors like adding tenants?
+Answer: 20,000 x 1.4 x 20,000 = 560 million. Each extra tenant adds revenue at very low extra cost, so incremental margins are high; long, inflation-linked contracts.
+
+S6 How would you value a high-growth, loss-making software company?
+Answer: EV / NTM revenue vs peers adjusted for growth and margins, DCF with a long horizon to steady-state margins, sanity checks on Rule of 40 and unit economics.
+
+======================================================================
+PART F — DEAL CASE (fictional company)
+Introduce the headline in a few sentences. Reveal facts only when asked.
+======================================================================
+CASE — DATENWERK CLOUD (public-to-private / strategic acquisition)
+Headline: A large US software company asks us about buying Datenwerk Cloud, a listed German company that sells cloud software running factory production lines. The share price is 40 euros. How would you value it, what would you offer, and what are the key risks?
+Facts on request:
+- 50 million shares; net cash 100 million euros.
+- ARR 250 million, growing 25 percent; next-twelve-months revenue about 300 million.
+- Net revenue retention 115 percent; free cash flow margin 12 percent; stock-based compensation 8 percent of revenue.
+- Peers trade at about 6 to 9 times next-twelve-months revenue.
+- Typical premiums in comparable public takeovers: about 25 to 40 percent.
+- The founder owns 20 percent; a long-term institutional investor owns 15 percent.
+- Many customers are German automotive and machinery companies.
+Answer key:
+- Market cap 40 x 50 million = 2.0 billion; EV = 2.0 - 0.1 = 1.9 billion, about 6.3x NTM revenue.
+- Peer range implies EV about 1.8 to 2.7 billion.
+- Offer at a 30 percent premium: 52 euros; equity value 2.6 billion; EV 2.5 billion, about 8.3x NTM revenue, within the peer range.
+- Strategic rationale: acquirer gains factory-floor software and German industrial customers; cross-selling; synergies can justify the premium.
+- Risks and process: SBC of 8 percent means adjusted margins are lower than they look; employee retention; German takeover rules and acceptance thresholds (and 75 percent for a domination agreement, 90 to 95 percent for a squeeze-out); foreign-investment screening for industrial software; the founder's and the institutional investor's support (irrevocable undertakings) is key.
+
+======================================================================
+PART G — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic; 3 reasonable but not TMT-specific; 5 specific to TMT and the bank, tied to their experience.
+Technical accuracy: 1 major gaps; 3 basics correct with help; 5 correct, fast, explains the intuition and handles "why" follow-ups.
+Sector knowledge: 1 none; 3 some concepts; 5 uses software and infrastructure metrics naturally and critically.
+Deal judgment: 1 mechanical; 3 sensible; 5 links valuation, premium, rationale, and execution risks.
+Precision: 1 frequent errors; 3 some slips; 5 accurate numbers and units, double-checks.
+Communication and composure: 1 rattled or rambling; 3 clear but long; 5 calm, structured, concise under pressure.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

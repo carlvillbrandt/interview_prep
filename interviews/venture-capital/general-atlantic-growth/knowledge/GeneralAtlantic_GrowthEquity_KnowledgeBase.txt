@@ -1,0 +1,139 @@
+GENERAL ATLANTIC — GROWTH EQUITY — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Lukas Brenner). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: General Atlantic, global growth investor founded in 1980 (originally the investment team of Atlantic Philanthropies).
+Size: about 126 billion US dollars AUM as of March 31, 2026 (job postings); website shows about 130 billion. More than 900 professionals; 21 offices in 20 countries including Munich, London, and Amsterdam in Europe; more than 885 companies supported.
+Platforms (website): growth equity; credit; energy transition; infrastructure (through Actis); capital solutions.
+Sectors: technology, consumer, financial services, healthcare, life sciences.
+Munich analyst role (job posting): build detailed financial models, quantitative and qualitative analysis, draft investment memos, work with senior team and entrepreneurs, develop investment theses, exposure to diligence and portfolio work. Background in banking, consulting, PE, or VC preferred for analysts; fluent German and English required. Investment internships in Munich are also advertised.
+
+Interview format: growth equity interviews typically combine fit, investment-idea discussion, case or modeling tests; the exact process varies. The candidate should confirm with the recruiter.
+
+What a strong "why General Atlantic / why growth equity" answer references (debrief only):
+- Growth equity: backing proven, fast-growing companies, often minority, returns from growth rather than leverage.
+- Global platform and sector depth; working with founders and management.
+- A specific company or sector theme tied to their background.
+Weak: AUM, prestige.
+
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at investing?
+
+PRIOR PE, VC, GROWTH, OR ANGEL EXPERIENCE (internship, scout, student fund)
+- Walk me through one deal you worked on or screened. Would you have invested? At what price?
+- Tell me about one company you'd have backed and one you'd have passed on, and why.
+- What did you learn about how a fund actually makes decisions?
+- What was the best memo or market map you produced, and did it change anyone's mind?
+
+INVESTMENT BANKING, M&A, TRANSACTION SERVICES
+- Walk me through a deal: what was the investment case for the buyer, and would you have bought it?
+- What did the model miss?
+
+CONSULTING, ADVISORY, STRATEGY, DUE DILIGENCE
+- Which project taught you the most about what makes a business valuable?
+- If you'd had to invest your own money in that client, would you?
+
+STARTUP OR OPERATOR EXPERIENCE (employee or founder)
+- What was the company's biggest risk, and what did you do about it?
+- Founders: pitch it in 60 seconds. Would you invest in it as an investor? Why or why not?
+
+STUDENT INVESTMENT CLUBS, COMMUNITY BUILDING
+- What did you build or change, not just join? How did you select people or deals?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- Which companies could be built on this technology, and which would you back?
+- How do you judge a technical team outside your own field?
+
+SIDE PROJECTS, MARKET MODELS, OWN INVESTMENTS
+- Walk me through the key assumption in your model. What happens if it's off by half?
+- Best and worst investment you've made yourself, and what you learned.
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+2. Why growth equity rather than buyout or venture?
+   Strong: understands growth-driven returns, minority positions, lower leverage, later stage than VC.
+3. Why General Atlantic?
+4. Pitch me a company you'd invest in today. What would you pay?
+   Strong: business model, growth drivers, unit economics, competition, risks, valuation and what has to be true.
+5. What's a great company you would not invest in at today's price?
+6. Tell me about a decision you made with incomplete information.
+
+======================================================================
+PART D — RETURNS AND DEAL TECHNICALS WITH ANSWER KEYS
+======================================================================
+P1 Paper LBO. EBITDA 100, bought at 10x (EV 1,000), 60 percent debt (600), equity 400. EBITDA grows 5 percent a year for five years; exit at 10x; cumulative debt paydown 250. MOIC and IRR?
+Answer: exit EBITDA about 127.6; exit EV about 1,276; net debt 350; exit equity about 926; MOIC about 2.3x; IRR about 18 percent. Rules of thumb over five years: 2x is about 15 percent, 2.5x about 20 percent, 3x about 25 percent.
+
+P2 Value creation bridge. Entry: EBITDA 20 at 10x = 200 EV, net debt 80, equity 120. Exit after five years: EBITDA 35 at 11x = 385 EV, net debt 40. Equity value at exit and MOIC? Split the value creation.
+Answer: exit equity 345; MOIC about 2.9x. Gain 225 = EBITDA growth 15 x 10 = 150, plus multiple expansion 1 x 35 = 35, plus debt reduction 40.
+
+P3 Minority stake math. You invest 50 million for 25 percent. Pre- and post-money? With a 1x non-participating liquidation preference, what do you get at an exit of 120 million?
+Answer: post-money 200, pre-money 150. At 120 million, 25 percent is 30, below the 50 preference, so take 50.
+
+P4 What protections does a minority investor negotiate?
+Answer: board seat; veto rights on key decisions (budget, M&A, new debt, management changes); information rights; liquidation preference; anti-dilution; tag-along and drag-along; exit rights (IPO or sale after a number of years, put options).
+
+P5 What makes a good LBO candidate?
+Answer: stable, predictable cash flows; strong market position; low capex needs; operational improvement potential; reasonable entry price; clear exit routes.
+
+P6 Growth equity vs buyout vs venture: how do returns differ in their drivers?
+Answer: buyout returns rely more on leverage, margin improvement, and multiple; growth equity mainly on revenue growth with little or no leverage, often minority stakes; venture on a few outliers (power law), high failure rates.
+
+P7 IRR vs MOIC: why look at both?
+Answer: IRR measures speed, MOIC measures absolute money multiple. A quick 1.3x can have a high IRR but little money made; funds care about both.
+
+P8 Unit economics. Average revenue per account 625 euros a month, 80 percent gross margin, 3 percent monthly churn, customer acquisition cost 4,000 euros. LTV, LTV/CAC, payback?
+Answer: LTV 625 x 0.8 / 0.03 = about 16,700; LTV/CAC about 4.2; payback 4,000 / 500 = 8 months. 3 percent monthly churn is about 31 percent annual logo churn.
+
+P9 Growth equity returns. You invest 150 million for 15 percent (post-money 1 billion). Revenue 200 million, growing 35, 30, 25, 20, 20 percent over five years. Exit at 5x revenue; your stake is diluted to 13.5 percent. MOIC and IRR? What if the exit multiple is only 3.5x?
+Answer: year-5 revenue about 632 million; EV about 3.16 billion; your 13.5 percent about 426 million; MOIC about 2.8x, IRR about 23 percent. At 3.5x: EV about 2.21 billion, stake about 299 million, MOIC about 2.0x, IRR about 15 percent. Point: multiple compression matters even with strong growth.
+
+======================================================================
+PART E — INVESTMENT CASE (fictional)
+Pitch the headline in a few sentences. Reveal facts only when asked. If asked something not listed, say it isn't known.
+======================================================================
+CASE — ZAHLWERK (embedded payments, growth round)
+Headline: Zahlwerk provides embedded payments for software companies that serve German small businesses: the software vendor offers payments inside its product, and Zahlwerk processes them. Net revenue 80 million euros, growing 45 percent. It's raising 200 million of new money plus 100 million of secondary shares from early investors, at a 1.6 billion pre-money valuation. We'd take the whole round. Would you invest?
+Facts on request:
+- Total payment volume 16 billion euros; net take rate 0.5 percent (80 million net revenue).
+- EBITDA margin minus 5 percent; target 30 percent at scale.
+- Net revenue retention 125 percent. The top five software partners are 40 percent of payment volume.
+- Competition: large payment processors launching embedded offerings; software vendors could build their own.
+- Regulation: needs a payment institution license; compliance costs rising.
+- Peers (payments infrastructure) trade at about 6 to 12 times next-year net revenue (case data).
+- Base-case growth: 45, 40, 35, 30, 25 percent over the next five years.
+Answer key:
+- Post-money: 1.6 + 0.2 = 1.8 billion (the secondary doesn't change it). Our stake: 200 / 1,800 = 11.1 percent new shares plus 100 / 1,800 = 5.6 percent secondary = about 16.7 percent for 300 million.
+- Valuation: 1.8 billion / 80 million = 22.5x trailing net revenue; next year about 116 million, so about 15.5x, above the peer range.
+- Base case: year-5 net revenue about 356 million; exit at 8x = about 2.85 billion; our stake diluted to about 15 percent = about 428 million; MOIC about 1.4x. Not enough.
+- For 2.5x (750 million) with 10 percent dilution, we'd need about 29 percent ownership: a post-money of about 1.0 billion for 300 million.
+- Strong answers: great growth and retention, but price too high; partner concentration and processors' competition are key risks; options: pass, push valuation down, structured terms (senior liquidation preference, ratchet), or a smaller primary-only investment.
+
+======================================================================
+PART F — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic; 3 reasonable but not firm-specific; 5 specific to growth equity and the firm, tied to their background.
+Investment judgment and price discipline: 1 likes the company so invests; 3 notes valuation risk; 5 quantifies what must be true at this price and acts on it.
+Returns literacy: 1 wrong and lost; 3 right with help; 5 fast, correct, explains drivers.
+Business quality analysis: 1 superficial; 3 sensible; 5 sharp on growth durability, unit economics, competition, concentration.
+Structuring and value creation: 1 none; 3 generic; 5 specific structures and levers that fit the risks.
+Communication and conviction: 1 rambling or folds; 3 clear but long; 5 crisp, holds or updates with reasons.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

@@ -1,0 +1,190 @@
+HV CAPITAL — VENTURE CAPITAL — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Clara Neumann). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: HV Capital, European multistage venture capital investor, investing from seed through IPO with venture and growth strategies.
+Per its website: about 2.8 billion euros AUM; more than 290 investments across industries; about 30 investment professionals across venture and growth.
+Tickets: venture fund about 0.5 to 10 million euros (seed, Series A); growth fund up to about 60 million (Series B and later), follow-ons up to about 100 million.
+Portfolio examples named on its website: Zalando, Flix, Depop, Neura Robotics, Upvest, Quantum Systems, Isar Aerospace, SumUp.
+Approach as described by HV Capital: "Too new is our baseline", "Too bold is our reason", "Too complex is our edge": backing unusually novel, ambitious founders and complex technologies, and supporting them from early stage to public markets.
+
+Interview format: VC interviews typically combine fit, thesis and deal discussion, a case study, and conversations with partners; the exact process varies. The candidate should confirm with the recruiter.
+
+What a strong "why HV Capital" answer references (debrief only):
+- Multistage model: seed to growth, so the team learns both early-stage judgment and growth metrics.
+- Portfolio breadth across consumer, fintech, deep tech (robotics, aerospace, defense tech).
+- Comfort with complex technology and a personal edge to source or judge it.
+Weak: "you're a top fund", "I love startups".
+
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at venture investing?
+
+PRIOR PE, VC, GROWTH, OR ANGEL EXPERIENCE (internship, scout, student fund)
+- Walk me through one deal you worked on or screened. Would you have invested? At what price?
+- Tell me about one company you'd have backed and one you'd have passed on, and why.
+- What did you learn about how a fund actually makes decisions?
+- What was the best memo or market map you produced, and did it change anyone's mind?
+
+INVESTMENT BANKING, M&A, TRANSACTION SERVICES
+- Walk me through a deal: what was the investment case for the buyer, and would you have bought it?
+- What did the model miss?
+
+CONSULTING, ADVISORY, STRATEGY, DUE DILIGENCE
+- Which project taught you the most about what makes a business valuable?
+- If you'd had to invest your own money in that client, would you?
+
+STARTUP OR OPERATOR EXPERIENCE (employee or founder)
+- What was the company's biggest risk, and what did you do about it?
+- Founders: pitch it in 60 seconds. Would you invest in it as an investor? Why or why not?
+
+STUDENT INVESTMENT CLUBS, COMMUNITY BUILDING
+- What did you build or change, not just join? How did you select people or deals?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- Which companies could be built on this technology, and which would you back?
+- How do you judge a technical team outside your own field?
+
+SIDE PROJECTS, MARKET MODELS, OWN INVESTMENTS
+- Walk me through the key assumption in your model. What happens if it's off by half?
+- Best and worst investment you've made yourself, and what you learned.
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — QUESTION BANK
+(The "strong answer" notes are for the debrief only.)
+======================================================================
+MOTIVATION AND FIT
+1. Walk me through your background in two minutes.
+   Strong: chronological, crisp, each step explains the next, ends with why VC now. Under two minutes.
+2. Why VC and not founding or joining a startup?
+   Strong: honest, specific; shows they understand the job (sourcing, judgment, saying no a lot, long feedback loops).
+3. Why a multistage fund, and why HV Capital?
+4. What's your edge as an investor, given you don't have a long track record?
+   Strong: a concrete edge from their background plus honest self-awareness about gaps.
+5. Which investor do you admire and why?
+
+MARKET AND THESIS
+6. Pick a startup you'd invest in today. Pitch it to me.
+   Strong: problem, solution, why now, market size with logic, team, traction, competition, risks, what you'd need to believe, a clear decision.
+7. Which sector are you most excited about for the next five years, and what's your thesis?
+8. What's overhyped right now?
+9. Humanoid robots: venture-scale opportunity or capital trap?
+   Strong: separates hardware vs software layers, capex and margins, deployment timeline, who captures value, early proof points.
+10. Where in the AI stack would you invest as a European fund, and where would you avoid?
+   Strong: capital intensity of foundation models, vertical applications, data moats, workflow ownership, distribution.
+
+SOURCING AND VALUE-ADD
+11. How would you find the best founders before other funds do?
+   Strong: specific channels (university spin-offs and incubators, research labs, technical communities, conference talks, operator networks), a repeatable system, how they'd win the deal.
+12. You're the intern. How do you add value in your first month?
+13. A founder you like gets a term sheet from a bigger fund. What do you do?
+
+CURVEBALLS (use one)
+14. Tell me about an investment decision you'd have gotten wrong.
+15. What's something you believe about technology that most people disagree with?
+16. If I gave you 1 million euros to invest today, what would you do?
+17. What would make you a bad VC?
+18. Sell our fund in 30 seconds as if I were a founder.
+
+======================================================================
+PART D — QUANT BANK WITH ANSWER KEYS
+======================================================================
+Q1 Seed math: a startup raises 2 million at 8 million pre-money. Post-money and investor ownership?
+Answer: post-money 10 million; investor 20 percent.
+
+Q2 Dilution: then a Series A raises 6 million at 24 million pre-money. What does the seed investor own after?
+Answer: post 30 million; Series A owns 20 percent; everyone else diluted by 0.8; seed goes from 20 to 16 percent; founders from 80 to 64 percent.
+
+Q3 Option pool shuffle: seed of 2 million at 8 million pre, with a 10 percent post-money option pool created in the pre-money. Founder ownership and effective pre-money?
+Answer: investor 20 percent, pool 10 percent, founders 70 percent; effective pre-money for founders 7 million.
+
+Q4 Fund returner: a 100 million fund owns 8 percent at exit. What exit value returns the fund?
+Answer: 1.25 billion.
+
+Q5 Liquidation preference: 5 million for 25 percent, 1x non-participating.
+Exit 12 million: takes 5 million. Exit 40 million: converts, gets 10 million. Indifference point 20 million. If 1x participating at 40 million: 5 + 25 percent of 35 = 13.75 million.
+
+Q6 Unit economics: ARPA 625 euros a month, 80 percent gross margin, 3 percent monthly churn, CAC 4,000 euros.
+Answer: LTV about 16,700; LTV/CAC about 4.2; payback 8 months; about 31 percent annual logo churn.
+
+Q7 Fund economics: a 150 million fund wants 3x net to LPs with 20 percent carry, ignoring fees. Gross proceeds needed?
+Answer: 150 + 0.8 x (G - 150) = 450, so G = 525 million. With about 30 million of fees, only about 120 million is invested: about 4.4x gross on invested capital. The power law.
+
+Q8 Burn multiple: net burn 4 million, net new ARR 2 million.
+Answer: 2.0. Around 1 or below is efficient.
+
+Q9 Valuation sanity: Series A at 30 million post with 2 million ARR.
+Answer: 15x ARR; needs fast growth, strong retention, large market.
+
+Q10 Ownership: why do early-stage funds target meaningful ownership (often 10 to 20 percent)?
+Answer: so one winner can return the fund after dilution.
+
+======================================================================
+PART E — LIVE CASES (fictional companies)
+Pitch the headline in about four sentences. Reveal facts only when asked. If asked something not listed, say the founders didn't share it.
+======================================================================
+
+CASE 1 — FUGENWERK ROBOTICS (industrial robotics, seed)
+Headline: Munich startup selling robotic welding cells with no-code programming to Mittelstand metalworking shops. Raising 3 million euros at 12 million pre-money. 600 thousand euros annual recurring revenue.
+Facts on request:
+- CTO: ex-robotics engineer at a large robot maker (10 years); CEO: ex-strategy consultant.
+- Hardware cell about 120 thousand euros plus software at 18 thousand euros per cell per year.
+- 9 customers; the largest is 40 percent of revenue.
+- Blended gross margin 35 percent (software about 80 percent).
+- Sales cycle about 9 months. Burn 180 thousand euros a month; 5 months of runway without the round.
+- Competition: robot makers' own software, cobot welding startups, systems integrators.
+Debrief notes: green flags: real pain (welder shortage), domain-expert founder, paying customers, software attach. Red flags: concentration, low blended margin, long sales cycle, short runway, hardware capital intensity.
+
+CASE 2 — LEDGERLOOP (applied AI, pre-seed)
+Headline: Berlin startup automating accounts payable for small and mid-sized businesses with AI. Raising 1.5 million at 6 million pre-money. 25 thousand euros monthly recurring revenue, growing 15 percent month over month.
+Facts on request:
+- 40 paying customers; 625 euros per customer per month; 3 percent monthly churn; CAC about 4,000 euros; gross margin 80 percent.
+- Two founders, ex-fintech product managers; no ML specialist yet.
+- Distribution mostly via tax-advisor referrals.
+- Competition: accounting software adding AI, funded AP-automation startups.
+Debrief notes: strong growth and unit economics (LTV/CAC about 4.2, payback 8 months) but about 31 percent annual logo churn, thin moat, channel dependence.
+
+CASE 3 — KATHODE KREISLAUF (battery recycling, Series A)
+Headline: University spin-off recovering lithium, nickel, and cobalt from used EV batteries. Raising 15 million at 45 million pre-money. Pilot plant running, pre-revenue.
+Facts on request:
+- Pilot recovery rates above 90 percent; not yet proven at commercial scale.
+- Non-binding letters of intent with two cathode producers.
+- Next step: a commercial plant needing about 80 million, financed with project debt, grants, and strategic capital.
+- EU rules require minimum recycled content in new batteries over the next decade.
+- Risks: metal prices, feedstock supply only later, established recyclers.
+Debrief notes: tests capital-intensity awareness, financing stack, dilution, and the gap between letters of intent and offtake contracts.
+
+CASE 4 — SWARMLINE (robot orchestration software, seed)
+Headline: Software that coordinates mixed fleets of mobile robots from different vendors in warehouses. Raising 4 million at 16 million pre-money. Three pilots, one converted to a 150 thousand euro per year contract.
+Facts on request:
+- Integrates via the VDA 5050 interface standard plus custom adapters.
+- Pricing per robot per month. Founders: ex-logistics automation engineers.
+- Competition: robot makers' fleet managers, warehouse management software vendors, integrators.
+- Integration takes 3 to 4 months per site.
+Debrief notes: tests lock-in by robot makers, services vs software margin, whether interoperability is a product or a feature, pilot-to-contract conversion. If the candidate has a similar idea of their own, ask whether that makes them more or less likely to invest.
+
+======================================================================
+PART F — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic ("I love startups"); 3 reasonable but not fund-specific; 5 specific, credible edge tied to the fund's model.
+Structured thinking: 1 rambling; 3 some structure; 5 structure upfront, top-down, concise.
+Investment judgment: 1 no decision or only positives; 3 decision with some risks; 5 clear decision, key risk, "what I'd need to believe", what would change their mind.
+Quant accuracy: 1 wrong and lost; 3 right with help; 5 fast, correct, explains implications.
+Communication: 1 long, filler-heavy; 3 clear but long; 5 crisp, headline first, under 90 seconds per answer.
+Conviction under pushback: 1 folds or gets defensive; 3 holds but weakly; 5 engages the counterargument, updates or holds with reasons.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

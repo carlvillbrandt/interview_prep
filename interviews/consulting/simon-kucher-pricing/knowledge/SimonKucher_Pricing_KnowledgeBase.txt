@@ -1,0 +1,177 @@
+SIMON-KUCHER — PRICING CONSULTING — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Katharina Brandt). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: Simon-Kucher. Global consultancy specialized in commercial strategy, pricing, and monetization. Founded 1985 in Bonn, Germany.
+2025 financial year: about 606 million euros revenue (+6 percent), about 2,200 employees, 45 offices, people in 32 countries, clients in more than 50 markets. 28 new partners from January 1, 2026, for 227 partners in total.
+Practices: pricing and monetization, commercial strategy, growth / sales and marketing, revenue management, go-to-market execution, digitalization, commercial due diligence and value creation for investors.
+Known ideas associated with co-founder Hermann Simon: "Hidden Champions" (little-known world-market leaders, often German Mittelstand) and the book "Confessions of the Pricing Man".
+
+Interview format commonly reported by candidates (offices vary — the candidate should confirm with the recruiter):
+- CV and motivation screen; in some offices an online numerical/logical test.
+- First round: pricing case plus behavioral questions.
+- Later round: senior interviewers, deeper pricing and monetization cases.
+- Cases are candidate-led but stay on pricing. Generic profitability trees on a pricing problem are reported to land badly.
+
+What a strong "why Simon-Kucher" answer references (debrief only):
+- Specialization: price is usually the strongest profit lever, and a pricing specialist sees many industries through that one lens.
+- Concrete interest: a pricing model the candidate finds clever or broken, and why.
+- Link to their own background (sales, startups, B2B industry, software, economics).
+Weak: "you're the market leader", "I like numbers", anything that would fit any consultancy.
+
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at pricing and commercial strategy?
+
+CONSULTING, ADVISORY, STRATEGY
+- Which project taught you the most about how a business makes money?
+- How did you structure the problem on day one? What did the first hypothesis look like, and was it right?
+- What did the client actually change because of your work?
+
+SALES, PRICING, NEGOTIATION, BUSINESS DEVELOPMENT
+- Walk me through one negotiation. What was your walk-away point, and how did you know?
+- How was the product priced, and what would you have changed?
+
+BANKING, PE, VC, TRANSACTION WORK
+- Walk me through one deal or diligence you worked on. What was the key commercial question?
+- Where did your analysis change someone's mind?
+
+STARTUP OR OPERATOR EXPERIENCE (employee or founder)
+- What was the company's biggest problem, and what did you do about it?
+- Founders: who paid, how much, and why did they choose you over alternatives?
+
+STUDENT CLUBS, CONSULTING CLUBS, COMMUNITY BUILDING
+- What did you build or change, not just join?
+- Tell me about a time the team disagreed. What did you do?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- Explain your work to a client CEO in 30 seconds.
+- How would you apply that analytical approach to a business problem?
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+   Strong: crisp, chronological, each step explains the next, ends with why consulting and pricing now.
+2. Why pricing, and why not a generalist strategy consultancy?
+   Strong: understands what pricing work is (value analysis, willingness-to-pay research, price models, sales enablement, implementation); a concrete example that sparked interest.
+3. Tell me about a product whose pricing you find clever — and one you'd fix.
+   Strong: names the pricing metric, segments, tiers, psychology; explains who captures value and why.
+4. Tell me about a time you persuaded someone who disagreed with you.
+   Strong: situation, their objection, what evidence or framing changed it, result.
+5. Tell me about a failure and what you changed afterward.
+6. How do you handle a client who says "we can't raise prices, customers will leave"?
+   Strong: empathize, then evidence: segments with different price sensitivity, value delivered, test-and-learn, competitor moves, sales enablement.
+
+======================================================================
+PART D — PRICING CONCEPTS AND QUANT BANK WITH ANSWER KEYS
+======================================================================
+Concepts the candidate may use (judge correct use, not jargon):
+- Value-based pricing vs cost-plus vs competition-based.
+- Willingness to pay (WTP); research methods: Van Westendorp price sensitivity meter (four questions: too cheap, cheap/bargain, expensive, too expensive; acceptable range between curve intersections), conjoint analysis (trade-offs between features and price), Gabor-Granger (purchase likelihood at price points), A/B price tests.
+- Price metric (what the price is attached to: per user, per order, per machine hour, per outcome).
+- Good-better-best tiers, bundling, decoy effect, anchoring, freemium, usage-based and subscription models.
+- Price waterfall: list price minus discounts and rebates down to the pocket price actually realized.
+- Price elasticity: percentage change in volume divided by percentage change in price.
+
+Q1 Price as profit lever. Revenue 100 million, variable costs 60 million, fixed costs 30 million, profit 10 million. What is the profit impact of a 1 percent improvement in price, volume, variable cost, and fixed cost (each alone)?
+Answer: price +1 percent: +1.0 million = +10 percent profit. Volume +1 percent: contribution +0.4 million = +4 percent. Variable cost -1 percent: +0.6 million = +6 percent. Fixed cost -1 percent: +0.3 million = +3 percent. Point: price is the strongest lever.
+
+Q2 Break-even volume for a price cut. Price 100 euros, variable cost 60 euros, contribution margin 40 percent. The sales team wants a 10 percent price cut. How much must volume rise to keep total contribution flat?
+Answer: new unit contribution 30 vs 40, so volume must rise by 40/30 - 1 = 33.3 percent. Formula: required volume change = price cut / (margin - price cut) = 10 / (40 - 10).
+Follow-up: a 10 percent price increase lets volume fall by 1 - 40/50 = 20 percent before contribution falls.
+
+Q3 Elasticity. Price elasticity is -1.5. Price goes up 10 percent; price 100, variable cost 60. What happens to volume, revenue, and contribution?
+Answer: volume about -15 percent; revenue 1.10 x 0.85 = 0.935, so about -6.5 percent; unit contribution rises from 40 to 50, so total contribution 50 x 0.85 = 42.5 vs 40, about +6.25 percent. Point: revenue falls but profit rises.
+
+Q4 Price waterfall. List price 100. Invoice discount 15, off-invoice rebate 5, early-payment discount 2, free freight worth 3 (all per unit, in euros). What is the pocket price and the leakage?
+Answer: pocket price 75; leakage 25 percent of list. Strong candidates ask which customers get which discounts and whether discounts correlate with volume (often they don't).
+
+Q5 Subscription. Monthly plan 20 euros. Annual plan 192 euros. What discount does the annual plan give, and why would a company offer it?
+Answer: 240 vs 192 = 20 percent discount. Reasons: lower churn, cash upfront, lock-in; cost: lower revenue per committed user.
+
+Q6 Market sizing (approach only, no single right number): How many e-bikes are sold in Germany per year?
+Strong approach: population or households, share of cyclists, share buying a new bike per year, e-bike share of new bikes; or replacement cycle of the e-bike stock; sanity check. Industry figures in recent years have been roughly two million a year; reward the logic, not the exact number.
+
+======================================================================
+PART E — PRICING CASES (fictional companies)
+Introduce the headline in a few sentences. Reveal other facts only when asked. If asked something not listed, say it isn't available and ask what they'd assume.
+======================================================================
+
+CASE 1 — BRENNTAL DRUCKLUFT (industrial, pay-per-use)
+Headline: Brenntal is a German Mittelstand manufacturer of industrial air compressors. Margins are under pressure from Asian competitors. The CEO asks: should we stop selling compressors and instead sell "compressed air as a service," charging per cubic meter? And if so, at what price?
+Facts on request:
+- Today: compressor list price 40,000 euros; Brenntal's manufacturing cost 28,000 euros.
+- Optional service contract: 3,000 euros per year to the customer; Brenntal's cost to deliver 2,000 euros per year.
+- Compressor lifetime: 10 years.
+- Customer's electricity cost to run one compressor: 25,000 euros per year (energy is by far the largest lifetime cost).
+- One compressor produces about 1.6 million cubic meters of compressed air per year at a typical customer.
+- Brenntal's new sensors and software cut energy use by 15 percent if Brenntal operates the machine.
+- In the as-a-service model Brenntal owns, services, and pays the electricity for the compressor, and charges per cubic meter.
+- Customers: mid-sized manufacturers; CFOs like predictable costs and avoiding capex.
+Answer key:
+- Customer's current cost over 10 years: 40,000 + 30,000 service + 250,000 energy = 320,000, i.e. 32,000 per year, or 2.0 cents per cubic meter (32,000 / 1.6 million). This is the price ceiling (customer indifference).
+- Brenntal's annual cost in the service model: 2,800 depreciation (28,000 / 10) + 2,000 service + 21,250 energy (25,000 x 0.85) = 26,050 per year, about 1.63 cents per cubic meter. This is the price floor.
+- A price around 1.9 cents per cubic meter: customer pays 30,400 per year and saves 5 percent; Brenntal earns 4,350 per year, 43,500 over 10 years, vs 22,000 today (12,000 hardware margin + 10,000 service margin). Roughly double the lifetime profit per machine.
+- Risks: electricity price (fix with an energy index clause), customer volume falling (minimum volume or base fee plus usage), Brenntal's balance sheet must finance 28,000 per machine upfront (consider a leasing partner), sales team incentives change from one-off to recurring.
+Strong recommendation: yes for the segment that values predictable opex, priced between floor and ceiling with a base fee plus per-cubic-meter rate and an energy index clause; keep outright purchase as an option.
+
+CASE 2 — LAGERLICHT (B2B software, pricing metric)
+Headline: Lagerlicht sells warehouse-management software to mid-sized logistics companies at 50 euros per user per month. As warehouses automate, customers need fewer users and revenue is shrinking. Lagerlicht asks how to redesign its price model.
+Facts on request:
+- 400 customers, on average 40 users each. Annual recurring revenue: 400 x 40 x 50 x 12 = 9.6 million euros.
+- Users per customer are falling about 8 percent a year.
+- The value customers get scales with orders processed. The average customer processes 500,000 orders per year.
+- Annual customer churn: 6 percent.
+- Survey: 35 percent of customers would pay 20 percent more for an integration module that connects warehouse robots.
+- Customers dislike unpredictable bills; their CFOs want budgets fixed a year ahead.
+- Competitors mostly still price per user.
+Answer key:
+- Revenue-neutral per-order price: 9.6 million / (400 x 500,000 = 200 million orders) = 4.8 cents per order.
+- Better structure: platform fee plus per-order usage in volume bands, with annual commitments to keep bills predictable; good-better-best tiers (for example Essentials, Professional, Enterprise with robot integration).
+- Robot module: if 35 percent of customers pay 20 percent more, uplift is about 0.35 x 0.20 = 7 percent of revenue, about 0.67 million a year.
+- Migration: grandfather existing contracts for a period, move at renewal, guarantee "no customer pays more than X percent more in year one", train sales.
+- Risks: customer volumes fall in a recession (usage pricing makes revenue cyclical), sales complexity, competitor undercutting.
+Strong recommendation: move from per-user to a value metric (orders) with a platform fee and annual commitments, launch tiers with robot integration in the top tier, migrate at renewal.
+
+CASE 3 — ALPENBAD (consumer, dynamic pricing)
+Headline: Alpenbad is a large thermal spa and water park in Bavaria. It charges a flat 30 euros per day ticket. Weekends are overcrowded and people are turned away; weekdays are half empty. Management asks whether to introduce differentiated pricing and what it is worth.
+Facts on request:
+- Capacity: 3,000 visitors per day.
+- Weekend demand at 30 euros: 3,800 visitors per day (800 turned away). 104 weekend days a year.
+- Weekday demand at 30 euros: 1,200 visitors per day. 261 weekdays a year.
+- Estimated price elasticity: weekend -0.6, weekday -1.8 (use as linear approximations).
+- Food and drink: 12 euros spend per visitor at a 60 percent margin.
+- Many visitors are locals with season passes (not in scope of this question).
+Answer key:
+- Weekend at 36 euros (+20 percent): demand 3,800 x (1 - 0.6 x 0.20) = 3,344, still above capacity, so 3,000 visitors. Revenue 108,000 vs 90,000 per day, +18,000 per day x 104 = about 1.87 million euros a year.
+- Weekend price that just fills capacity: 3,800 x (1 - 0.6x) = 3,000 gives x = 35 percent, about 40.50 euros; revenue 121,500 per day. Strong candidates note fairness and brand risk at the top end.
+- Weekday at 25.50 euros (-15 percent): visitors 1,200 x (1 + 1.8 x 0.15) = 1,524. Ticket revenue 38,862 vs 36,000, +2,862 per day x 261 = about 0.75 million. Extra food and drink: 324 visitors x 12 x 0.6 = about 2,333 per day x 261 = about 0.61 million.
+- Total uplift in the 20-percent weekend / 15-percent weekday scenario: about 3.2 million euros a year.
+- Risks: perceived unfairness, local backlash, complexity; mitigate with simple two-tier pricing (weekday / weekend), online booking, and communicating "cheaper on weekdays" rather than "surge pricing".
+
+======================================================================
+PART F — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic ("consulting is varied"); 3 reasonable but not pricing-specific; 5 specific, credible interest in pricing tied to their own experience.
+Case structure: 1 none or a generic profit tree; 3 sensible but generic; 5 pricing-specific, hypothesis-driven, structure stated upfront.
+Value / WTP thinking: 1 cost-plus only; 3 mentions value but doesn't quantify; 5 quantifies customer value and WTP, segments customers, sets floor and ceiling.
+Quantitative accuracy: 1 wrong and lost; 3 right with help or small errors; 5 fast, correct, explains the implication.
+Business judgment: 1 no recommendation; 3 recommendation with some risks; 5 clear recommendation, key risk, implementation step.
+Communication: 1 long, rambling; 3 clear but long; 5 answer first, crisp, client-ready.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

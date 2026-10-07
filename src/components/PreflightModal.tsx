@@ -3,13 +3,36 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { AlertIcon, CameraIcon, CheckIcon, CloseIcon, MicIcon, ShieldIcon } from "@/components/icons";
-import { FOCUSES, LEVELS, type Focus, type Level } from "@/lib/schemas";
+import { ApiErrorSchema, CvExtractResponseSchema, FOCUSES, type Focus, type Level } from "@/lib/schemas";
 
 export interface InterviewSettings {
   level: Level;
   focus: Focus;
   candidateName?: string;
+  /** Text extracted from the candidate's CV (kept in the browser until the interview starts). */
+  cvText?: string;
+  cvFileName?: string;
 }
+
+/** Firm-specific setup options, resolved on the server. */
+export interface SetupOptions {
+  levels: Level[];
+  interviewMinutes: number;
+  inCallDebrief: boolean;
+  cvUpload: boolean;
+}
+
+const FOCUS_LABELS: Record<Focus, string> = {
+  Mixed: "Full interview",
+  Behavioral: "Fit & behavioral",
+  Technical: "Case / technical",
+};
+
+type CvState =
+  | { kind: "none" }
+  | { kind: "uploading"; name: string }
+  | { kind: "attached"; name: string; pages: number; truncated: boolean }
+  | { kind: "error"; message: string };
 
 type DeviceState =
   | { kind: "idle" }
@@ -54,6 +77,7 @@ export function PreflightModal({
   companyName,
   accent,
   initial,
+  setup,
   onClose,
   onStart,
 }: {
@@ -61,6 +85,7 @@ export function PreflightModal({
   companyName: string;
   accent: string;
   initial: InterviewSettings;
+  setup: SetupOptions;
   onClose: () => void;
   onStart: (settings: InterviewSettings) => void;
 }) {
@@ -70,12 +95,16 @@ export function PreflightModal({
   const privacyAck = storedAck || ackedNow;
   const [device, setDevice] = useState<DeviceState>({ kind: "idle" });
   const [settings, setSettings] = useState<InterviewSettings>(initial);
+  const [cv, setCv] = useState<CvState>(
+    initial.cvText && initial.cvFileName ? { kind: "attached", name: initial.cvFileName, pages: 0, truncated: false } : { kind: "none" },
+  );
+  const cvInputRef = useRef<HTMLInputElement>(null);
   const [level, setLevel] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const titleId = useId();
-  const ids = { level: useId(), focus: useId(), name: useId() };
+  const ids = { level: useId(), focus: useId(), name: useId(), cv: useId() };
 
   const stopPreview = useCallback(() => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -178,6 +207,34 @@ export function PreflightModal({
     setAckedNow(true);
   };
 
+  const uploadCv = async (file: File) => {
+    setCv({ kind: "uploading", name: file.name });
+    setSettings((s) => ({ ...s, cvText: undefined, cvFileName: undefined }));
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      const res = await fetch("/api/cv", { method: "POST", body });
+      const json = await res.json().catch(() => null);
+      if (!res.ok) {
+        const err = ApiErrorSchema.safeParse(json);
+        setCv({ kind: "error", message: err.success ? err.data.error.message : "We couldn't read that file." });
+        return;
+      }
+      const data = CvExtractResponseSchema.parse(json);
+      setSettings((s) => ({ ...s, cvText: data.text, cvFileName: data.fileName }));
+      setCv({ kind: "attached", name: data.fileName, pages: data.pages, truncated: data.truncated });
+    } catch {
+      setCv({ kind: "error", message: "Upload failed. Check your connection and try again." });
+    } finally {
+      if (cvInputRef.current) cvInputRef.current.value = "";
+    }
+  };
+
+  const removeCv = () => {
+    setCv({ kind: "none" });
+    setSettings((s) => ({ ...s, cvText: undefined, cvFileName: undefined }));
+  };
+
   const start = () => {
     stopPreview();
     onStart({ ...settings, candidateName: settings.candidateName?.trim() || undefined });
@@ -236,6 +293,13 @@ export function PreflightModal({
                     The transcript is scored by an AI model and stored on this PrepRoom server so you can review your
                     feedback.
                   </li>
+                  {setup.cvUpload && (
+                    <li className="flex gap-3">
+                      <CheckIcon size={18} className="mt-0.5 shrink-0 text-success" />
+                      If you attach a CV, its text is shared with the interviewer for this session only. PrepRoom
+                      doesn&apos;t store it.
+                    </li>
+                  )}
                   <li className="flex gap-3">
                     <CheckIcon size={18} className="mt-0.5 shrink-0 text-success" />
                     Your interviewer is an AI. It&apos;s a practice tool and isn&apos;t affiliated with {companyName}.
@@ -316,10 +380,16 @@ export function PreflightModal({
                     <li>· Quiet room, face lit from the front, camera at eye level.</li>
                     <li>· Headphones help the interviewer hear you cleanly.</li>
                     <li>· Answer out loud as you would in the real room. You can be interrupted.</li>
-                    <li>· About 15–20 minutes. Feedback arrives right after.</li>
+                    <li>
+                      · About {setup.interviewMinutes} minutes.{" "}
+                      {setup.inCallDebrief
+                        ? "Your interviewer debriefs you at the end, and a written scorecard follows."
+                        : "Feedback arrives right after."}
+                    </li>
+                    {setup.inCallDebrief && <li>· Say &ldquo;timeout&rdquo; for quick feedback or &ldquo;auf Deutsch&rdquo; to switch language.</li>}
                   </ul>
 
-                  <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-1">
                     <Field id={ids.level} label="Role / level">
                       <select
                         id={ids.level}
@@ -328,7 +398,7 @@ export function PreflightModal({
                         onChange={(e) => setSettings((s) => ({ ...s, level: e.target.value as Level }))}
                         className="w-full rounded-xl border border-line bg-ink-850 px-3 py-2.5 text-fg focus:border-line-strong"
                       >
-                        {LEVELS.map((l) => (
+                        {setup.levels.map((l) => (
                           <option key={l}>{l}</option>
                         ))}
                       </select>
@@ -341,7 +411,9 @@ export function PreflightModal({
                         className="w-full rounded-xl border border-line bg-ink-850 px-3 py-2.5 text-fg focus:border-line-strong"
                       >
                         {FOCUSES.map((f) => (
-                          <option key={f}>{f}</option>
+                          <option key={f} value={f}>
+                            {FOCUS_LABELS[f]}
+                          </option>
                         ))}
                       </select>
                     </Field>
@@ -360,11 +432,57 @@ export function PreflightModal({
                       />
                     </Field>
                   </div>
+                  {setup.cvUpload && (
+                    <div className="mt-4">
+                      <span className="mb-1.5 block text-xs font-medium tracking-wide text-fg-subtle uppercase">
+                        Your CV (optional)
+                      </span>
+                      <input
+                        ref={cvInputRef}
+                        id={ids.cv}
+                        type="file"
+                        accept=".pdf,.txt,application/pdf,text/plain"
+                        className="sr-only"
+                        onChange={(e) => {
+                          const f = e.target.files?.[0];
+                          if (f) void uploadCv(f);
+                        }}
+                      />
+                      {cv.kind === "attached" ? (
+                        <div className="flex items-center gap-3 rounded-xl border border-line bg-ink-850 px-3 py-2.5 text-sm">
+                          <CheckIcon size={16} className="shrink-0 text-success" />
+                          <span className="min-w-0 flex-1 truncate text-fg" title={cv.name}>
+                            {cv.name}
+                            {cv.truncated && <span className="text-fg-subtle"> (first part used)</span>}
+                          </span>
+                          <button type="button" onClick={removeCv} className="text-fg-subtle hover:text-fg">
+                            Remove
+                          </button>
+                        </div>
+                      ) : (
+                        <label
+                          htmlFor={ids.cv}
+                          className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-dashed border-line-strong bg-ink-850/60 px-3 py-2.5 text-sm text-fg-muted hover:text-fg focus-within:outline-2"
+                          aria-busy={cv.kind === "uploading"}
+                        >
+                          <span className="truncate">
+                            {cv.kind === "uploading" ? `Reading ${cv.name}…` : "Attach a PDF so questions match your background"}
+                          </span>
+                          <span className="shrink-0 text-xs text-fg-subtle">{cv.kind === "uploading" ? "" : "Browse"}</span>
+                        </label>
+                      )}
+                      {cv.kind === "error" && (
+                        <p role="alert" className="mt-1.5 text-xs text-danger">
+                          {cv.message}
+                        </p>
+                      )}
+                    </div>
+                  )}
 
                   <button
                     type="button"
                     onClick={start}
-                    disabled={device.kind !== "ready"}
+                    disabled={device.kind !== "ready" || cv.kind === "uploading"}
                     className="mt-8 flex items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold text-ink-950 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100"
                     style={{ background: accent }}
                   >

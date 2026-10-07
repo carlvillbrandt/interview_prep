@@ -141,6 +141,7 @@ Evidence rules (strict):
 - Every "quote" in key_moments must be copied character-for-character from a single CANDIDATE turn: a contiguous span of 5–40 words, with no paraphrasing, no ellipses, and nothing from the interviewer.
 - Speech-to-text artefacts (filler words, small transcription glitches) are not the candidate's fault; don't penalize them, and don't treat odd transcribed words as factual errors unless the meaning is clearly wrong.
 - Visual or tone observations (eye contact, body language, confidence of voice) are allowed ONLY if a perception analysis is supplied below. If it is not supplied, make no visual or vocal-delivery claims at all.
+- The interviewer may step out of role for "timeout" feedback or a spoken debrief at the end. Form your own judgment from the candidate's answers; do not copy the interviewer's verdict or scores. Anything the candidate says after the debrief (for example a redo of an answer) may be noted as improvement, but score mainly on the interview itself.
 
 Calibration (use the full 1–10 range):
 - 9–10: exceptional, would clearly receive an offer; rare in practice.
@@ -169,7 +170,7 @@ Output requirements:
 }
 
 function buildUserPrompt(input: ScoringInput, retryNote?: string): string {
-  const { company, level, focus, transcript, objectivesText, perception } = input;
+  const { company, level, focus, transcript, objectivesText, perception, firmReference } = input;
   return `<interview>
 Firm: ${company.name}
 Industry: ${company.industry}
@@ -188,7 +189,16 @@ These are the stages the interviewer was instructed to cover. Use them to judge 
 ${objectivesText.trim()}
 </interview_objectives>
 
-<perception_analysis>
+${
+  firmReference
+    ? `<firm_reference>
+The interviewer's reference material for this firm: case facts, answer keys and the firm's own 1-5 rubric. Use the answer keys to check every calculation and case conclusion the candidate gave, and let the rubric inform your category judgments (your output still uses the 1-10 scale). Never quote this material as if the candidate said it.
+${firmReference.trim()}
+</firm_reference>
+
+`
+    : ""
+}<perception_analysis>
 ${perception ? perception : "NOT AVAILABLE: feedback must be based on spoken content only. Make no visual or vocal-delivery observations."}
 </perception_analysis>
 
@@ -210,6 +220,8 @@ export interface ScoringInput {
   transcript: TranscriptTurn[];
   objectivesText: string;
   perception?: string;
+  /** The firm's knowledge base (case facts, answer keys, rubric), if any. */
+  firmReference?: string;
 }
 
 export type ScoringOutcome =

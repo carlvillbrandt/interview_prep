@@ -4,9 +4,11 @@ import { appBaseUrl, defaultFaceIdFromEnv, isDev, isPubliclyReachable } from "@/
 import {
   buildPalSystemPrompt,
   extractInterviewerName,
+  knowledgeMode,
   loadInterview,
   renderForPal,
   type InterviewContent,
+  type InterviewSettings,
 } from "@/lib/interviewLoader";
 import { provisionCache, type ProvisionCacheStore, type ProvisionEntry } from "@/lib/storage";
 import {
@@ -22,10 +24,16 @@ import {
  * Bump when the PAL configuration produced by this file changes (layers, naming, prompt
  * assembly). Part of the content hash, so every company re-provisions on next start.
  */
-export const PROVISION_VERSION = 1;
+export const PROVISION_VERSION = 2;
 
 /** Low-latency pipeline per the spec's recommended defaults (see DECISIONS.md §1). */
-export function palLayers(companyName: string): PalLayers {
+const DEFAULT_PERCEPTION_QUERIES = [
+  "Is the candidate looking toward the camera and engaged?",
+  "Does the candidate appear nervous, distressed or uncomfortable?",
+  "Is the candidate reading from notes or another screen?",
+];
+
+export function palLayers(companyName: string, settings?: Pick<InterviewSettings, "perceptionQueries">): PalLayers {
   return {
     llm: { model: "tavus-gemma-4", speculative_inference: true },
     stt: {
@@ -43,11 +51,7 @@ export function palLayers(companyName: string): PalLayers {
     perception: {
       perception_model: "raven-1",
       emotion_recognition: "auto",
-      visual_awareness_queries: [
-        "Is the candidate looking toward the camera and engaged?",
-        "Does the candidate appear nervous, distressed or uncomfortable?",
-        "Is the candidate reading from notes or another screen?",
-      ],
+      visual_awareness_queries: settings?.perceptionQueries?.length ? settings.perceptionQueries : DEFAULT_PERCEPTION_QUERIES,
       audio_awareness_queries: [
         "Does the candidate sound confident or hesitant?",
         "Is the candidate speaking very quickly or rambling?",
@@ -59,6 +63,8 @@ export function palLayers(companyName: string): PalLayers {
 export interface ProvisionResult extends ProvisionEntry {
   reused: boolean;
   interviewerName?: string;
+  /** Loaded interview content (settings drive the per-conversation setup). */
+  content: InterviewContent;
 }
 
 export interface ProvisionDeps {
@@ -89,6 +95,7 @@ export function computeContentHash(content: InterviewContent, companyName: strin
   part("capabilities", content.capabilities);
   part("guardrails", content.guardrailsText);
   part("objectives", content.objectivesText);
+  part("settings", content.settingsText);
   for (const k of content.knowledge) part(`knowledge:${k.name}`, k.content);
   return h.digest("hex");
 }
@@ -160,7 +167,7 @@ async function doProvision(company: Company, deps: ProvisionDeps): Promise<Provi
   const cached = await cache.get(key);
   if (cached && cached.hash === hash) {
     log(`${key}: content unchanged (hash ${hash.slice(0, 10)}), reusing PAL ${cached.palId}`);
-    return { ...cached, reused: true, interviewerName };
+    return { ...cached, reused: true, interviewerName, content };
   }
   log(`${key}: ${cached ? "content changed" : "first provision"}, hash ${hash.slice(0, 10)}`);
 
@@ -174,6 +181,7 @@ async function doProvision(company: Company, deps: ProvisionDeps): Promise<Provi
       objective_prompt: renderForPal(o.prompt, company.name),
       confirmation_mode: o.confirmation_mode ?? "auto",
       ...(o.next ? { next_required_objective: o.next } : {}),
+      ...(o.branches ? { next_conditional_objectives: o.branches } : {}),
       ...(o.modality ? { modality: o.modality } : {}),
       ...(o.output_variables ? { output_variables: o.output_variables } : {}),
     })),
@@ -193,20 +201,22 @@ async function doProvision(company: Company, deps: ProvisionDeps): Promise<Provi
   }
   log(`${key}: ${guardrailIds.length} guardrails`);
 
-  // 3. Knowledge documents (only if Tavus can fetch them from us)
-  const documentIds = await provisionKnowledge(company, content, shortHash, deps, log);
+  // 3. Knowledge: inlined into the prompt when it fits, else Tavus documents (DECISIONS.md §11).
+  const kMode = knowledgeMode(content, isPubliclyReachable());
+  const documentIds = kMode === "documents" ? await provisionKnowledge(company, content, shortHash, deps, log) : [];
+  if (kMode === "inline") log(`${key}: ${content.knowledge.length} knowledge file(s) inlined into the system prompt`);
 
   // 4. PAL — patch the existing one if we have it, otherwise create.
   const palBody: CreatePalRequest = {
     pal_name: `PrepRoom · ${company.name}`,
-    system_prompt: buildPalSystemPrompt(content, company.name),
+    system_prompt: buildPalSystemPrompt(content, company.name, { inlineKnowledge: kMode === "inline" }),
     pipeline_mode: "full",
     default_face_id: faceId,
-    languages: ["en"],
+    languages: content.settings.languages,
     objectives_id: objectives.objectives_id,
     guardrail_ids: guardrailIds,
     document_ids: documentIds,
-    layers: palLayers(company.name),
+    layers: palLayers(company.name, content.settings),
   };
 
   let palId: string | null = null;
@@ -242,7 +252,7 @@ async function doProvision(company: Company, deps: ProvisionDeps): Promise<Provi
       .then((r) => log(`${key}: verification ${r.ok ? "OK" : "MISMATCH"} ${JSON.stringify(r.checks)}`))
       .catch((e) => log(`${key}: verification failed: ${(e as Error).message}`));
   }
-  return { ...entry, reused: false, interviewerName };
+  return { ...entry, reused: false, interviewerName, content };
 }
 
 async function patchPal(client: TavusClient, palId: string, body: CreatePalRequest): Promise<void> {

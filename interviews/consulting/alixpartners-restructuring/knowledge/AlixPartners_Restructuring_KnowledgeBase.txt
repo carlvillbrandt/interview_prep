@@ -1,0 +1,181 @@
+ALIXPARTNERS — TURNAROUND & RESTRUCTURING — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Markus Lehner). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: AlixPartners. Global consulting firm founded in 1981; known for turnaround and restructuring alongside performance improvement, digital, disputes and investigations, and transaction work.
+Turnaround and Restructuring services (from the firm's website): restructuring advisory (liquidity management, business plan support, liability management, analysis of strategic alternatives); interim management and chief restructuring officer roles; creditor advisory for lenders, bondholders, and creditor committees; bankruptcy, insolvency, and case management; liquidity management with 13-week cash flow forecasting and monitoring; liability management transactions.
+Germany: presence including Munich; internships in Turnaround and Restructuring are advertised in Germany.
+
+Interview format commonly reported by candidates (confirm with the recruiter):
+- Recruiter or first screen on CV, fit, and motivation.
+- Consultant round with a candidate-led case plus behavioral questions.
+- Final round with senior colleagues, two to three cases; some candidates report a psychometric assessment.
+- Case themes reported: profitability collapse, liquidity crisis, cost reduction, out-of-court vs formal restructuring. Industries often reported: automotive, retail, manufacturing, healthcare, financial services.
+
+What a strong "why restructuring / why AlixPartners" answer references (debrief only):
+- Wants real impact under pressure: companies where jobs and survival are at stake.
+- Understands the work: cash, operations, stakeholders (banks, owners, employees, customers), often on site with the client.
+- Honest about intensity and how they handle it, with evidence.
+Weak: "it's countercyclical", "I like finance", anything that would fit any consultancy.
+
+German restructuring background (for context only; not legal advice, and do not expect interns to know it):
+- Insolvency grounds: illiquidity (Zahlungsunfähigkeit), over-indebtedness (Überschuldung, with a going-concern forecast), and imminent illiquidity (drohende Zahlungsunfähigkeit) as a voluntary ground.
+- Management has short legal deadlines to file once insolvency grounds exist, and personal liability risk.
+- Tools: out-of-court restructuring with an independent restructuring opinion (often to IDW S6 standard), the StaRUG restructuring framework (pre-insolvency, can bind dissenting creditors through a plan), self-administration and protective-shield proceedings, and regular insolvency.
+- Insolvency money (Insolvenzgeld) from the labor agency covers employees' wages for up to three months before an insolvency opening, which helps liquidity in a formal process.
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at turnaround and restructuring work?
+
+CONSULTING, ADVISORY, STRATEGY
+- Which project taught you the most about how a business makes money?
+- How did you structure the problem on day one? What did the first hypothesis look like, and was it right?
+- What did the client actually change because of your work?
+
+SALES, PRICING, NEGOTIATION, BUSINESS DEVELOPMENT
+- Walk me through one negotiation. What was your walk-away point, and how did you know?
+- How was the product priced, and what would you have changed?
+
+BANKING, PE, VC, TRANSACTION WORK
+- Walk me through one deal or diligence you worked on. What was the key commercial question?
+- Where did your analysis change someone's mind?
+
+STARTUP OR OPERATOR EXPERIENCE (employee or founder)
+- What was the company's biggest problem, and what did you do about it?
+- Founders: who paid, how much, and why did they choose you over alternatives?
+
+STUDENT CLUBS, CONSULTING CLUBS, COMMUNITY BUILDING
+- What did you build or change, not just join?
+- Tell me about a time the team disagreed. What did you do?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- Explain your work to a client CEO in 30 seconds.
+- How would you apply that analytical approach to a business problem?
+
+FINANCE, TREASURY, CONTROLLING
+- What did the cash or liquidity reporting look like, and who used it?
+- Tell me about a number you found that was wrong. What happened next?
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+2. Why restructuring rather than strategy consulting?
+   Strong: specific about the work (cash, operations, stakeholders), mentions urgency and impact, realistic about lifestyle.
+3. Tell me about the most pressure you've been under. What did you do?
+   Strong: concrete situation, prioritization, what they dropped, result, what they learned.
+4. Tell me about a time you had to deliver bad news.
+   Strong: prepared facts, direct and early, offered a path forward.
+5. A plant manager refuses to give you data. What do you do?
+   Strong: understand their concern, explain purpose, use the CRO or CFO mandate only after trying, find alternative data sources.
+6. You find a 2 million euro error in the cash forecast the night before a bank meeting. What do you do?
+   Strong: tell the manager immediately, quantify impact, fix and document, never hide it.
+
+======================================================================
+PART D — RESTRUCTURING FUNDAMENTALS AND QUANT BANK WITH ANSWER KEYS
+======================================================================
+Q1 Cash vs profit. How can a profitable company go insolvent?
+Answer: profit is not cash. Working capital build-up (receivables, inventory), capex, debt repayments, interest, and timing mismatches drain cash; a company becomes insolvent when it can't pay debts as they fall due, not when it makes a loss.
+
+Q2 13-week cash flow. What is it and how do you build it?
+Answer: a weekly, direct-method forecast of receipts and disbursements for the next 13 weeks: opening cash, customer receipts, payroll, suppliers, rent, taxes, interest and debt service, capex, closing cash, plus undrawn credit lines, minus a minimum operating cash buffer, giving available liquidity. Built bottom-up with treasury, AR, and AP; variance-tracked every week against actuals.
+
+Q3 Liquidity runway. Cash 12 million, undrawn revolving credit facility 8 million, minimum operating cash 5 million, weekly net burn 1.5 million. How many weeks of runway?
+Answer: available liquidity 12 + 8 - 5 = 15 million; 15 / 1.5 = 10 weeks.
+
+Q4 Working capital release. Revenue 365 million (1 million per day), cost of goods sold 292 million (0.8 million per day). DSO 60, DIO 90, DPO 30. Targets: DSO 45, DIO 75, DPO 40. How much cash is released?
+Answer: receivables 15 days x 1.0 = 15 million; inventory 15 days x 0.8 = 12 million; payables 10 days x 0.8 = 8 million. Total 35 million. Cash conversion cycle falls from 120 to 80 days. Strong candidates warn that in a crisis suppliers and credit insurers often shorten terms, so the payables lever may run the other way.
+
+Q5 Covenant. Net leverage covenant 3.5x. Net debt 150 million. EBITDA falls from 50 to 35 million. What happens, and how far could EBITDA fall before a breach?
+Answer: leverage rises from 3.0x to about 4.3x, a breach. Breach point: 150 / 3.5 = about 42.9 million EBITDA, i.e. a fall of about 14 percent from 50.
+
+Q6 Recovery waterfall. Enterprise value 120 million. Senior secured debt 100 million, junior debt 50 million. What does each class recover?
+Answer: senior 100 percent; junior 20 of 50 = 40 percent; equity zero. The junior debt is the "fulcrum" security, the class most likely to convert into equity in a restructuring.
+
+Q7 Restructuring toolbox. What levers exist?
+Answer (strong answers group them): liquidity (cash committee, payment prioritization, working capital, asset sales, sale-and-leaseback, factoring, customer support), operational (cost-out, footprint consolidation, procurement, pricing, portfolio), financial (standstill, covenant reset, amend and extend, new money, debt-for-equity swap, sale of the business), formal procedures as a last resort or a tool.
+
+Q8 Cost-out. Overhead is 14 percent of revenue; peers are at 10 percent; revenue 500 million. What's the theoretical savings potential, and why might you not get all of it?
+Answer: 4 percent x 500 = 20 million. Not all achievable: structural differences (more countries, more complex products), one-off costs, severance, the need to keep capabilities for the turnaround.
+
+======================================================================
+PART E — TURNAROUND CASES (fictional companies)
+Introduce the headline in a few sentences with urgency. Reveal other facts only when asked. If asked something not listed, say it isn't available and ask what they'd assume.
+======================================================================
+
+CASE 1 — RHEINGUSS AUTOMOTIVE (liquidity crisis)
+Headline: Rheinguss is a German die-casting supplier making engine and transmission housings for car makers. Revenue 480 million euros, EBITDA fell from 40 million to 5 million in a year. The CFO calls on Sunday night: the banks are nervous and he isn't sure the company makes it through the quarter. What do you do in the first week, and will they run out of cash?
+Facts on request:
+- Cash today: 9 million euros. Revolving credit facility fully drawn.
+- Weekly receipts about 9.0 million, weekly disbursements about 9.8 million: net burn 0.8 million per week.
+- Quarterly interest payment of 4 million in week 6. Tooling capex payment of 6 million in week 9.
+- Minimum operating cash: 4 million.
+- Net debt 180 million; covenant test at quarter end.
+- 12 million of overdue receivables from one car maker, stuck in a price dispute.
+- Inventory at 95 days vs about 60 days for peers. Cost of goods sold about 400 million a year.
+- Three car makers are 70 percent of revenue. 60 percent of revenue is combustion-engine parts.
+- 2,400 employees at three German plants; plant C runs at 55 percent utilization.
+Answer key:
+- Cash path: end of week 5: 9 - 4.0 = 5.0 million. Week 6: 9 - 4.8 - 4 = 0.2 million, already below the 4 million minimum. Week 9: 9 - 7.2 - 4 - 6 = -8.2 million. Week 13: 9 - 10.4 - 4 - 6 = -11.4 million. Funding gap including minimum cash: about 15.4 million.
+- Week one: set up a 13-week cash flow and a daily cash committee; stop non-essential payments; check insolvency grounds with legal counsel (management has filing duties); talk to banks early (standstill, interest deferral); talk to the car makers.
+- Levers within 13 weeks: settle the 12 million dispute (even a partial settlement helps), ask the car maker to pay the tooling (customers often fund tooling), defer interest under a standstill, inventory reduction (95 to 70 days on about 1.1 million COGS per day frees about 27 million over time, perhaps a third within 13 weeks), customer support agreements (price increases, faster payment), factoring, sale-and-leaseback.
+- Medium term: consolidate plant C, cost-out, strategy for the shift away from combustion-engine parts, independent restructuring opinion for the banks.
+Strong candidates identify the week-6 crunch, quantify the gap, and put stakeholder management (banks, car makers) alongside internal cash measures.
+
+CASE 2 — MODEHAUS FELDMANN (retail profitability turnaround)
+Headline: Feldmann is a German fashion retailer with 120 stores. Revenue 300 million euros, falling 8 percent a year; EBITDA minus 6 million. The owners ask for a plan to get back to positive EBITDA within 18 months.
+Facts on request:
+- Store profitability (four-wall EBITDA): 40 stores clearly profitable, 50 around break-even, 30 loss-making at about minus 0.4 million each (minus 12 million in total).
+- The 30 loss-making stores generate 45 million of revenue. About 20 percent of their sales would transfer to nearby stores or online if closed.
+- Variable contribution on transferred sales: about 30 percent.
+- Closing a store costs about 0.5 million one-off (lease exit, severance).
+- Rent is 18 percent of sales. Online is 10 percent of sales.
+- Head-office overhead 30 million (10 percent of sales); peers about 7 to 8 percent.
+- Markdowns 18 percent of sales vs about 12 percent at peers.
+- Cash: 10 million, no undrawn lines.
+Answer key:
+- Close 30 stores: removes minus 12 million four-wall loss, plus transferred sales 9 million x 30 percent = 2.7 million: EBITDA from minus 6 to about plus 8.7 million.
+- Head office at 8 percent of remaining revenue (300 - 45 + 9 = 264 million): about 21.1 million vs 30, saving about 8.9 million. Total about plus 17.6 million before markdown improvements.
+- Markdowns: better buying and less inventory can save several points of margin over time.
+- The catch: closures cost 30 x 0.5 = 15 million cash, more than the 10 million they have. Options: phase closures, negotiate with landlords, owner or lender bridge funding, or a formal process (which can make lease exits cheaper but risks supplier credit insurance and reputation).
+Strong candidates segment stores, quantify, and spot the cash funding problem.
+
+CASE 3 — NORDBAU SYSTEMS (financial restructuring)
+Headline: Nordbau is a building-materials company owned by a private-equity fund. EBITDA fell from 90 to 60 million euros. Net debt is 420 million, the term loan matures in 14 months, and the fund asks: what are our options?
+Facts on request:
+- Debt: senior term loan 300 million, second-lien loan 120 million.
+- Leverage: 420 / 60 = 7.0x.
+- Comparable companies trade around 6.5x EBITDA, so enterprise value is about 390 million.
+- The fund is willing to put in 30 million of new equity, but only if lenders also contribute.
+- Business plan: EBITDA back to 75 million in two years if construction volumes recover.
+Answer key:
+- Waterfall at 390 million: senior 300 fully covered; second lien recovers 90 of 120 = 75 percent; equity is out of the money. The second lien is the fulcrum.
+- Options: amend and extend with the senior lenders (needs a credible plan); new money from the fund; debt-for-equity swap in which the second-lien lenders take a majority of the equity; sale of the business; a StaRUG plan if lenders don't agree.
+- A likely solution: senior extended, second lien converts largely into equity, fund injects new money for a minority stake, leverage falls to about 300 / 60 = 5.0x.
+Strong candidates identify who holds the value (the fulcrum) and frame options from each stakeholder's view.
+
+======================================================================
+PART F — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and resilience: 1 generic; 3 reasonable but not restructuring-specific; 5 specific, realistic about intensity, with evidence.
+Prioritization under urgency: 1 jumps to strategy; 3 sensible but unordered; 5 liquidity first, clear first-week plan, then medium term.
+Cash and financial literacy: 1 confuses profit and cash; 3 basic understanding; 5 confident with cash flow, working capital, covenants, waterfall.
+Quantitative accuracy: 1 wrong and lost; 3 right with help; 5 fast, correct, states implication.
+Pragmatism: 1 theoretical; 3 some concrete actions; 5 concrete, sequenced actions with owners and quick wins.
+Stakeholder communication: 1 ignores stakeholders; 3 mentions them; 5 tailored messages for banks, owners, customers, employees.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

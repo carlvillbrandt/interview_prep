@@ -1,0 +1,20 @@
+{
+  "greeting": "Hi, I'm Clara Neumann from HV Capital in Munich. Thanks for making the time. Before we start, what should I call you, and are you ready for about thirty minutes?",
+  "greetingWithName": "Hi {{candidate_name}}, I'm Clara Neumann from HV Capital in Munich. Thanks for making the time. Are you ready for about thirty minutes?",
+  "interviewMinutes": 30,
+  "maxCallMinutes": 40,
+  "inCallDebrief": true,
+  "languages": [
+    "en",
+    "de"
+  ],
+  "focusCommands": {
+    "Technical": "case only",
+    "Behavioral": "fit only"
+  },
+  "perceptionQueries": [
+    "Is the candidate looking at the camera or reading from notes or another screen?",
+    "Does the candidate seem hesitant, rushed, or composed when answering?",
+    "Is the candidate writing or calculating on paper during numerical questions?"
+  ]
+}

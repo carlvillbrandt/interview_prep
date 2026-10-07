@@ -2,10 +2,21 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { companyAccent, monogram, type Company } from "@/data/catalog";
+import { companyAccent, companyMonogram, monogram, type Company } from "@/data/catalog";
 import { ArrowRightIcon } from "@/components/icons";
 
-export function Monogram({ name, accent, size = "md" }: { name: string; accent: string; size?: "sm" | "md" | "lg" }) {
+export function Monogram({
+  name,
+  label,
+  accent,
+  size = "md",
+}: {
+  name: string;
+  /** Explicit monogram letters; derived from the name if omitted. */
+  label?: string;
+  accent: string;
+  size?: "sm" | "md" | "lg";
+}) {
   const dims = { sm: "h-10 w-10 text-base", md: "h-12 w-12 text-lg", lg: "h-16 w-16 text-2xl" }[size];
   return (
     <span
@@ -17,7 +28,7 @@ export function Monogram({ name, accent, size = "md" }: { name: string; accent: 
         background: `linear-gradient(145deg, color-mix(in srgb, ${accent} 16%, transparent), transparent)`,
       }}
     >
-      {monogram(name)}
+      {label ?? monogram(name)}
     </span>
   );
 }
@@ -34,7 +45,7 @@ export function CompanyCard({ company, variant }: { company: Company; variant: "
           style={{ "--accent": accent } as React.CSSProperties}
           className="group flex items-center gap-4 rounded-2xl border border-line bg-ink-900/70 p-4 transition-colors hover:border-line-strong hover:bg-ink-850"
         >
-          <Monogram name={company.name} accent={accent} size="sm" />
+          <Monogram name={company.name} label={companyMonogram(company)} accent={accent} size="sm" />
           <span className="min-w-0 flex-1">
             <span className="block truncate font-medium text-fg">{company.name}</span>
             <span className="block truncate text-sm text-fg-subtle">{company.interviewStyle}</span>
@@ -57,7 +68,7 @@ export function CompanyCard({ company, variant }: { company: Company; variant: "
           className="pointer-events-none absolute -right-16 -bottom-20 h-48 w-48 rounded-full opacity-15 blur-3xl transition-opacity duration-500 group-hover:opacity-30"
           style={{ background: accent }}
         />
-        <Monogram name={company.name} accent={accent} size="lg" />
+        <Monogram name={company.name} label={companyMonogram(company)} accent={accent} size="lg" />
         <h3 className="font-display relative mt-6 text-2xl leading-tight text-fg">{company.name}</h3>
         <p className="relative mt-2 line-clamp-2 text-sm leading-relaxed text-fg-muted">{company.tagline}</p>
         <div className="relative mt-auto flex items-center justify-between pt-6">

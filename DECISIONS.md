@@ -94,22 +94,28 @@ interviewer leaving, and access to `app-message` events for captions.
 
 ## 8. Catalog and content (per the user's revised brief)
 
-* **The catalog ships empty** and **no company folders are authored yet**. The user will supply firms and their
-  exact content. The three industries (Investment Banking, Venture Capital / Private Equity, Consulting) exist, and their
-  pages show a "firms coming soon" empty state.
+* The catalog started empty; firm content is supplied by the user. All nine supplied firms are live, mapped as described in §11:
+  Consulting (AlixPartners, Simon-Kucher, Bain & Company), Investment Banking (Goldman Sachs TMT, Citi Power/Utilities/Infra,
+  Houlihan Lokey Industrials), VC/PE (General Atlantic, Verdane, HV Capital).
 * Industry **templates** in `interviews/_templates/{industry}/` *are* authored (generic, firm-agnostic), because the scaffold
   script needs them and they double as format references. `npm run scaffold` fills `{{company_name}}` and
   `{{interview_style}}`, and inserts a catalog entry at the `@scaffold-insert` marker.
 * `validate:interviews` validates the templates plus every catalog company. With an empty catalog it passes on
   templates alone. It runs automatically before `npm run build`.
-* Rules enforced for every company: 4 files present, ≥1 guardrail, 5–7 objectives, `next` references resolve, Tavus
-  length limits. The 400–900 word system-prompt range is enforced for `featured` firms and only warned for others.
+* Rules enforced for every company: 4 files present, ≥1 guardrail, 2–10 objectives, every `next`/branch target exists,
+  Tavus length limits, valid `settings.json`. The original "5–7 objectives" and "400–900 words" rules were relaxed because the
+  supplied firm content (4 objectives, ~1,900-word prompts) is authoritative; a prompt under 150 words is still an error.
 
 ## 9. Testing without real firms
 
 The Playwright smoke test needs a clickable company. When `NEXT_PUBLIC_E2E_FIXTURES=1` the catalog adds one fixture
 firm and the loader reads from `tests/fixtures/interviews`. This flag is set only by `playwright.config.ts`.
 Production builds never include it.
+
+## 10b. Testing note
+
+The Playwright server sets `INTERVIEWS_FALLBACK_DIR=tests/fixtures/interviews`: real firms load from `/interviews`,
+and only folders missing there (the fixture firm) come from the fixtures directory.
 
 ## 10. Framework
 
@@ -118,3 +124,52 @@ Production builds never include it.
   With an empty catalog, `generateStaticParams` would return `[]`, which Cache Components rejects, so company routes render on demand.
 * `next lint` no longer exists in v16; `npm run lint` runs the ESLint CLI.
 * Zod v4 for all payloads (the Anthropic SDK's zod helper targets `zod/v4`).
+
+## 11. Supplied firm content (October 2026)
+
+Each supplied persona came as `SystemPrompt.md`, `KnowledgeBase.txt` and `SetupFields.md`. Mapping:
+
+| Supplied | PrepRoom file | Notes |
+|---|---|---|
+| SystemPrompt.md | `systemprompt.txt` | Verbatim. |
+| KnowledgeBase.txt | `knowledge/<name>.txt` | Verbatim. **Inlined into the PAL system prompt** (see below). |
+| SetupFields §1 greeting | `settings.json` → `greeting` | Plus `greetingWithName` for when the candidate typed a name in setup. |
+| SetupFields §2 capabilities | `capabilities.txt` + `settings.json` → `perceptionQueries` | Perception queries become Raven `visual_awareness_queries`. |
+| SetupFields §4 objectives | `objectives.txt` | New `branches:` key → Tavus `next_conditional_objectives`. |
+| SetupFields §5 guardrails | `guardrails.txt` | One block per row; they replace the template guardrails. |
+| "45 minutes max", "auf Deutsch" | `settings.json` | `maxCallMinutes: 45`, `interviewMinutes: 35`, `languages: ["en","de"]` (Tavus restricts speech recognition to the listed languages, so German must be declared). |
+
+Decisions:
+
+* **`settings.json` (optional, per firm).** Holds greeting, durations, `inCallDebrief`, languages, `focusCommands`,
+  perception queries and `cvUpload`. It is validated by Zod (unknown keys are errors) and included in the content hash.
+  Firms without it keep the original defaults (20-minute calls, English, no in-call feedback).
+* **Knowledge is inlined, not uploaded.** Tavus documents require a public URL (unusable on localhost) and are retrieved by
+  RAG, which can miss a case's answer key. Prompt + knowledge is ~30k characters (~7.5k tokens) per firm, inside Tavus'
+  guidance (degradation from ~15–20k tokens). Knowledge over 48k characters falls back to documents when the app is public.
+* **In-call debrief + written scorecard.** These personas give a spoken debrief (1–5 scores on firm-specific categories).
+  PrepRoom keeps its written results screen (1–10 on the six generic categories; confirmed by the owner) and tells the
+  interviewer so. The scoring model receives the firm's knowledge base (case facts, answer keys, 1–5 rubric) to check
+  calculations, and is told to judge independently of the interviewer's spoken verdict.
+* **Focus presets.** The setup "focus" maps to the personas' own practice controls: Case / technical → "case only",
+  Fit & behavioral → "fit only", Full interview → normal flow.
+* **Levels per industry.** Consulting offers Intern (default, matching the personas), Working Student, Entry-level
+  Consultant, Experienced Consultant, MBA Associate.
+* **CV upload instead of per-interview knowledge documents.** The supplied workflow uploads `CV_First_Last.pdf` to the
+  knowledge base and deletes it after the call. PrepRoom instead extracts the text in `/api/cv` (PDF or .txt, ≤5 MB; nothing
+  stored) and passes it in that conversation's `conversational_context` (capped at 6k characters). That achieves the same
+  "only this candidate's CV" guarantee without leaving personal data on the PAL. The personas' CV-matching instructions
+  still work, because exactly one CV is present.
+* **`end_call`** is a Tavus system tool available to every conversation (spec: `type=system`), so no configuration is needed.
+  When the PAL ends the call, the interviewer leaves the Daily room and PrepRoom routes to the results screen.
+* **Phoenix emotion tags removed (owner delegated the call).** The supplied prompts asked for a leading emotion tag on every
+  reply and in `end_call`'s `response_to_user`. Tavus documents `<emotion value="…"/>` tags only for Echo mode; in the full
+  pipeline Phoenix-4/4.5 faces express emotion automatically, guided by the prompt, so a literal tag risks being spoken.
+  In all nine `systemprompt.txt` files that paragraph is replaced by a descriptive instruction (calm/neutral for questions,
+  warm for friendly moments, rarely surprised, never say emotion names aloud), and `response_to_user` is plain "Goodbye.".
+  Emotion-tag stripping on captions and transcripts stays as a safety net. This is the only edit to the supplied prompts.
+* **Guardrails** are the supplied ones plus one added to every firm (owner-approved): `<prefix>_distress_handling`
+  (pause, offer to reset or stop, no medical advice, point to emergency services in a crisis).
+* **Placement and settings for IB and VC/PE.** Verdane and General Atlantic sit under "Venture Capital & Private Equity".
+  IB focus presets map to "technicals only" / "fit only"; PE/VC to "case only" / "fit only". HV Capital uses its supplied
+  30-minute interview with a 40-minute hard stop; all others 35 / 45.

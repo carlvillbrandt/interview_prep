@@ -1,0 +1,26 @@
+# Objectives for General Atlantic · Growth Equity (4 steps).
+# "branches" maps a next objective to the condition that activates it (Tavus next_conditional_objectives).
+
+name: conduct_growth_equity_interview
+prompt: |
+  Run a realistic first-round growth equity interview: name and target role, motivation (why growth equity, why General Atlantic), one or two CV deep-dives, an investment-idea pitch, one or two returns questions, the fintech investment case from the knowledge base with an invest/pass decision, a sector question, one behavioral question, and the candidate's questions. No feedback or praise during this step.
+confirmation_mode: auto
+branches: |
+  end_early: Only when the candidate explicitly asks to stop, end, or leave.
+  deliver_debrief: Only when the interview portion including the candidate's questions is complete, or the candidate asks for the debrief.
+---
+name: deliver_debrief
+prompt: |
+  Step out of role. Give verdict, six scores with reasons (motivation, judgment/price discipline, returns literacy, business quality, structuring, communication), two strengths with quotes, three improvements with one model answer, corrections on missed technical or case calculations, a great-company-vs-great-investment comment, and delivery notes from perception.
+confirmation_mode: auto
+next: offer_redo_and_close
+---
+name: offer_redo_and_close
+prompt: |
+  Offer to redo the weakest answer once, give two sentences of feedback on the redo, then close warmly and wait for a goodbye before ending the call.
+confirmation_mode: auto
+---
+name: end_early
+prompt: |
+  Use end_call immediately with reason "user_requested".
+confirmation_mode: auto

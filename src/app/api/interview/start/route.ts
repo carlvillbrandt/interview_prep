@@ -3,7 +3,7 @@ import { clientIp, errorResponse, jsonError, RateLimiter } from "@/lib/api";
 import { appBaseUrl, isDev, isPubliclyReachable, tavusApiKey, webhookSecret } from "@/lib/env";
 import { provisionCompany } from "@/lib/provision";
 import { StartInterviewRequestSchema, type StartInterviewResponse } from "@/lib/schemas";
-import { buildConversationalContext, buildGreeting, MAX_CALL_DURATION_SECONDS } from "@/lib/session";
+import { buildConversationalContext, buildGreeting, maxCallSeconds } from "@/lib/session";
 import { resultStore } from "@/lib/storage";
 import { tavus } from "@/lib/tavus";
 
@@ -32,6 +32,8 @@ export async function POST(req: Request) {
 
     const client = tavus(tavusApiKey());
     const provisioned = await provisionCompany(company, { client });
+    const { settings } = provisioned.content;
+    const maxDurationSeconds = maxCallSeconds(settings);
 
     const callbackBase = isPubliclyReachable() ? `${appBaseUrl()}/api/webhooks/tavus` : undefined;
     const secret = webhookSecret();
@@ -45,20 +47,23 @@ export async function POST(req: Request) {
         level: body.level,
         focus: body.focus,
         candidateName: body.candidateName,
+        settings,
+        cvText: body.cvText,
       }),
       custom_greeting: buildGreeting({
         company,
         interviewerName: provisioned.interviewerName,
         candidateName: body.candidateName,
+        settings,
       }),
       ...(callbackUrl ? { callback_url: callbackUrl } : {}),
       properties: {
-        max_call_duration: MAX_CALL_DURATION_SECONDS,
+        max_call_duration: maxDurationSeconds,
         participant_left_timeout: 10,
         participant_absent_timeout: 120,
         enable_closed_captions: true,
         enable_recording: false,
-        languages: ["en"],
+        languages: settings.languages,
       },
     });
 
@@ -79,7 +84,8 @@ export async function POST(req: Request) {
       console.info(
         `[start] ${company.slug}: conversation ${conversation.conversation_id} on PAL ${provisioned.palId} ` +
           `(objectives ${provisioned.objectivesId}, ${provisioned.guardrailIds.length} guardrails, ` +
-          `${provisioned.reused ? "cached" : "freshly provisioned"})${callbackUrl ? "" : " (webhook disabled: polling fallback)"}`,
+          `${provisioned.reused ? "cached" : "freshly provisioned"}, ${settings.maxCallMinutes} min, ${settings.languages.join("/")}` +
+          `${body.cvText ? ", CV attached" : ""})${callbackUrl ? "" : " (webhook disabled: polling fallback)"}`,
       );
     }
 
@@ -88,7 +94,7 @@ export async function POST(req: Request) {
       conversationUrl: conversation.meeting_token
         ? `${conversation.conversation_url}?t=${conversation.meeting_token}`
         : conversation.conversation_url,
-      maxDurationSeconds: MAX_CALL_DURATION_SECONDS,
+      maxDurationSeconds,
       interviewerName: provisioned.interviewerName,
     };
     return Response.json(response, { status: 201 });

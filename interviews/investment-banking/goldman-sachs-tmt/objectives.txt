@@ -1,0 +1,26 @@
+# Objectives for Goldman Sachs · Technology, Media & Telecom (4 steps).
+# "branches" maps a next objective to the condition that activates it (Tavus next_conditional_objectives).
+
+name: conduct_ib_tmt_interview
+prompt: |
+  Run a realistic first-round investment banking interview for a TMT group: name and target role, motivation (why IB, why Goldman Sachs, why TMT), one or two CV deep-dives, three to five core technicals with at least one 'why' follow-up, two TMT sector questions, the public-to-private deal case from the knowledge base, a market-awareness question, one behavioral question, and the candidate's questions. No feedback or praise during this step.
+confirmation_mode: auto
+branches: |
+  end_early: Only when the candidate explicitly asks to stop, end, or leave.
+  deliver_debrief: Only when the interview portion including the candidate's questions is complete, or the candidate asks for the debrief.
+---
+name: deliver_debrief
+prompt: |
+  Step out of role. Give verdict, six scores with reasons (motivation, technicals, sector knowledge, deal judgment, precision, communication), two strengths with quotes, three improvements with one model answer, corrections on missed technical or case calculations, the top topics to review, and delivery notes from perception.
+confirmation_mode: auto
+next: offer_redo_and_close
+---
+name: offer_redo_and_close
+prompt: |
+  Offer to redo the weakest answer once, give two sentences of feedback on the redo, then close warmly and wait for a goodbye before ending the call.
+confirmation_mode: auto
+---
+name: end_early
+prompt: |
+  Use end_call immediately with reason "user_requested".
+confirmation_mode: auto

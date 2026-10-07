@@ -1,0 +1,152 @@
+VERDANE — PRIVATE EQUITY / GROWTH INVESTING — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Hannah Krüger). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: Verdane, European growth investor in technology and sustainability, investing since 2003.
+Per its website: about 10 billion euros of raised fund capital; more than 200 investments; 180-plus investment professionals and operational experts; offices in London, Berlin, Munich, Oslo, Stockholm, Copenhagen, and Helsinki.
+Themes: digitalization (tech-enabled B2B and B2C) and decarbonization (energy transition, resource efficiency).
+Mandate: minority or majority, single companies or portfolios of company stakes bought from other investors or corporates; equity tickets of about 20 to 150 million euros; hands-on operational support. The firm has bought portfolios from German owners in the past and opened a Berlin office in 2019 to grow in Germany.
+
+Interview format: private-equity interviews typically combine fit, deal discussion, returns questions, and a case study or modeling test; the exact process varies. The candidate should confirm with the recruiter.
+
+What a strong "why Verdane" answer references (debrief only):
+- Growth-oriented investing with founders rather than heavy leverage.
+- The two themes (digitalization, decarbonization) and a personal link.
+- The flexible mandate, including buying portfolios of stakes, which needs broad judgment.
+- Northern European / DACH focus and why it fits them.
+Weak: AUM, prestige, "I want to work in PE".
+
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at investing?
+
+PRIOR PE, VC, GROWTH, OR ANGEL EXPERIENCE (internship, scout, student fund)
+- Walk me through one deal you worked on or screened. Would you have invested? At what price?
+- Tell me about one company you'd have backed and one you'd have passed on, and why.
+- What did you learn about how a fund actually makes decisions?
+- What was the best memo or market map you produced, and did it change anyone's mind?
+
+INVESTMENT BANKING, M&A, TRANSACTION SERVICES
+- Walk me through a deal: what was the investment case for the buyer, and would you have bought it?
+- What did the model miss?
+
+CONSULTING, ADVISORY, STRATEGY, DUE DILIGENCE
+- Which project taught you the most about what makes a business valuable?
+- If you'd had to invest your own money in that client, would you?
+
+STARTUP OR OPERATOR EXPERIENCE (employee or founder)
+- What was the company's biggest risk, and what did you do about it?
+- Founders: pitch it in 60 seconds. Would you invest in it as an investor? Why or why not?
+
+STUDENT INVESTMENT CLUBS, COMMUNITY BUILDING
+- What did you build or change, not just join? How did you select people or deals?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- Which companies could be built on this technology, and which would you back?
+- How do you judge a technical team outside your own field?
+
+SIDE PROJECTS, MARKET MODELS, OWN INVESTMENTS
+- Walk me through the key assumption in your model. What happens if it's off by half?
+- Best and worst investment you've made yourself, and what you learned.
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+2. Why private equity, and why a growth investor rather than a classic buyout fund?
+   Strong: understands growth-driven returns, minority and majority situations, working with founders.
+3. Why Verdane?
+4. What makes a founder want an investor like us rather than another fund?
+   Strong: operational help, flexibility, partnership, reputation with founders, speed.
+5. Tell me about a time you disagreed with someone senior. What happened?
+6. What's a company you'd never invest in, and why?
+
+======================================================================
+PART D — RETURNS AND DEAL TECHNICALS WITH ANSWER KEYS
+======================================================================
+P1 Paper LBO. EBITDA 100, bought at 10x (EV 1,000), 60 percent debt (600), equity 400. EBITDA grows 5 percent a year for five years; exit at 10x; cumulative debt paydown 250. MOIC and IRR?
+Answer: exit EBITDA about 127.6; exit EV about 1,276; net debt 350; exit equity about 926; MOIC about 2.3x; IRR about 18 percent. Rules of thumb over five years: 2x is about 15 percent, 2.5x about 20 percent, 3x about 25 percent.
+
+P2 Value creation bridge. Entry: EBITDA 20 at 10x = 200 EV, net debt 80, equity 120. Exit after five years: EBITDA 35 at 11x = 385 EV, net debt 40. Equity value at exit and MOIC? Split the value creation.
+Answer: exit equity 345; MOIC about 2.9x. Gain 225 = EBITDA growth 15 x 10 = 150, plus multiple expansion 1 x 35 = 35, plus debt reduction 40.
+
+P3 Minority stake math. You invest 50 million for 25 percent. Pre- and post-money? With a 1x non-participating liquidation preference, what do you get at an exit of 120 million?
+Answer: post-money 200, pre-money 150. At 120 million, 25 percent is 30, below the 50 preference, so take 50.
+
+P4 What protections does a minority investor negotiate?
+Answer: board seat; veto rights on key decisions (budget, M&A, new debt, management changes); information rights; liquidation preference; anti-dilution; tag-along and drag-along; exit rights (IPO or sale after a number of years, put options).
+
+P5 What makes a good LBO candidate?
+Answer: stable, predictable cash flows; strong market position; low capex needs; operational improvement potential; reasonable entry price; clear exit routes.
+
+P6 Growth equity vs buyout vs venture: how do returns differ in their drivers?
+Answer: buyout returns rely more on leverage, margin improvement, and multiple; growth equity mainly on revenue growth with little or no leverage, often minority stakes; venture on a few outliers (power law), high failure rates.
+
+P7 IRR vs MOIC: why look at both?
+Answer: IRR measures speed, MOIC measures absolute money multiple. A quick 1.3x can have a high IRR but little money made; funds care about both.
+
+P8 Unit economics. Average revenue per account 625 euros a month, 80 percent gross margin, 3 percent monthly churn, customer acquisition cost 4,000 euros. LTV, LTV/CAC, payback?
+Answer: LTV 625 x 0.8 / 0.03 = about 16,700; LTV/CAC about 4.2; payback 4,000 / 500 = 8 months. 3 percent monthly churn is about 31 percent annual logo churn.
+
+======================================================================
+PART E — INVESTMENT CASES (fictional)
+Pitch the headline in a few sentences. Reveal facts only when asked. If asked something not listed, say it isn't known.
+======================================================================
+
+CASE 1 — WÄRMEPLAN SOFTWARE (majority growth buyout, decarbonization software)
+Headline: Wärmeplan is a Munich software company that helps heat-pump installers plan systems, quote customers, and handle subsidy paperwork. Founder-owned and profitable. The founders want partial liquidity. We're looking at buying 60 percent at an enterprise value of 150 million euros. Revenue 25 million, EBITDA 5 million.
+Facts on request:
+- ARR 24 million; about 6,000 installer customers; about 4,000 euros per customer per year.
+- Growth: 40 percent in the heat-pump boom year, about 10 percent last year after heat-pump sales in Germany fell by roughly 45 percent (case data).
+- Net revenue retention 104 percent; gross churn 12 percent a year, partly installers going out of business.
+- Expansion plans: Austria and the Netherlands; adjacent modules for solar and battery quoting.
+- Peers (vertical software) trade at about 4 to 7 times revenue.
+- Debt capacity: about 2x EBITDA, so 10 million.
+- Price: 150 million EV = 6x revenue, 30x EBITDA.
+Answer key:
+- Equity: 150 - 10 debt = 140; our 60 percent costs 84 million.
+- Base case: revenue grows 20 percent a year for five years to about 62 million, EBITDA margin 30 percent (about 19 million), exit at 5x revenue = about 311 million EV, assume no net debt at exit. Our 60 percent: about 187 million. MOIC about 2.2x, IRR about 17 percent.
+- Below a typical growth-buyout target (often around 2.5 to 3x). To get there: lower price, faster growth from adjacencies and new countries, or margin expansion.
+- Risks: cyclicality of heat-pump demand and subsidies, installer churn, concentration in Germany, competition from ERP and installer software suites, founder dependency.
+- Value creation: international expansion, solar/battery modules, pricing (move to tiers), reduce churn, professionalize sales.
+- Strong answers: interesting theme, but the price assumes a quick return to strong growth; negotiate price or structure (earn-out for founders, keep founders invested), diligence the cycle and churn.
+
+CASE 2 — PORTFOLIO OF STAKES FROM A CORPORATE VC (secondary portfolio purchase)
+Headline: A German industrial group wants to sell its corporate venture portfolio of eight minority stakes. Reported value (NAV) is 120 million euros. They want a quick, clean exit. What would you pay?
+Facts on request:
+- Three companies make up 75 percent of NAV.
+- Company A, B2B software: NAV 50 million, based on a round 18 months ago at 12x ARR; peers now trade at about 7x ARR; growing 30 percent.
+- Company B, climate hardware: NAV 30 million; 9 months of cash left; raising a new round is uncertain.
+- Company C, fintech: NAV 10 million, recent round, fairly valued.
+- Five small companies: NAV 30 million combined, mostly marked at last-round prices, several struggling.
+- The seller would accept a discount for speed and certainty.
+Answer key:
+- Re-mark: A at 7 / 12 of 50 = about 29 million; B at about 50 percent given funding risk = 15 million; C at 10 million; tail at about 40 percent = 12 million. Adjusted value about 66 million, about 55 percent of reported NAV.
+- To earn a target return (for example 2x), bid below adjusted value: roughly 45 to 50 percent of reported NAV (about 55 to 60 million), possibly with deferred payment.
+- Strong answers: focus diligence on Company A (most value), check rights attached to each stake, think about which companies need follow-on capital and the plan to exit each.
+
+======================================================================
+PART F — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic ("I want to do PE"); 3 reasonable but not firm-specific; 5 specific, credible edge tied to the firm's themes and mandate.
+Investment judgment: 1 no decision or only positives; 3 decision with some risks; 5 clear decision, key risk, what would change their mind, price discipline.
+Returns and financial literacy: 1 wrong and lost; 3 right with help; 5 fast, correct, explains drivers.
+Commercial and sector thinking: 1 superficial; 3 sensible; 5 sharp on market, customers, competition, and cycle.
+Value creation and structuring: 1 none; 3 generic levers; 5 specific, prioritized plan and sensible deal structure.
+Communication and conviction: 1 rambling or folds immediately; 3 clear but long; 5 crisp, holds or updates views with reasons.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.

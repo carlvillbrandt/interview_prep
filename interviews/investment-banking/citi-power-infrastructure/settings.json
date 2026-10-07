@@ -1,0 +1,20 @@
+{
+  "greeting": "Hi, I'm Sophie Lambert from the Power, Utilities and Infrastructure team at Citi. Thanks for making the time. Before we start, what should I call you, and are you ready for about thirty-five minutes?",
+  "greetingWithName": "Hi {{candidate_name}}, I'm Sophie Lambert from the Power, Utilities and Infrastructure team at Citi. Thanks for making the time. Are you ready for about thirty-five minutes?",
+  "interviewMinutes": 35,
+  "maxCallMinutes": 45,
+  "inCallDebrief": true,
+  "languages": [
+    "en",
+    "de"
+  ],
+  "focusCommands": {
+    "Technical": "technicals only",
+    "Behavioral": "fit only"
+  },
+  "perceptionQueries": [
+    "Is the candidate looking at the camera or reading from notes or another screen?",
+    "Does the candidate seem hesitant, rushed, or composed when answering?",
+    "Is the candidate writing or calculating on paper during numerical questions?"
+  ]
+}

@@ -1,0 +1,176 @@
+HOULIHAN LOKEY — CORPORATE FINANCE – INDUSTRIALS — MOCK INTERVIEW KNOWLEDGE BASE
+For the interviewer (Maximilian Roth). Do not read this aloud. Do not reveal answer keys, "strong answer" notes, or the rubric before the debrief.
+This file is shared by all candidates. Each candidate's CV is uploaded as a separate knowledge document for their session. Use only the CV that belongs to the current candidate.
+Firm facts below come from public sources as of October 2026 and may change. Interview-format notes describe what candidates commonly report, not the firm's official process.
+
+======================================================================
+PART A — FIRM AND ROLE PROFILE
+======================================================================
+Firm: Houlihan Lokey (NYSE: HLI), global investment bank founded in 1972 in Los Angeles. Advisory-focused: M&A, capital markets and debt advisory, financial restructuring, and financial and valuation advisory; no lending balance sheet.
+Firm's own claims on its German website: number one investment bank for all global M&A transactions (by number of deals), number one global restructuring advisor, number one M&A fairness opinion advisor, number one global financial advisor for private equity. More than 1,900 restructuring transactions since 1988.
+Germany: Frankfurt and Munich offices; M&A teams across technology, industrials, consumer, and healthcare; independent debt advisory; equity capital markets advisory; restructuring presence in Frankfurt.
+Industrials Group (job postings): "M&A advisory, capital raising, restructuring, and valuation"; collegial, entrepreneurial culture where senior bankers are involved in client work. Analyst tasks: financial models, due diligence, confidential information memoranda and presentations, market and company research, valuation. German and English required; advanced Excel and modeling.
+
+Interview format: investment bank interviews typically combine fit, technical questions, and sometimes a modeling or case test; the exact process varies. The candidate should confirm with the recruiter.
+
+What a strong "why Houlihan Lokey / why industrials" answer references (debrief only):
+- Deal volume: many mid-market deals means more execution experience for juniors.
+- Advisory-only model without lending conflicts; strength with private-equity clients and Mittelstand sellers.
+- Real interest in industrial businesses: products, customers, automation, energy transition, succession in family firms.
+Weak: "it's a great bank", generic prestige.
+
+INDUSTRIALS SECTOR CONCEPTS (for judging answers)
+- Sub-sectors: capital goods and machinery, automation, building products, automotive suppliers, aerospace and defense, chemicals, industrial services, transport and logistics.
+- Cyclicality: value on mid-cycle EBITDA, not peak or trough.
+- Order intake, backlog, book-to-bill (orders / revenue): above 1 means growing backlog.
+- Capex intensity: maintenance vs growth capex; EV/EBIT or EV/(EBITDA - capex) for capital-heavy businesses.
+- Working capital intensity: inventory and receivables can be 20 to 30 percent of sales.
+- EBITDA normalization in family companies: one-offs, owner compensation above or below market, related-party rents, non-operating gains.
+- Debt-like items: pension provisions, factoring, deferred payments, unpaid bonuses.
+- Deal types: Mittelstand succession sales, corporate carve-outs (stand-alone costs, transitional service agreements), PE buy-and-build.
+
+======================================================================
+PART B — HOW TO PROBE A CANDIDATE'S BACKGROUND
+======================================================================
+Pick the one or two CV items most relevant to this role. Never recite the CV. For each item choose two or three probes.
+
+ANY ROLE
+- What did you personally own or decide, as opposed to the team?
+- What was the result, in a number?
+- What would you do differently?
+- How does this make you better at investment banking?
+
+M&A, CORPORATE FINANCE, TRANSACTION SERVICES
+- Walk me through one deal you worked on: what was your role, what did the model show, how did it end?
+- What was the hardest number to get right, and why?
+- What would you have told the client differently?
+
+CONSULTING, AUDIT, CONTROLLING
+- What did you learn about how companies report and manage numbers?
+- Tell me about an error you found or made. What happened?
+
+PE, VC, ASSET MANAGEMENT, INVESTMENT CLUBS
+- Pitch me a company you analyzed. Would you buy it at today's valuation?
+- What valuation method did you use, and what's its weakness?
+
+STARTUP OR OPERATOR EXPERIENCE
+- What did the company's financials look like, and what drove them?
+- If you had to sell that company today, who would buy it and why?
+
+STUDENT CLUBS, FINANCE SOCIETIES
+- What did you build or change, not just join?
+
+RESEARCH, TECHNICAL, OR ENGINEERING BACKGROUND
+- How does that knowledge help you understand clients in this sector?
+
+NO DIRECTLY RELEVANT EXPERIENCE OR CAREER SWITCHER
+- What made you decide on this path, and what have you done to test that decision?
+- What do you bring that a typical candidate doesn't?
+
+======================================================================
+PART C — MOTIVATION AND FIT QUESTION BANK
+======================================================================
+1. Walk me through your background in two minutes.
+   Strong: crisp, chronological, each step explains the next, ends with why banking and this group now.
+2. Why investment banking?
+   Strong: understands the analyst job (modeling, materials, execution, long hours), wants transaction exposure and learning speed; concrete evidence of interest.
+3. Why this bank, and why this sector group?
+   Strong: specific to the bank's model and the sector; names a deal type or trend they find interesting and why.
+4. Tell me about a time you worked under extreme time pressure.
+5. Tell me about a mistake you made and how you handled it.
+   Strong: owns it, fixed it fast, changed a habit (checking, version control).
+6. Where do you see yourself in five years?
+   Strong: honest, shows commitment to learning the job; no need to pretend lifelong banking.
+
+======================================================================
+PART D — CORE TECHNICALS WITH ANSWER KEYS (all IB roles)
+Ask in increasing difficulty. Assume a 30 percent tax rate unless stated.
+======================================================================
+T1 Walk me through the three financial statements and how they link.
+Answer: income statement (revenue to net income); net income flows to retained earnings in equity on the balance sheet and starts the cash flow statement; cash flow statement adjusts for non-cash items (D&A), working capital, investing (capex), financing (debt, dividends); ending cash goes to the balance sheet.
+
+T2 Depreciation goes up by 10. Walk me through the statements.
+Answer: EBIT -10; tax -3; net income -7. Cash flow: net income -7 plus D&A +10 = cash +3. Balance sheet: PP&E -10, cash +3, so assets -7; retained earnings -7. Balances.
+
+T3 Enterprise value vs equity value. Equity value 800, debt 300, cash 100, minority interest 20, pension provisions 50. Enterprise value?
+Answer: 800 + 300 - 100 + 20 + 50 = 1,070. Pension provisions are debt-like and matter a lot for German companies.
+
+T4 Which multiples do you use with enterprise value vs equity value, and why?
+Answer: EV with metrics before interest (revenue, EBITDA, EBIT), available to all capital providers; equity value with metrics after interest (net income, so P/E). Consistency.
+
+T5 Walk me through a DCF.
+Answer: project unlevered free cash flow (EBIT x (1 - tax) + D&A - capex - change in working capital), typically 5 to 10 years; terminal value by perpetuity growth or exit multiple; discount at WACC; sum gives enterprise value; subtract net debt and debt-like items for equity value; divide by diluted shares.
+
+T6 Terminal value. Next year's free cash flow 50, WACC 9 percent, growth 2 percent. Value of that perpetuity today?
+Answer: 50 / (0.09 - 0.02) = about 714.
+Follow-up: year-5 EBITDA 120 at an 8x exit multiple, discounted five years at 9 percent: 960 / 1.539 = about 624.
+
+T7 WACC. How do you calculate it, and what happens to WACC if a company adds more debt?
+Answer: cost of equity (CAPM: risk-free rate + beta x equity risk premium) and after-tax cost of debt, weighted by market values. More debt initially lowers WACC (cheaper, tax-deductible) until rising distress risk raises the costs of debt and equity.
+
+T8 Accretion / dilution. Acquirer net income 100, 100 shares, share price 20 (P/E 20). It buys a target with net income 20 for an equity price of 300. (a) All stock. (b) All debt at 5 percent pre-tax.
+Answer: (a) new shares 300 / 20 = 15; EPS 120 / 115 = 1.043, about 4.3 percent accretive (acquirer P/E 20 above price paid P/E 15). (b) after-tax interest 300 x 5 percent x 0.7 = 10.5; EPS (120 - 10.5) / 100 = 1.095, about 9.5 percent accretive. Ignores synergies and fees.
+
+T9 Paper LBO. EBITDA 100, bought at 10x (EV 1,000), 60 percent debt (600), equity 400. EBITDA grows 5 percent a year for five years; exit at 10x; cumulative debt paydown 250. MOIC and IRR?
+Answer: exit EBITDA about 127.6; exit EV about 1,276; net debt 350; exit equity about 926; MOIC about 2.3x; IRR about 18 percent. Rules of thumb over five years: 2x is about 15 percent, 2.5x about 20 percent, 3x about 25 percent.
+
+T10 Why might two companies with the same EBITDA trade at different multiples?
+Answer: growth, margins and their stability, capex and working-capital needs (cash conversion), risk and cyclicality, market position, quality of management, size and liquidity of the stock.
+
+T11 Comparable companies vs precedent transactions: which gives a higher value and why?
+Answer: precedents usually higher because they include a control premium and sometimes synergies; they can also reflect different market conditions.
+
+T12 Locked box vs completion accounts (common in European M&A).
+Answer: locked box fixes the price on a historical balance sheet date with no post-closing adjustment, protecting against "leakage" (value going to the seller) after that date; completion accounts adjust the price after closing for actual net debt and working capital. Locked box gives certainty and is seller-friendly.
+
+======================================================================
+PART E — INDUSTRIALS SECTOR QUESTIONS WITH ANSWER KEYS
+======================================================================
+S1 A machinery company has book-to-bill of 0.85. What does it tell you?
+Answer: orders are 15 percent below revenue: backlog is shrinking, revenue will likely fall in coming quarters. Ask why: cycle, lost share, or lumpy large orders.
+
+S2 Why would you value a capital-intensive industrial company on EV/EBIT rather than EV/EBITDA?
+Answer: EBITDA ignores capex; EBIT includes depreciation as a proxy for the capital needed to sustain the business, so it compares businesses with different capital intensity better.
+
+S3 How do you value a cyclical company at the peak of the cycle?
+Answer: use mid-cycle (normalized) EBITDA and margins, or apply a lower multiple to peak earnings; look across a full cycle.
+
+S4 What EBITDA adjustments would you expect in a family-owned company sale?
+Answer: one-off costs (legal disputes, restructuring), owner salary adjusted to market, related-party rents at market levels, removal of non-operating income (property sales), pro forma effects of recent actions. Buyers challenge aggressive add-backs.
+
+S5 A buyer acquires a carve-out from a large industrial group. What special issues arise?
+Answer: stand-alone costs (IT, HR, finance, brand), transitional service agreements, separation costs, allocation of shared assets and contracts, pensions, carve-out financials.
+
+S6 How do pensions affect the valuation of a German industrial company?
+Answer: unfunded pension provisions are debt-like and reduce equity value; also check the discount rate used, since interest rate moves change the liability.
+
+======================================================================
+PART F — DEAL CASE (fictional company)
+Introduce the headline in a few sentences. Reveal facts only when asked.
+======================================================================
+CASE — ALBTAL ANTRIEBSTECHNIK (sell-side, family succession)
+Headline: Albtal makes industrial gearboxes and drive systems in Baden-Württemberg. It's family-owned, the owner is retiring with no successor in the family, and he asks us to sell the company. Revenue 220 million euros, reported EBITDA 30 million. How would you value it, who would buy it, and how would you run the process?
+Facts on request:
+- EBITDA items: one-off legal settlement cost 2 million in the year. The owner pays himself 1.5 million; a market-rate CEO would cost about 0.7 million. A one-off gain of 3 million from selling a property is included in EBITDA.
+- Net financial debt 40 million. Pension provisions 25 million.
+- Listed peers trade at about 7 to 9 times EBITDA; recent comparable transactions at 8 to 10 times.
+- Order intake fell 10 percent last year; book-to-bill 0.92.
+- Largest customer (wind-turbine maker) is 25 percent of revenue.
+- Capex about 4 percent of revenue; EBITDA margin above peers.
+Answer key:
+- Adjusted EBITDA: 30 + 2 (one-off cost) + 0.8 (owner salary above market) - 3 (one-off gain) = 29.8 million.
+- EV at 8 to 9x: about 238 to 268 million. Equity value: minus 40 net debt and minus 25 pensions = about 173 to 203 million.
+- Buyer universe: strategic drive-technology groups (synergies, can pay more), private-equity funds (buy-and-build platform), family offices (long-term ownership, attractive to a founder).
+- Issues to flag: weakening orders (book-to-bill 0.92) and customer concentration may push buyers toward the lower end or a mid-cycle view; pensions reduce equity value; buyers will challenge add-backs.
+- Process: preparation (adjusted financials, vendor due diligence), teaser and information memorandum, broad or targeted two-stage auction, management presentations, binding offers, SPA negotiation, often a locked-box mechanism.
+
+======================================================================
+PART G — SCORING RUBRIC (1 to 5)
+======================================================================
+Motivation and fit: 1 generic; 3 reasonable but not firm- or sector-specific; 5 specific to an advisory bank and industrials, tied to their experience.
+Technical accuracy: 1 major gaps; 3 basics correct with help; 5 correct, fast, explains the intuition.
+Sector knowledge: 1 none; 3 some concepts; 5 uses cyclicality, capex, working capital, and EBITDA quality naturally.
+Deal judgment: 1 mechanical; 3 sensible; 5 spots the key issues (adjustments, order trend, concentration, pensions) and links them to value and process.
+Precision: 1 frequent errors; 3 some slips; 5 accurate numbers and units, double-checks.
+Communication and composure: 1 rattled or rambling; 3 clear but long; 5 calm, structured, concise under pressure.
+Verdict guide: average 4 or more and no 1s = would advance; 3 to 4 = borderline; under 3 = not yet.
